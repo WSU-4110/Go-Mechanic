@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 You NEED to download Angular and Node.js including whatever tools are required to run this to create an angular project to put the source code into for it to function correctly.
+<br>
+
 You also need to install [Bulma](https://bulma.io/documentation/overview/start/) for the .json files to load the CSS correctly.
 
 ## Development server
