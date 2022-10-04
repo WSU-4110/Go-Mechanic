@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gomechanic-b3904": {
+      "hosting": {
+        "GoMechanic": [
+          "gomechanic-b3904"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gomechanic-b3904"
+  }
+}

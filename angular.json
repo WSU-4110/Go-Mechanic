@@ -96,8 +96,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "GoMechanic:build:production",
+            "firebaseProject": "gomechanic-b3904",
+            "firebaseHostingSite": "gomechanic-b3904"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1cebba71-07ba-44aa-8441-60d49b7267f2"
   }
 }
