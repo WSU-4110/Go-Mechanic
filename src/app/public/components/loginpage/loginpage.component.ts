@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-loginpage',
+  selector: 'app-loginpagecomponent',
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.css']
 })
 export class LoginpageComponent implements OnInit {
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  get email(){
+    return this.loginForm.get('email')
+  }
+
+  get password(){
+    return this.loginForm.get('password')
   }
 
 }
