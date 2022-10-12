@@ -37,7 +37,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
-    BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
