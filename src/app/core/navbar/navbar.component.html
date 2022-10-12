@@ -1,19 +1,20 @@
 <!-- Nav-bar set up, subject to change as development progresses along -->
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href=""> <!-- href tag to redirect when ever the logo is clicked on. -->
-        <img src="" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
+      <a class="navbar-item">  <!-- href tag to redirect when ever the logo is clicked on. -->
+        <img src="shared/images/Gomechanic.png" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
       </a>
   
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navmenu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
+      <!-- Navbar content -->
   
-    <div id="navbarBasicExample" class="navbar-menu">
+    <nav class= "navbar" id="navmenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" routerLink="/home">
           Home
@@ -39,6 +40,21 @@
           </div>
         </div>
       </div>
+  
+<!--Navigation bar 'services' drop down menu-->
+      <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-divider">
+        <a class="navbar-link">
+          Services
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" routerLink="/about">
+            Maintenance
+          </a>
+          </div>
+        </div>
+<!--END Navigation bar 'services' drop down menu-->      
   
       <div class="navbar-end">
         <div class="navbar-item">
@@ -66,5 +82,7 @@
           </div>
         </div>
       </div>
+
+
     </div>
   </nav>
