@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@ngneat/hot-toast": "^4.1.0",
+    "@ngneat/overview": "^3.0.0",
     "bulma": "^0.9.4",
     "firebase": "^9.10.0",
     "rxjs": "~7.5.0",
