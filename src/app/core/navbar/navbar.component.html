@@ -70,14 +70,35 @@
             </ng-template>
              
             <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton"> 
-              <a class="button is-light"> Logout </a>
+              <button mat-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>account_circle</mat-icon>
+
+                <mat-icon>expand_more</mat-icon>
+              </button>
             </ng-container>
 
             <ng-template #loginButton>
               <a class="button is-light is" routerLink="login"> Login </a>
             </ng-template>
           </div>
+          
+
+
+          <!--There should be a drop down menu for logout option, wont display in line 73-->
+          <mat-menu #userMenu="matMenu">
+            <button mat-button routerLink="login">
+              <mat-icon>account_circle</mat-icon>
+              Profile
+            </button>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              Logout
+            </button>
+          </mat-menu>
+    
 
     <!--End Signup/Login Buttons-->
     </div>
-  </nav>
+  </nav>  
+  
+  
