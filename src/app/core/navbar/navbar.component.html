@@ -1,35 +1,45 @@
-<!-- Nav-bar set up, subject to change as development progresses along -->
-
+<!--Basic Nav Bar Characteristics -->
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item">  <!-- href tag to redirect when ever the logo is clicked on. -->
+      <a class="navbar-item">  
         <img src="shared/images/Gomechanic.png" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
       </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navmenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
     </div>
-      <!-- Navbar content -->
-  
+<!--End Basic Nav Bar Characteristics -->
+    
+    <!-- Navbar content -->
     <nav class= "navbar" id="navmenu" class="navbar-menu">
-      <div class="navbar-start">
+      <nav class="navbar-start">
         <a class="navbar-item" routerLink="/home">
           Home
         </a>
-  
+
+        <!--Services Drop down -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Services
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" routerLink="/about">
+              Maintenance
+            </a>
+            <a class="navbar-item" routerLink="/contact-us">
+              repairs
+            </a>
+            <hr class="navbar-divider">
+          </div>
+        </div>
+        <!--END services Drop down -->
+
+       <!--More Drop down -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             More
           </a>
-  
           <div class="navbar-dropdown">
             <a class="navbar-item" routerLink="/about">
               About
             </a>
-
             <a class="navbar-item" routerLink="/contact-us">
               Contact
             </a>
@@ -39,50 +49,29 @@
             </a>
           </div>
         </div>
-      </div>
-  
-<!--Navigation bar 'services' drop down menu-->
-      <div class="navbar-item has-dropdown is-hoverable">
-        <div class="navbar-divider">
-        <a class="navbar-link">
-          Services
-        </a>
+       <!--END More Drop down -->  
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item" routerLink="/about">
-            Maintenance
-          </a>
-          </div>
-        </div>
-<!--END Navigation bar 'services' drop down menu-->      
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
+    <!--Signup/Login Buttons--> 
+    <div class="navbar-item"> 
+          <div class="button is-light">
               <ng-container *ngIf="authService.currentUser$ | async as user; else signup">
-                <!--sign up button remove if user is logged in-->
+              <!--sign up button remove if user is logged in-->
               </ng-container>
-            <ng-template #signup>
-              <a class="button is-primary" routerLink="/signup">
-                <strong>Sign up</strong>
-              </a>
+            <ng-template #signup> 
+              <a class="button is-link" routerLink="/signup"> 
+                Sign up
+              </a> 
             </ng-template>
-
-            <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
-              <a class="button is-light"(click)="logout()">
-                Logout
-              </a>
+             
+            <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton"> 
+              <a class="button is-light"> Logout </a>
             </ng-container>
 
             <ng-template #loginButton>
-              <a class="button is-light" routerLink="login">
-                Login
-              </a>
+              <a class="button is-light is" routerLink="login"> Login </a>
             </ng-template>
           </div>
-        </div>
-      </div>
 
-
+    <!--End Signup/Login Buttons-->
     </div>
   </nav>
