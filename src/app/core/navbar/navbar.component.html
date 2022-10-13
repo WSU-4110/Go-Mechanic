@@ -1,8 +1,8 @@
 <!--Basic Nav Bar Characteristics -->
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item">  
-        <img src="shared/images/Gomechanic.png" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
+      <a class="navbar-item" routerLink="/home">  
+        <img src="https://txt.1001fonts.net/img/txt/dHRmLjcyLjAwMDAwMC5SMjhnVFdWamFHRnVhV00sLjE,/raleway.extrabold.webp" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
       </a>
     </div>
 <!--End Basic Nav Bar Characteristics -->
@@ -20,11 +20,17 @@
             Services
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" routerLink="/about">
+            <a class="navbar-item" routerLink="/maintenancepage">
               Maintenance
             </a>
-            <a class="navbar-item" routerLink="/contact-us">
-              repairs
+            <a class="navbar-item" routerLink="/enginelightpage">
+              Engine Light
+            </a>
+            <a class="navbar-item" routerLink="/brakejobpage">
+              Brake Job
+            </a>
+            <a class="navbar-item" routerLink="/searchrepairspage">
+              Search Repairs
             </a>
             <hr class="navbar-divider">
           </div>
@@ -58,7 +64,7 @@
               <!--sign up button remove if user is logged in-->
               </ng-container>
             <ng-template #signup> 
-              <a class="button is-link" routerLink="/signup"> 
+              <a class="button is-dark" routerLink="/signup"> 
                 Sign up
               </a> 
             </ng-template>
