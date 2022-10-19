@@ -32,7 +32,6 @@
             <a class="navbar-item" routerLink="/searchrepairspage">
               Search Repairs
             </a>
-            <hr class="navbar-divider">
           </div>
         </div>
         <!--END services Drop down -->
@@ -58,8 +57,11 @@
        <!--END More Drop down -->  
 
     <!--Signup/Login Buttons--> 
-    <div class="navbar-item"> 
-          <div class="button is-light">
+    <div class="navbar-end"> 
+          <div class="navbar-item">
+            <div class="buttons">
+            <!-- Experimenting with Formatting to make login buttons align to the right side of the page - Anthony -->
+            <!-- Issue is coming Mat Angular stuff with Bulma it seems, please look into this someone - Anthony -->
               <ng-container *ngIf="authService.currentUser$ | async as user; else signup">
               <!--sign up button remove if user is logged in-->
               </ng-container>
@@ -95,7 +97,7 @@
               Logout
             </button>
           </mat-menu>
-    
+        </div>
 
     <!--End Signup/Login Buttons-->
     </div>
