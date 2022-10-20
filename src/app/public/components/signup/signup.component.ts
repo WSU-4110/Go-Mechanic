@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
-import { switchMap } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 
 
@@ -59,19 +59,14 @@ export class SignupComponent implements OnInit {
     if (!this.signUpForm.valid || !name || !password || !email) {
       return;
     }
-    this.authService
-    .signUp(name, email, password)
-    .pipe(
-    
+    this.authService.signUp(name, email, password).pipe(
         this.toast.observe({
           success: 'Sign up successful!',
           loading: 'loading...',
           error: ({ message }) => `${message}`,
-          
         })
     ).subscribe(() => {
       this.router.navigate(['/home']);
     })
-
   }
 }
