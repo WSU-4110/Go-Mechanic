@@ -16,8 +16,8 @@ export class AuthenticationService {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  logout(){
-    return from(this.auth.signOut());
+  logout(){   
+    return from(this.auth.signOut()); 
   }
 
   signUp(name: string, email: string, password: string){
