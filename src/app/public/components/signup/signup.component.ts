@@ -71,7 +71,10 @@ export class SignupComponent implements OnInit {
         })
     ).subscribe(() => {
       this.router.navigate(['/home']);
-    })
-
+    }) 
+    
+    this.authService.signUp(name, email, password).pipe()
   }
+
+ 
 }
