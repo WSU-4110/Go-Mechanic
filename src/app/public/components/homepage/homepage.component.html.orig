@@ -1,0 +1,169 @@
+<!-- Add bulma components to the CSS page later, setting up initial pages and routing to get it over with -->
+<!-- Getting a weird bug that doubles the HTML onto the page whenever I put anything on this page - Anthony -->
+<<<<<<< HEAD
+<div class="main--content">
+  <div class="scope-homepage-hero">
+    <picture class="u-visible--sm-block">
+      <source media="(min-width: 1px) and (max-width: 320px)" src="src/assets/images/rpms.jpg">
+    </picture>
+    <div class="text-container">
+      <h1 class="hero-header">
+        <span>Auto Service</span><br>
+        <span>Fast & Convenient.</span>
+        <span></span>
+      </h1>
+      <div class="hero-separator"></div>
+      <p class="hero-body u-hidden--sm">Get your car fixed by a professional mechanic.</p>
+      <p class="hero-body u-visible--sm-block">Get your car fixed by a professional</p>
+
+      <div data-behavior="smart-search-root" data-configuration="homepage">
+        <div class="search-form-padding">
+          <div class="search-form" data-spec="search-form">
+            <div class="search-bar-placeholder" data-behavior="smart-search-placeholder" style="">
+              <div data-list="hidden" data-query="empty"
+                   class="search-bar-container homepage-searchbar homepage-searchbar--v2"
+                   data-behavior="search-bar-and-results-container" style="">
+                <div class="sb-container--input">
+                  <button aria-label="search" class="ss-icon ss-lnr-search sb-input--icon" type="button">
+                  </button>
+                  <input maxlength="150" data-spec="smart-search-box" data-behavior="hero-search-field" type="text"
+                         class="sb-input" autocomplete="off" placeholder="I need help with..." aria-label="Search"
+                         value="">
+                </div>
+                <div data-spec="smart-search-results" class="sb-container--results">
+                </div>
+              </div>
+            </div>
+            <button class="hero-search-button btn btn-primary" type="button">Get help NOW</button>
+          </div>
+        </div>
+      </div>
+      <div class="task-template-tags">
+        <a class="task-template-btn-link btn btn-secondary"
+           onclick="window.location.href = '/tasks/r/form?form_referrer=homepage_v2_hero_buttons&amp;task_template_id=2030'"
+           href="javascript:void(0)">Electrical issues</a>
+        <a class="task-template-btn-link btn btn-secondary"
+           onclick="window.location.href = '/tasks/r/form?form_referrer=homepage_v2_hero_buttons&amp;task_template_id=2042'"
+           href="javascript:void(0)">Transmission Problems</a>
+        <a class="task-template-btn-link btn btn-secondary"
+           onclick="window.location.href = '/tasks/r/form?form_referrer=homepage_v2_hero_buttons&amp;task_template_id=2247'"
+           href="javascript:void(0)">Wheel & Tire Service</a>
+        <a class="task-template-btn-link u-hidden btn btn-secondary" data-behavior="overflow-tags"
+           onclick="window.location.href = '/tasks/r/form?form_referrer=homepage_v2_hero_buttons&amp;task_template_id=2270'"
+           href="javascript:void(0)">Engine Problems</a>
+        <a class="task-template-btn-link u-hidden btn btn-secondary" data-behavior="overflow-tags"
+           onclick="window.location.href = '/tasks/r/form?form_referrer=homepage_v2_hero_buttons&amp;task_template_id=2061'"
+           href="javascript:void(0)">Body & Exhaust</a>
+        <a class="task-template-btn-link u-hidden btn btn-secondary" data-behavior="overflow-tags"
+           onclick="window.location.href = '/tasks/r/form?form_referrer=homepage_v2_hero_buttons&amp;task_template_id=2276'"
+           href="javascript:void(0)">My Car Sounds Weird</a>
+        <button class="see-more-button link-secondary u-hidden--sm" data-behavior="show-more-tags">
+          See More
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-container">
+  <div style="display: none;"></div>
+  <footer>
+    <div class="row social-row">
+      <div class="container--wide">
+        <span class="footer-title social-title">Follow us!</span><br>
+        <a class="social-link" href="https://www.facebook.com/GoMechanicApp" rel="noopener" target="_blank">
+          <img alt="Facebook" data-src="src/assets/images/facebook-white.svg">
+        </a>
+        |
+        <a class="social-link" href="https://twitter.com/GoMechanicApp" rel="noopener" target="_blank">
+          <img alt="Twitter" data-src="src/assets/images/twitter-white.svg">
+        </a>
+        |
+        <a class="social-link" href="https://www.instagram.com/GoMechanicApp/" rel="noopener" target="_blank">
+          <img alt="Instagram" data-src="src/assets/images/instagram-white.svg">
+        </a>
+      </div>
+    </div>
+    <div class="row footer-row">
+      <div class="container--wide footer-content">
+        <div class="footer-column">
+          <span class="footer-title">Discover</span>
+          <div class="links">
+            <a class="box-no-padding" href="/become-a-tasker">Become a Mechanic</a>
+            <a class="box-no-padding" href="/locations">Services By Manufacturer</a>
+            <a class="box-no-padding" href="/services">All Services</a>
+            <a class="box-no-padding" href="/help" rel="noopener" target="_blank">Help</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <span class="footer-title">Company</span>
+          <div class="links">
+            <a class="box-no-padding" href="/about">About Us</a>
+            <a class="box-no-padding" href="/contact-us">Contact</a>
+            <a class="box-no-padding inline-links" href="/terms">Terms</a>
+            <span class="amp box-no-padding"> & </span>
+            <a class="box-no-padding inline-links" href="/privacy">Privacy</a><br>
+<!--            <a class="box-no-padding inline-links" href="/privacy">California Consumer Notice</a>-->
+<!--            <a class="box-no-padding inline-links" href="https://optout.privacyrights.info" rel="noopener" target="_blank">Do Not Sell My Personal Information</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+=======
+<!-- Attempting to get something like the top half of the DoorDash Website so it looks aesthetically pleasing. - Anthony -->
+<section class="hero is-large is-info">
+  <div class="hero-body">
+      <div class="container has-text-centered">
+  <!-- Placeholder for an image here - Anthony -->
+    <p class="title">
+      Go Mechanic
+    </p>
+    <p class="subtitle">
+      Home of your mobile mechanic needs!
+  </p>
+      <form>
+          <div class="control is-loading">
+              <!-- Placeholder address search for our Google Maps API we will add later to search for mechanics near you. - Anthony -->
+            <input class="input" type="text" placeholder="Type an address">
+          </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- More information about the website, below is just filler to have a mock-up of what we want it to look like and function. - Anthony -->
+<section class="section">
+    <div class="container has-text-centered">
+      <p class="subtitle">
+        Listed below are some examples of the repairs you can find here at Go Mechanic. <!-- All text is subject to change at the discretion of the group, just wanted to get some stuff so it looks presentable to an extent. - Anthony -->
+      </p>
+    </div>
+</section>
+
+<!-- Keep track of div tags and make sure to not mix and match Bulma and Angular classes, please! - Anthony -->
+<!-- Columns of the different kinds of work that you can have done on your vehicle listed below. - Anthony -->
+<!-- Someone can make it look prettier later, I'm just getting things situated for the most part. - Anthony -->
+
+<!-- The figure class lines will be replaced with a basic picture template of hypothetical prices-->
+<div class="columns is-mobile is-gapless is-vcentered has-text-centered">
+  <div class="box column is-size-4 is-family-monospace">
+    Maintenance<br>
+    <figure class="image is-3by5"><img src="https://bulma.io/images/placeholders/480x800.png"></figure>
+  </div>
+  <div class="box column is-size-4 is-family-monospace">
+    Engine Light<br>
+    <figure class="image is-3by5"><img src="https://bulma.io/images/placeholders/480x800.png"></figure>
+  </div>
+  <div class="box column is-size-4 is-family-monospace">
+    Brake Job<br>
+    <figure class="image is-3by5"><img src="https://bulma.io/images/placeholders/480x800.png"></figure>
+  </div>
+  <div class="box column is-size-4 is-family-monospace">
+    More Repairs!<br>
+    <figure class="image is-3by5"><img src="https://bulma.io/images/placeholders/480x800.png"></figure>
+  </div>
+</div>
+>>>>>>> developmental_joseph
