@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+<<<<<<< HEAD
 import { AuthService } from 'src/app/core/auth/auth.service';
+=======
+import { AuthenticationService } from 'src/app/core/auth/auth.service';
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
 
 @Component({
   selector: 'app-login',
@@ -16,7 +20,11 @@ export class LoginpageComponent implements OnInit {
   });
 
   constructor(
+<<<<<<< HEAD
     private authService: AuthService,
+=======
+    private authService: AuthenticationService,
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
     private toast: HotToastService,
     private router: Router,
     private fb: NonNullableFormBuilder

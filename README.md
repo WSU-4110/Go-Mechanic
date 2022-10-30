@@ -1,3 +1,35 @@
+<<<<<<< HEAD
+<div id="top"></div>
+
+<!--- License Logo --->
+
+<!--- Project Logo --->
+
+<div align="center">
+
+<h1 align = "center">Go Mechanic</h1>
+  <p align ="center">
+  Place holder text.
+  </p>
+</div>
+
+<!--- About --->
+## About the Project
+Place holder text.
+
+<!--- Development Roadmap --->
+## Development Roadmap
+[Sprint 1](https://github.com/WSU-4110/Go-Mechanic/wiki/Sprint-1)
+
+<!--- Authors --->
+## Authors
+  
+* Joseph Brooks
+* Nahidul Kamran
+* Anthony Quinteros
+* Jim Uc
+* Alexandru Vlad
+=======
 # GoMechanic
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
@@ -29,3 +61,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+>>>>>>> developmental_anthonyquinteros

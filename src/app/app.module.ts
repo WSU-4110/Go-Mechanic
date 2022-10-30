@@ -21,7 +21,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+<<<<<<< HEAD
 
+=======
+import { MatMenuModule} from '@angular/material/menu';
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +46,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+<<<<<<< HEAD
     ReactiveFormsModule
+=======
+    ReactiveFormsModule,
+    MatMenuModule,
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
   ],
 
   providers: [],
