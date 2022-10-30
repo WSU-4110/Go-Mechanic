@@ -47,9 +47,22 @@ testem.log
 Thumbs.db
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
+>>>>>>> origin/development-Jim
 
 # Firebase
 .firebase
 *-debug.log
 .runtimeconfig.json
+<<<<<<< HEAD
 >>>>>>> developmental_anthonyquinteros
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> developmental_anthonyquinteros
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
+>>>>>>> origin/development-Jim

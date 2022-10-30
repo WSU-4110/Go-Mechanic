@@ -10,7 +10,15 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@angular/animations": "^14.2.6",
+=======
+<<<<<<< HEAD
+    "@angular/animations": "^14.2.0",
+=======
+    "@angular/animations": "^14.2.6",
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
+>>>>>>> origin/development-Jim
     "@angular/cdk": "^14.2.3",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",

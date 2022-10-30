@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
+=======
+<<<<<<< HEAD
+import { AuthService } from 'src/app/core/auth/auth.service';
+=======
+import { AuthenticationService } from 'src/app/core/auth/auth.service';
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
+>>>>>>> origin/development-Jim
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +18,15 @@ import { AuthenticationService } from 'src/app/core/auth/auth.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
+<<<<<<< HEAD
     public authService: AuthenticationService,
+=======
+<<<<<<< HEAD
+    public authService: AuthService,
+=======
+    public authService: AuthenticationService,
+>>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
+>>>>>>> origin/development-Jim
     private router: Router
     ) { }
 
