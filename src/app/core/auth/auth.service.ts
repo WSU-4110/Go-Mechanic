@@ -6,18 +6,19 @@ import { switchMap,from } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthenticationService {
+
   currentUser$ = authState(this.auth);
 
   constructor(private auth: Auth) {}
-
 
   login(email: string, password: string){
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  logout(){
-    return from(this.auth.signOut());
+  logout(){   
+    return from(this.auth.signOut()); 
   }
 
   signUp(name: string, email: string, password: string){

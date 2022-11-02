@@ -83,7 +83,7 @@
                 <a class="navbar-item" routerLink="/my-settings">
                   Settings
                 </a>
-                <button class="button is-danger is-light" (click) = "authService.logout()">logout</button>
+                <button class="button is-danger is-light" (click) = "authService.logout()">logout</button>    
                
               </ng-container>
             </ng-container>
@@ -98,6 +98,7 @@
 
 
           <!--There should be a drop down menu for logout option, wont display in line 73-->
+          
           <mat-menu #userMenu="matMenu">
             <button mat-button routerLink="login">
               <mat-icon>account_circle</mat-icon>
