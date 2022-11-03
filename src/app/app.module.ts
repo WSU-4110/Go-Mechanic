@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -14,7 +13,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Coponents for SignupComponent
+//Components for SignupComponent
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +21,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule} from '@angular/material/menu';
+import {CoreModule} from "./core/core.module";
+import {SharedModule} from "./shared/shared.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,7 @@ import { MatMenuModule} from '@angular/material/menu';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,  
+    FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -44,6 +45,8 @@ import { MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     ReactiveFormsModule,
     MatMenuModule,
+    CoreModule,
+    SharedModule,
   ],
 
   providers: [],
