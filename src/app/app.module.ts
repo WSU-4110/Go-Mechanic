@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
+/** import { AngularFirestoreModule} from **/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Coponents for SignupComponent
@@ -22,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule} from '@angular/material/menu';
+
 @NgModule({
   declarations: [
     AppComponent,

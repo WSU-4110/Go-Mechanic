@@ -5,20 +5,20 @@ import { PrivateRoutingModule } from './private-routing.module';
 import { PrivateComponent } from './private.component';
 import { SharedModule } from '../shared/shared.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
-import { MyInboxComponent } from './components/myinbox/my-inbox/my-inbox.component';
-import { MySettingsComponent } from './components/mySettings/my-settings/my-settings.component';
+import { MyAccountNavbarComponent } from './components/my-account/my-account-navbar/my-account-navbar.component';
+import { MyAccountModule } from './components/my-account/my-account.module';
 
 @NgModule({
   declarations: [
     PrivateComponent,
     MyAccountComponent,
-    MyInboxComponent,
-    MySettingsComponent
+    MyAccountNavbarComponent
   ],
   imports: [
     CommonModule,
     PrivateRoutingModule,
-    SharedModule
+    SharedModule,
+    MyAccountModule
   ]
 })
 export class PrivateModule { }
