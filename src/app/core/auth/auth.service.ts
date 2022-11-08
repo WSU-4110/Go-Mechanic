@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Auth, signInWithEmailAndPassword, authState} from '@angular/fire/auth';
-import { FormControl, FormGroup } from '@angular/forms';
-import { createUserWithEmailAndPassword, updateProfile, UserInfo } from 'firebase/auth';
+import {
+  Auth,
+  authState,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  UserInfo,
+} from '@angular/fire/auth';
+
 import { concatMap, Observable, from, of } from 'rxjs';
 
 @Injectable({
@@ -22,7 +28,7 @@ export class AuthenticationService {
     return from(this.auth.signOut()); 
   }
 
-  signUp(name: string, email: string, password: string){
+  signUp(email: string, password: string){
     return from(createUserWithEmailAndPassword(this.auth, email, password))
   }
 

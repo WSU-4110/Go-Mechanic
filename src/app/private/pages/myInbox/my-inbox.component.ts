@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
 import { FormControl } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { UsersService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -13,6 +12,10 @@ import { UsersService } from 'src/app/core/services/user.service';
 
 
 export class MyInboxComponent implements OnInit {
+
+  user$ = this.userService.currentUserProfile$;
+
+  users$ = this.userService.allUsers$;
 
   searchControl = new FormControl('');
 

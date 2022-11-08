@@ -3,6 +3,8 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
+import { UsersService } from 'src/app/core/services/user.service';
+import { switchMap } from 'rxjs';
 
 
 export function passwordsMatchValidator(): ValidatorFn {
@@ -30,8 +32,9 @@ export class SignupComponent implements OnInit {
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', Validators.required)
   },
-  { validators: passwordsMatchValidator() }) //Cross fields validation
-  constructor(private authService: AuthenticationService,private toast: HotToastService, private router: Router) { }
+  { validators: passwordsMatchValidator() }) 
+
+  constructor(private authService: AuthenticationService,private toast: HotToastService, private router: Router,private  userService: UsersService) { }
 
   ngOnInit(): void {}
 
@@ -58,7 +61,8 @@ export class SignupComponent implements OnInit {
     if (!this.signUpForm.valid || !name || !password || !email) {
       return;
     }
-    this.authService.signUp(name, email, password).pipe(
+    this.authService.signUp(email, password).pipe(
+      switchMap(({ user: {uid} }) => this.userService.addUser({ uid, email, displayName: name})),
         this.toast.observe({
           success: 'Sign up successful!',
           loading: 'loading...',
@@ -69,3 +73,4 @@ export class SignupComponent implements OnInit {
     })
   }
 }
+
