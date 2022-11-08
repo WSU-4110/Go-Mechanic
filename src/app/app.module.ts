@@ -14,7 +14,7 @@ import { provideFirestore,getFirestore, } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
-//Additional 
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,11 +27,13 @@ import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
 import { ProfileComponent } from './private/pages/profile/profile.component';
+
 import { UsersService } from './core/services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+
 @NgModule({
   declarations: [
     AppComponent,
