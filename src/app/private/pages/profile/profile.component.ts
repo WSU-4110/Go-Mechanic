@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
 import { concatMap, switchMap } from 'rxjs';
@@ -15,8 +16,19 @@ export class ProfileComponent implements OnInit {
 
   user$ = this.authService.currentUser$;
 
+  profileForm = new FormGroup({
+    uid: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    address: new FormControl(''),
+  })
 
-  constructor(private authService : AuthenticationService, private imageUploadService: ImageUploadService, private toast: HotToastService) { }
+
+  constructor(
+    private authService : AuthenticationService, 
+    private imageUploadService: ImageUploadService, 
+    private toast: HotToastService
+  ) { }
 
   ngOnInit(): void {
   }

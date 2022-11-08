@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
 
-  constructor() { }
-  
+  constructor(private firestore: Firestore) { }
+
 
 }
 
 
-
-export class UserService {
-}

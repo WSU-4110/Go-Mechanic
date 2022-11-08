@@ -14,7 +14,7 @@ import { provideFirestore,getFirestore, } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
-//Coponents for SignupComponent
+//Components for SignupComponent
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
