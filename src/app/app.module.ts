@@ -30,6 +30,8 @@ import { ProfileComponent } from './private/pages/profile/profile.component';
 import { UsersService } from './core/services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './public/Pages/signup/signup.component';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,10 +61,9 @@ import { SignupComponent } from './public/Pages/signup/signup.component';
     MatMenuModule,
     MatAutocompleteModule,
     MatOptionModule,
-    BrowserAnimationsModule
-
-    
-    
+    BrowserAnimationsModule,
+    MatListModule, 
+    MatDividerModule,
   ],
 
   providers: [UsersService],
