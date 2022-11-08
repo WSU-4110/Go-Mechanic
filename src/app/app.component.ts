@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/core/auth/auth.service';
+import { UsersService } from 'src/app/core/services/user.service';
 
 
 /** templateUrl: './app.component.html', */
@@ -9,6 +12,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
+
+
 export class AppComponent {
+  
+  user$= this.userService.currentUserProfile$;
+  
+constructor(
+  private AuthService: AuthenticationService,
+  private router: Router,
+  private userService: UsersService
+){}
+
   title = 'GoMechanicDev';
+  
 }

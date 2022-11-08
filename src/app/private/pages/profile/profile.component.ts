@@ -5,7 +5,8 @@ import { User } from 'firebase/auth';
 import { concatMap, switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { ImageUploadService } from 'src/app/core/services/image-upload.service';
-import { ProfileUser } from 'src/app/models/user-profile';
+import { UsersService } from 'src/app/core/services/user.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -13,11 +14,26 @@ import { ProfileUser } from 'src/app/models/user-profile';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
   user$ = this.authService.currentUser$;
 
   profileForm = new FormGroup({
     uid: new FormControl(''),
+
+    displayName: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    phone: new FormControl(''),
+    address: new FormControl(''),
+  });
+
+
+  constructor(
+    private authService : AuthenticationService, 
+    private imageUploadService: ImageUploadService, 
+    private toast: HotToastService,
+    private usersService: UsersService,
+    ) { }
+=======
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     address: new FormControl(''),
@@ -31,16 +47,36 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.usersService.currentUserProfile$
+      //.pipe(untilDestroyed(this)
+      .subscribe((user) => {
+        this.profileForm.patchValue({ ...user });
+      });
   }
 
   uploadImage(event: any, user: User) {
-    this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe( ///Error Was string literal for user id
+    this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe(
       this.toast.observe({
-        loading: 'uploading Image...',
-        success: 'profile updated',
-        error: 'there was an error uploading',
+        loading: 'Uploading Proflile Image...',
+        success: 'Profile Image Uploaded Successfully',
+        error: 'There was an error uploading',
       }),
       concatMap((photoURL) => this.authService.updateProfileData(({ photoURL })))
       ).subscribe();
     }
-  }
+
+    saveProfile(){
+      const profileData = this.profileForm.value;
+
+
+     // this.usersService.updateUser(profileData)
+      //.pipe(this.toast.observe({
+      //  loading: 'Updating personal information...',
+       // success: 'Personal information updated successfully',
+        //error: 'There was an error uploading'
+      //}))
+    }
+
+}
+
+
