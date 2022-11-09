@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'; 
 import { FormControl } from '@angular/forms';
-import { combineLatest, map, startWith, switchMap, tap } from 'rxjs';
+import { combineLatest, map, of, startWith, switchMap, tap } from 'rxjs';
 import { UsersService } from 'src/app/core/services/user.service';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { ChatService } from 'src/app/core/services/chat.service';
@@ -50,8 +50,17 @@ export class MyInboxComponent implements OnInit {
   }
 
   createChat(otherUser: ProfileUser) {
-    this.chatsService.createChat(otherUser).subscribe();
-
+    this.chatsService.isExistingChat(otherUser?.uid).pipe(
+      switchMap(chatId => {
+        if (chatId) {
+          return of(chatId);
+        } else{
+          return this.chatsService.createChat(otherUser);
+        }
+      })
+    ).subscribe((chatId) => {
+      this.chatListControl.setValue(chatId); //We should redirerct to the current user chat if one is already created, function is block for now
+    })
   }
 
   sendMessage(){
