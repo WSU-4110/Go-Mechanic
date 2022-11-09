@@ -9,9 +9,11 @@ import {
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
+
 import { from, Observable, of, switchMap } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { AuthenticationService } from '../auth/auth.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -52,6 +54,4 @@ export class UsersService {
 
     
   }
-
-
 
