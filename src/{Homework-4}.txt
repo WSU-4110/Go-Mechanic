@@ -1,4 +1,4 @@
-The commit hashes for the Observer Pattern implemntation include 
+The commit hashes for the Model View Controller Pattern implemntation include 
 
 https://github.com/WSU-4110/Go-Mechanic/commit/0305b420736cb8a5960e01f86799bf63762fdeca
 
