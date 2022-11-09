@@ -10,11 +10,11 @@ import {
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
+
 import { from, Observable, of, switchMap } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { AuthenticationService } from '../auth/auth.service';
 
-import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -57,10 +57,5 @@ export class UsersService {
 
     
   }
-
-  constructor(private firestore: Firestore) { }
-
-
-}
 
 

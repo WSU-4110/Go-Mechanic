@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit {
 
   profileForm = new FormGroup({
     uid: new FormControl(''),
-
     displayName: new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -33,18 +32,6 @@ export class ProfileComponent implements OnInit {
     private toast: HotToastService,
     private usersService: UsersService,
     ) { }
-=======
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    address: new FormControl(''),
-  })
-
-
-  constructor(
-    private authService : AuthenticationService, 
-    private imageUploadService: ImageUploadService, 
-    private toast: HotToastService
-  ) { }
 
   ngOnInit(): void {
     this.usersService.currentUserProfile$
@@ -78,5 +65,3 @@ export class ProfileComponent implements OnInit {
     }
 
 }
-
-
