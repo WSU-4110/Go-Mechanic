@@ -1,11 +1,13 @@
-The commit hashes for the factory method implemntation include
+The commit hashes for the factory method implemntation include 
 
-96b09b28ed1eb0df9943d5434d5f046fe8a401ad
+https://github.com/WSU-4110/Go-Mechanic/commit/0305b420736cb8a5960e01f86799bf63762fdeca
 
-0305b420736cb8a5960e01f86799bf63762fdeca
+https://github.com/WSU-4110/Go-Mechanic/commit/52756bd5c6f6cefeb476ed6d33c383b81719b664
 
-52756bd5c6f6cefeb476ed6d33c383b81719b664
+https://github.com/WSU-4110/Go-Mechanic/commit/8c053bb13e74ea280a54ab8f1914ba125d0126af
 
-8c053bb13e74ea280a54ab8f1914ba125d0126af
+https://github.com/WSU-4110/Go-Mechanic/commit/fb15247fc3711c07cdc79affc4141f557c4413e4
 
-fb15247fc3711c07cdc79affc4141f557c4413e4
+https://github.com/WSU-4110/Go-Mechanic/commit/44339c4d94d1eac8c2c3814c281f67f7864097d5
+
+https://github.com/WSU-4110/Go-Mechanic/commit/40c88bfb8357f1f039c54036f4c85398a5a09123
