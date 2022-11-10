@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
       ).subscribe();
     }
 
-    saveProfile(){
+    saveProfile(){  
       const {uid, ...data} = this.profileForm.value;
 
       if (!uid) {
