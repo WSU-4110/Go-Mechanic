@@ -62,16 +62,11 @@ export class SignupComponent implements OnInit {
     if (!this.signUpForm.valid || !name || !password || !email) {
       return;
     }
-    this.authService.signUp(email, password).pipe(
-      switchMap(({ user: {uid} }) => this.userService.addUser({ uid, email, displayName: name})),
-        this.toast.observe({
-          success: 'Sign up successful!',
-          loading: 'loading...',
-          error: ({ message }) => `${message}`,
-        })
-    ).subscribe(() => {
-      this.router.navigate(['/home']);
-    })
+    this.authService.signUp(email, password)
+  }
+
+  login(){
+    this.router.navigate(['/login']);
   }
 }
 

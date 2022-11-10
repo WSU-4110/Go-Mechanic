@@ -13,6 +13,7 @@ import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/sea
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MySettingsComponent } from './private/pages/mySettings/my-settings.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
+import { VerifyemailComponent } from './public/Pages/signup/verifyemail/verifyemail.component';
 
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './private/pages/profile/profile.component';
@@ -52,7 +53,7 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
-    ...canActivate(redirectToHome)
+    ...canActivate(redirectToLogin)
   },
 
   {
@@ -98,8 +99,12 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     ...canActivate(redirectToLogin)
-  }
+  },
 
+  {
+    path: 'verifyemail',
+    component: VerifyemailComponent
+  }
 ];
 
 @NgModule({

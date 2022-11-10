@@ -40,17 +40,6 @@ export class LoginpageComponent implements OnInit {
     if (!this.loginForm.valid || !email || !password) {
       return;
     }
-
-    this.authService
-      .login(email, password).pipe(this.toast.observe({
-          success: 'Logged in successfully',
-          loading: 'Logging in...',
-          error: 'Incorrect username or password',
-        })
-      )
-      .subscribe(() => {
-        this.router.navigate(['/home']);
-      });
   }
 
   signup(){
