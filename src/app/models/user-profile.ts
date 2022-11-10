@@ -4,7 +4,7 @@ export interface ProfileUser{
     displayName?: string;
     photoURL?: string;
     firstName?: string;
-    lastName?: string;
+    lastname?: string;
     phone?: string;
     address?: string;
 }

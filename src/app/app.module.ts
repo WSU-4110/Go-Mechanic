@@ -34,6 +34,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AgmCoreModule } from "@agm/core";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,11 +45,12 @@ import { DatePipe } from '@angular/common';
     ProfileComponent,
     SignupComponent,
     DateDisplayPipe,
-  
+    
   ],
 
   imports: [
     BrowserModule,
+    GooglePlaceModule,
     AppRoutingModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -67,6 +70,10 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule,
     MatListModule, 
     MatDividerModule,
+    AgmCoreModule.forRoot({
+      apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
+      libraries: ['places']
+    }),
   ],
 
   providers: [DatePipe],

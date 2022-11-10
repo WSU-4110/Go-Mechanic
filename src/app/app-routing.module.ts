@@ -110,4 +110,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 /** Below statement allows us to add a variable to not have to import components into the app.module.ts file - Anthony */
-export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, SignupComponent, ReportissuepageComponent ]
+export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, SignupComponent, ReportissuepageComponent,MaintenancepageComponent ]

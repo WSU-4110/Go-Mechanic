@@ -17,24 +17,12 @@ export class ProfileComponent implements OnInit {
   user$ = this.authService.currentUser$;
 
   profileForm = new FormGroup({
-    uid: new FormControl('', {
-      nonNullable: true,
-    }),
-    displayName: new FormControl('', {
-      nonNullable: true,
-    }),
-    firstName: new FormControl('', {
-      nonNullable: true,
-    }),
-    lastName: new FormControl('', {
-      nonNullable: true,
-    }),
-    phone: new FormControl('', {
-      nonNullable: true,
-    }),
-    address: new FormControl('', {
-      nonNullable: true,
-    }),
+    uid: new FormControl(''),
+    displayName: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    phone: new FormControl(''),
+    address: new FormControl(''),
   });
 
 
@@ -65,20 +53,15 @@ export class ProfileComponent implements OnInit {
     }
 
     saveProfile(){
-      const {uid, ...data} = this.profileForm.value;
+      const profileData = this.profileForm.value;
 
-      if (!uid) {
-        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
-      }
 
-      this.usersService.updateUser({uid, ...data})
-      .pipe(this.toast.observe({
-        loading: 'Updating data...',
-        success: 'Data has been successfully updated!',
-        error: 'There was an error in updating the data.'
-      })
-      )
-      .subscribe();
+     // this.usersService.updateUser(profileData)
+      //.pipe(this.toast.observe({
+      //  loading: 'Updating personal information...',
+       // success: 'Personal information updated successfully',
+        //error: 'There was an error uploading'
+      //}))
     }
 
 }
