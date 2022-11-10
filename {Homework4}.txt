@@ -1,0 +1,3 @@
+Commit hash for Model View Controller Pattern implementation:
+
+https://github.com/WSU-4110/Go-Mechanic/commit/72943723d89997fa2ad3073ca1564855d9ea8752
