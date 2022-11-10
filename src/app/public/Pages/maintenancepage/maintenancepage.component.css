@@ -1,0 +1,11 @@
+.map-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+agm-map{
+    height: 300px;
+    width: 500px;
+    
+}

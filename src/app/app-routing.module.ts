@@ -1,21 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyAccountComponent } from './public/components/myAccount/my-account.component';
-import { AboutpageComponent } from './public/components/aboutpage/aboutpage.component';
-import { BrakejobpageComponent } from './public/components/brakejobpage/brakejobpage.component';
-import { ContactpageComponent } from './public/components/contactpage/contactpage.component';
-import { EnginelightpageComponent } from './public/components/enginelightpage/enginelightpage.component';
-import { HomepageComponent } from './public/components/homepage/homepage.component';
-import { LoginpageComponent } from './public/components/loginpage/loginpage.component';
-import { MaintenancepageComponent } from './public/components/maintenancepage/maintenancepage.component';
-import { ReportissuepageComponent } from './public/components/report-issue-page/reportissuepage.component';
-import { SearchrepairspageComponent } from './public/components/searchrepairspage/searchrepairspage.component';
-import { SignupComponent } from './public/components/signup/signup.component';
-import { MySettingsComponent } from './private/components/mySettings/my-settings/my-settings.component';
-import { MyInboxComponent } from './private/components/myinbox/my-inbox/my-inbox.component';
+import { MyAccountComponent } from './private/pages/myAccount/my-account.component';
+import { AboutpageComponent } from './public/Pages/aboutpage/aboutpage.component';
+import { BrakejobpageComponent } from './public/Pages/brakejobpage/brakejobpage.component';
+import { ContactpageComponent } from './public/Pages/contactpage/contactpage.component';
+import { EnginelightpageComponent } from './public/Pages/enginelightpage/enginelightpage.component';
+import { HomepageComponent } from './public/Pages/homepage/homepage.component';
+import { LoginpageComponent } from './public/Pages/loginpage/loginpage.component';
+import { MaintenancepageComponent } from './public/Pages/maintenancepage/maintenancepage.component';
+import { ReportissuepageComponent } from './public/Pages/report-issue-page/reportissuepage.component';
+import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/searchrepairspage.component';
+import { SignupComponent } from './public/Pages/signup/signup.component';
+import { MySettingsComponent } from './private/pages/mySettings/my-settings.component';
+import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
+
+import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { ProfileComponent } from './private/pages/profile/profile.component';
+
+const redirectToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectToHome = () => redirectLoggedInTo(['home'])
 
 /** Use whatever routing is here in the public-routing module if we end up not use this base level one. */
 const routes: Routes = [
+
+  // Public Routing
   { path: 'home',
     component: HomepageComponent
   },
@@ -27,7 +35,8 @@ const routes: Routes = [
 
   {
     path:'login',
-    component: LoginpageComponent
+    component: LoginpageComponent,
+    ...canActivate(redirectToHome)
   },
 
   {
@@ -42,7 +51,8 @@ const routes: Routes = [
 
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    ...canActivate(redirectToHome)
   },
 
   {
@@ -65,20 +75,31 @@ const routes: Routes = [
     component: MaintenancepageComponent
   },
 
+  //Private Routing
   {
     path: 'my-account',
-    component: MyAccountComponent
-  },
-
-  {
-    path: 'my-inbox',
-    component: MyInboxComponent
+    component: MyAccountComponent,
+    ...canActivate(redirectToLogin)
   },
 
   {
     path: 'my-settings',
-    component: MySettingsComponent
+    component: MySettingsComponent,
+    ...canActivate(redirectToLogin)
+  },
+
+  {
+    path: 'my-inbox',
+    component: MyInboxComponent,
+    ...canActivate(redirectToLogin)
+  },
+
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    ...canActivate(redirectToLogin)
   }
+
 ];
 
 @NgModule({
@@ -89,4 +110,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 /** Below statement allows us to add a variable to not have to import components into the app.module.ts file - Anthony */
-export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, SignupComponent, ReportissuepageComponent ]
+export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, SignupComponent, ReportissuepageComponent,MaintenancepageComponent ]

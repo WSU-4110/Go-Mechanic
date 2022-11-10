@@ -40,17 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
-
 # Firebase
 .firebase
 *-debug.log
 .runtimeconfig.json
-<<<<<<< HEAD
-=======
->>>>>>> developmental_anthonyquinteros
->>>>>>> 9ea170d17660b138e5eb9b82859c09694cd3a66e
