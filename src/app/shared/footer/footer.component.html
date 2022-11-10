@@ -1,11 +1,11 @@
-<footer class="footer  mx-0 px-0 pb-0 pt-2">
+<footer class="footer mx-0 px-0 pb-0 pt-2">
   <nav class="content fixed-bottom navbar-light has-background-grey-lighter mt-4">
-    <div class="footer has-text-centered has-background-grey-lighter mt-4">
+    <div class="footer has-text-centered has-background-grey-lighter mt-4 is-size-5">
       <div class="columns is-mobile is-multiline is-centered">
         <div class="column is-narrow">
           <p class="bd-notification is-primary">
             <code class="html has-background-grey-lighter">
-              <a href="homepage.component.html">Home</a>
+              <a href="home">Home</a>
             </code>
             <br>
           </p>
@@ -13,7 +13,7 @@
         <div class="column is-narrow">
           <p class="bd-notification is-primary">
             <code class="html has-background-grey-lighter">
-              <a href="aboutpage.component.html">About</a>
+              <a href="about">About</a>
             </code>
             <br>
           </p>
@@ -21,7 +21,7 @@
         <div class="column is-narrow">
           <p class="bd-notification is-primary">
             <code class="html has-background-grey-lighter">
-              <a href="contactpage.component.html">Contact Us</a>
+              <a href="contact-us">Contact Us</a>
             </code>
             <br>
           </p>
@@ -29,7 +29,7 @@
         <div class="column is-narrow">
           <p class="bd-notification is-primary">
             <code class="html has-background-grey-lighter">
-              <a href="loginpage.component.html">Login</a>
+              <a href="/login">Login</a>
             </code>
             <br>
           </p>
@@ -37,14 +37,17 @@
         <div class="column is-narrow">
           <p class="bd-notification is-primary">
             <code class="html has-background-grey-lighter">
-              <a href="reportissuepage.component.html">Report an issue</a>
+              <a href="report-issue">Report an issue</a>
             </code>
             <br>
           </p>
         </div>
       </div>
-      <p>Copyright @{{currentDate | date: 'y'}}. All
-        Rights Reserved</p>
+
+      <div class="content is-size-7">
+        <p>Copyright @{{currentDate | date: 'y'}}. All
+          Rights Reserved</p>
+      </div>
     </div>
   </nav>
 </footer>
