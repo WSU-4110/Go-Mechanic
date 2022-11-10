@@ -1,17 +1,15 @@
+//Standard Imports
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+//Routing imports
 import { PublicRoutingModule } from './public-routing.module';
-import { PublicComponent } from './public.component';
+import { PublicComponent } from './components/public.component';
 import { SharedModule } from '../shared/shared.module';
-import { EnginelightpageComponent } from './components/enginelightpage/enginelightpage.component';
-import { BrakejobpageComponent } from './components/brakejobpage/brakejobpage.component';
-import { SearchrepairspageComponent } from './components/searchrepairspage/searchrepairspage.component';
-import { MaintenancepageComponent } from './components/maintenancepage/maintenancepage.component';
-
-
-
-
+//Page imports
+import { EnginelightpageComponent } from './Pages/enginelightpage/enginelightpage.component';
+import { BrakejobpageComponent } from './Pages/brakejobpage/brakejobpage.component';
+import { SearchrepairspageComponent } from './Pages/searchrepairspage/searchrepairspage.component';
+import { MaintenancepageComponent} from './Pages/maintenancepage/maintenancepage.component';
 @NgModule({
   declarations: [
     PublicComponent,
@@ -20,10 +18,12 @@ import { MaintenancepageComponent } from './components/maintenancepage/maintenan
     SearchrepairspageComponent,
     MaintenancepageComponent,
   ],
+
   imports: [
     CommonModule,
     PublicRoutingModule,
     SharedModule
   ]
+
 })
 export class PublicModule { }
