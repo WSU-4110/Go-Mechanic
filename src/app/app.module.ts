@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 //Coponents for SignupComponent
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -44,6 +44,8 @@ import { MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     ReactiveFormsModule,
     MatMenuModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
   ],
 
   providers: [],
