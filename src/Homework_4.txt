@@ -1,0 +1,4 @@
+The Model View Controller design pattern was implemented for FR18 Integrated Footer
+
+The commit hash for the implementation:
+https://github.com/WSU-4110/Go-Mechanic/commit/6fd0866806dd86037cb4d660c3a0269da765ae6a?diff=split
