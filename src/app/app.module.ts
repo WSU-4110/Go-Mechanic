@@ -34,6 +34,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
+
+
+
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 @NgModule({
@@ -69,6 +72,12 @@ import {SharedModule} from "./shared/shared.module";
     BrowserAnimationsModule,
     MatListModule,
     MatDividerModule,
+
+
+
+
+
+    
     CoreModule,
     SharedModule,
   ],
