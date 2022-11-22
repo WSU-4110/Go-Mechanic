@@ -61,6 +61,9 @@ export class AuthenticationService {
         this.toast.success('Login successful...');
       }
     })
+    .catch((error) => {
+      this.toast.error('Incorrect email or password...');
+    });
  }
 
  signUp(email: string, password: string){
