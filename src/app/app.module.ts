@@ -36,7 +36,8 @@ import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from "@agm/core";
-import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { HotToastModule } from '@ngneat/hot-toast'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +77,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']
     }),
+    HotToastModule.forRoot(),
   ],
 
   providers: [DatePipe],

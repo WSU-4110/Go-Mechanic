@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { UsersService } from '../services/user.service';
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,15 +14,14 @@ export class NavbarComponent implements OnInit {
   constructor(
     public authService: AuthenticationService,
     public userService: UsersService,
-    private router: Router
+    private router: Router,
+    private toast: HotToastService
     ) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.authService.logout().subscribe(() => {
-      this.router.navigate(['/home']);
-    });
+    this.authService.logout();
   }
 }
