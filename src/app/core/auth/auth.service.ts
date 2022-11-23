@@ -56,7 +56,7 @@ export class AuthenticationService {
         this.toast.success('Login successful...');
       }
     })
-    .catch((error) => {
+    .catch(() => {
       this.toast.error('Incorrect email or password...');
     });
  }
@@ -64,18 +64,18 @@ export class AuthenticationService {
  signUp(email: string, password: string){
   return this.afAuth
     .createUserWithEmailAndPassword(email, password)
-    .then((result) => {
+    .then(() => {
       this.toast.success('Sign up successful...');
       this.SendVerificationMail();
       this.forceLogout();
     })
-    .catch((error) => {
+    .catch(() => {
       this.toast.error('Email has already been registered...');
     });
   }
 
   logout(){   
-    return this.auth.signOut().then((result) => {
+    return this.auth.signOut().then(() => {
       this.toast.success('Logout successful...');
       this.router.navigate(['/home']);
       this.forceLogout();
