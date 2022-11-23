@@ -1,18 +1,13 @@
-import { ExpressionType } from '@angular/compiler';
-import { Injectable, NgModule, NgZone } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import {
   Auth,
   authState,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   updateProfile,
   UserInfo,
 } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-
-
 import { concatMap, Observable, from, of } from 'rxjs';
 
 @Injectable({
@@ -74,6 +69,9 @@ export class AuthenticationService {
       this.SendVerificationMail();
       this.forceLogout();
     })
+    .catch((error) => {
+      this.toast.error('Email has already been registered...');
+    });
   }
 
   logout(){   
@@ -98,5 +96,4 @@ export class AuthenticationService {
        })
      );
   }
-
 }

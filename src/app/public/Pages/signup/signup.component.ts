@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { HotToastService } from '@ngneat/hot-toast';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
-import { UsersService } from 'src/app/core/services/user.service';
-import { switchMap } from 'rxjs';
 
 
 export function passwordsMatchValidator(): ValidatorFn {
@@ -35,7 +31,9 @@ export class SignupComponent implements OnInit {
   },
   { validators: passwordsMatchValidator() }) 
 
-  constructor(private authService: AuthenticationService,private toast: HotToastService, private router: Router,private  userService: UsersService) { }
+  constructor(
+    private authService: AuthenticationService
+    ) { }
 
   ngOnInit(): void {}
 
