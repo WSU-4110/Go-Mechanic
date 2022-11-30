@@ -8,8 +8,8 @@
 <!--End Basic Nav Bar Characteristics -->
     
     <!-- Navbar content -->
-    <nav class= "navbar" id="navmenu" class="navbar-menu">
-      <nav class="navbar-start">
+    <div id="navmenu" class="navbar-menu">
+      <div class="navbar-start">
         <a class="navbar-item" routerLink="/home">
           Home
         </a>
@@ -32,12 +32,9 @@
             <a class="navbar-item" routerLink="/searchrepairspage">
               Search Repairs
             </a>
-            <hr class="navbar-divider">
           </div>
         </div>
-        <!--END services Drop down -->
-
-       <!--More Drop down -->
+        <!--More Drop down -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             More
@@ -55,20 +52,23 @@
             </a>
           </div>
         </div>
-       <!--END More Drop down -->  
+        <!--END More Drop down -->
+      </div>
+      <!-- Please keep in mind the tag directly above this comment is what separates navbar-start and navbar-end (being left and right on the nav-bar respectively). - Anthony -->
 
-    <!--Signup/Login Buttons--> 
-    <div class="navbar-item"> 
-          <div class="button is-light">
-              <ng-container *ngIf="authService.currentUser$ | async as user; else signup">
-              <!--sign up button remove if user is logged in-->
-              </ng-container>
-            <ng-template #signup> 
-              <a class="button is-dark" routerLink="/signup"> 
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <!-- Experimenting with Formatting to make login buttons align to the right side of the page - Anthony -->
+            <!-- Had to reformat Jim's code in order to get it to look proper on the page (hopefully.) - Anthony -->
+            <ng-container *ngIf="authService.currentUser$ | async as user; else signup">
+              <!-- Sign up buttom gets removed if user is logged in -->
+            </ng-container>
+            <ng-template #signup>
+              <a class="button is-dark" routerLink="/signup">
                 Sign up
-              </a> 
+              </a>
             </ng-template>
-             
+
             <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton"> 
               <button mat-button [matMenuTriggerFor]="userMenu">
                 <mat-icon>account_circle</mat-icon>
@@ -95,10 +95,10 @@
               Logout
             </button>
           </mat-menu>
-    
+        </div>
+      </div>
 
     <!--End Signup/Login Buttons-->
-    </div>
-  </nav>  
+</nav>  
   
   
