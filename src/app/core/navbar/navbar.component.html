@@ -1,3 +1,5 @@
+<script src="https://kit.fontawesome.com/1885d8c53e.js" crossorigin="anonymous"></script>
+
 <!--Basic Nav Bar Characteristics -->
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -69,22 +71,34 @@
               </a>
             </ng-template>
 
-            <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton"> 
-              <button mat-button [matMenuTriggerFor]="userMenu">
-                <mat-icon>account_circle</mat-icon>
-
-                <mat-icon>expand_more</mat-icon>
-              </button>
+            <div class="dropdown-menu" id="dropdown-menu3" role="menu"></div>
+            <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
+              <ng-container class="navbar-dropdown">
+                <a class="navbar-item" routerLink="/my-account">
+                  My Account
+                </a>
+                <a class="navbar-item" routerLink="/my-inbox">
+                  Inbox
+                </a>
+                <a class="navbar-item" routerLink="/my-settings">
+                  Settings
+                </a>
+                <button class="button is-danger is-light" (click) = "authService.logout()">logout</button>
+               
+              </ng-container>
             </ng-container>
+            
+          
+            
 
             <ng-template #loginButton>
               <a class="button is-light is" routerLink="login"> Login </a>
             </ng-template>
           </div>
-          
 
 
           <!--There should be a drop down menu for logout option, wont display in line 73-->
+          
           <mat-menu #userMenu="matMenu">
             <button mat-button routerLink="login">
               <mat-icon>account_circle</mat-icon>
@@ -95,10 +109,8 @@
               Logout
             </button>
           </mat-menu>
-        </div>
-      </div>
 
     <!--End Signup/Login Buttons-->
-</nav>  
-  
-  
+    </div>
+    </div>
+  </nav>  

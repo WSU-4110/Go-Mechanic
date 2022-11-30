@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MyAccountComponent } from './public/components/myAccount/my-account.component';
 import { AboutpageComponent } from './public/components/aboutpage/aboutpage.component';
 import { BrakejobpageComponent } from './public/components/brakejobpage/brakejobpage.component';
 import { ContactpageComponent } from './public/components/contactpage/contactpage.component';
@@ -10,6 +11,8 @@ import { MaintenancepageComponent } from './public/components/maintenancepage/ma
 import { ReportissuepageComponent } from './public/components/report-issue-page/reportissuepage.component';
 import { SearchrepairspageComponent } from './public/components/searchrepairspage/searchrepairspage.component';
 import { SignupComponent } from './public/components/signup/signup.component';
+import { MySettingsComponent } from './private/components/mySettings/my-settings/my-settings.component';
+import { MyInboxComponent } from './private/components/myinbox/my-inbox/my-inbox.component';
 
 /** Use whatever routing is here in the public-routing module if we end up not use this base level one. */
 const routes: Routes = [
@@ -60,6 +63,21 @@ const routes: Routes = [
   {
     path: 'maintenancepage',
     component: MaintenancepageComponent
+  },
+
+  {
+    path: 'my-account',
+    component: MyAccountComponent
+  },
+
+  {
+    path: 'my-inbox',
+    component: MyInboxComponent
+  },
+
+  {
+    path: 'my-settings',
+    component: MySettingsComponent
   }
 ];
 
