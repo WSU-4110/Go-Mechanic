@@ -1,34 +1,48 @@
-<!-- Nav-bar set up, subject to change as development progresses along -->
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<!--Basic Nav Bar Characteristics -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href=""> <!-- href tag to redirect when ever the logo is clicked on. -->
-        <img src="" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
-      </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+      <a class="navbar-item" routerLink="/home">  
+        <img src="https://txt.1001fonts.net/img/txt/dHRmLjcyLjAwMDAwMC5SMjhnVFdWamFHRnVhV00sLjE,/raleway.extrabold.webp" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
       </a>
     </div>
-  
-    <div id="navbarBasicExample" class="navbar-menu">
+<!--End Basic Nav Bar Characteristics -->
+    
+    <!-- Navbar content -->
+    <div id="navmenu" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" routerLink="/home">
           Home
         </a>
-  
+
+        <!--Services Drop down -->
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Services
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" routerLink="/maintenancepage">
+              Maintenance
+            </a>
+            <a class="navbar-item" routerLink="/enginelightpage">
+              Engine Light
+            </a>
+            <a class="navbar-item" routerLink="/brakejobpage">
+              Brake Job
+            </a>
+            <a class="navbar-item" routerLink="/searchrepairspage">
+              Search Repairs
+            </a>
+          </div>
+        </div>
+        <!--More Drop down -->
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             More
           </a>
-  
           <div class="navbar-dropdown">
             <a class="navbar-item" routerLink="/about">
               About
             </a>
-
             <a class="navbar-item" routerLink="/contact-us">
               Contact
             </a>
@@ -38,19 +52,53 @@
             </a>
           </div>
         </div>
+        <!--END More Drop down -->
       </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary" routerLink="/signup">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light" routerLink="/login">
-              Log in
-            </a>
+      <!-- Please keep in mind the tag directly above this comment is what separates navbar-start and navbar-end (being left and right on the nav-bar respectively). - Anthony -->
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <!-- Experimenting with Formatting to make login buttons align to the right side of the page - Anthony -->
+            <!-- Had to reformat Jim's code in order to get it to look proper on the page (hopefully.) - Anthony -->
+            <ng-container *ngIf="authService.currentUser$ | async as user; else signup">
+              <!-- Sign up buttom gets removed if user is logged in -->
+            </ng-container>
+            <ng-template #signup>
+              <a class="button is-dark" routerLink="/signup">
+                Sign up
+              </a>
+            </ng-template>
+
+            <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton"> 
+              <button mat-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>account_circle</mat-icon>
+
+                <mat-icon>expand_more</mat-icon>
+              </button>
+            </ng-container>
+
+            <ng-template #loginButton>
+              <a class="button is-light is" routerLink="login"> Login </a>
+            </ng-template>
           </div>
+          
+
+
+          <!--There should be a drop down menu for logout option, wont display in line 73-->
+          <mat-menu #userMenu="matMenu">
+            <button mat-button routerLink="login">
+              <mat-icon>account_circle</mat-icon>
+              Profile
+            </button>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              Logout
+            </button>
+          </mat-menu>
         </div>
       </div>
-    </div>
-  </nav>
+
+    <!--End Signup/Login Buttons-->
+</nav>  
+  
+  
