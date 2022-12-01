@@ -12,21 +12,21 @@ import { AuthenticationService } from 'src/app/core/auth/auth.service';
 })
 
 export class LoginpageComponent implements OnInit {
-  loginForm = this.fb.group({
+    /*loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
-  });
+  });*/
 
-  constructor(
+  /*constructor(
     private authService: AuthenticationService,
     private toast: HotToastService,
     private router: Router,
     private fb: NonNullableFormBuilder
-  ) {}
+  ) {}*/
 
   ngOnInit(): void {}
 
-  get email() {
+  /*get email() {
     return this.loginForm.get('email');
   }
 
@@ -46,5 +46,5 @@ export class LoginpageComponent implements OnInit {
 
   signup(){
     this.router.navigate(['/signup']);
-  }
+  }*/
 }
