@@ -3,8 +3,6 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
-import { switchMap } from 'rxjs/operators';
-
 
 
 export function passwordsMatchValidator(): ValidatorFn {
@@ -25,6 +23,7 @@ export function passwordsMatchValidator(): ValidatorFn {
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
     signUpForm = new FormGroup({
     name: new FormControl('', Validators.required),

@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.css'],
 })
+
 export class LoginpageComponent implements OnInit {
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
