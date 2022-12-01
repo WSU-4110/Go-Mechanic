@@ -1,57 +1,64 @@
-//Core imports
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-//Routing imports
+
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//Firebase imports
+/** Components we have created for purposes listed on the right side in comments */
+import { NavbarComponent } from './core/navbar/navbar.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore, } from '@angular/fire/firestore';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
-import { getStorage, provideStorage } from '@angular/fire/storage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Additional 
+//Coponents for SignupComponent
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+<<<<<<< HEAD
+
+=======
 import { MatMenuModule} from '@angular/material/menu';
+>>>>>>> f9636d99d8f8bfcb4a8b40c3d1b28d7ea17a6fa4
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    routingComponents,
-    MyInboxComponent,
-    ProfileComponent,
-    SignupComponent,
-  
+    routingComponents
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule,  
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebase),
+<<<<<<< HEAD
+    BrowserAnimationsModule,
+=======
+>>>>>>> f9636d99d8f8bfcb4a8b40c3d1b28d7ea17a6fa4
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+<<<<<<< HEAD
+    ReactiveFormsModule
+=======
     ReactiveFormsModule,
     MatMenuModule,
+>>>>>>> f9636d99d8f8bfcb4a8b40c3d1b28d7ea17a6fa4
   ],
 
-  providers: [UsersService],
+  providers: [],
 
   bootstrap: [AppComponent]
 })

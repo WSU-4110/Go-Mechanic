@@ -1,8 +1,14 @@
 <!DOCTYPE html><!-- Probably just a placeholder html file for now. Unsure of where to put each individual page as of right now, but we'll figure it out later. -->
+<<<<<<< HEAD
+
+<app-navbar></app-navbar> <!-- Static Navbar - Anthony -->
+
+=======
 
 <app-navbar>
 </app-navbar> <!--Static Navbar - Anthony -->
 
+>>>>>>> f9636d99d8f8bfcb4a8b40c3d1b28d7ea17a6fa4
 <div class="content">
     <router-outlet></router-outlet>
 </div>
