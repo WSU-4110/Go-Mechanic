@@ -38,6 +38,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from "@agm/core";
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { MyAccountInfoComponent } from './private/pages/my-account-info/my-accou
     MatListModule, 
     MatDividerModule,
     MatSidenavModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']

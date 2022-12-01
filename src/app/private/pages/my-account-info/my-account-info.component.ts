@@ -10,14 +10,26 @@ import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { ImageUploadService } from 'src/app/core/services/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
 
+  //Code for the new dropdown menu to select account type - Anthony
+  interface Account {
+    value: string;
+    viewValue: string;
+  }
+
 @Component({
   selector: 'app-my-account-info',
   templateUrl: './my-account-info.component.html',
   styleUrls: ['./my-account-info.component.css']
 })
 
+
 export class MyAccountInfoComponent implements OnInit {
 
+  //Code related to the new account select dropdown - Anthony
+  accounts: Account[] = [
+    {value: 'customer-0', viewValue: 'Customer'},
+    {value: 'contractor-1', viewValue: 'Contractor'}
+  ];
 
   user$ = this.authService.currentUser$;
 
@@ -86,6 +98,8 @@ export class MyAccountInfoComponent implements OnInit {
       .subscribe();
     }
 
+    //Code for the new dropdown menu to select account type - Anthony
+
 
   // Function I created in order to allow me to change tabs within the side-nav bar instead of using page components. This took forever! - Anthony
   openSideNav(event: any, tabName: string) {
@@ -101,4 +115,5 @@ export class MyAccountInfoComponent implements OnInit {
       document.getElementById(tabName)!.style.display = "block";
       event.currentTarget.className += " is-active";
   }
+
 }
