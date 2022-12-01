@@ -27,6 +27,7 @@ import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
 import { ProfileComponent } from './private/pages/profile/profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
