@@ -30,7 +30,6 @@ import { MatMenuModule} from '@angular/material/menu';
     MyInboxComponent,
     ProfileComponent,
     SignupComponent,
-  
   ],
 
   imports: [
