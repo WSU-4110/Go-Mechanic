@@ -1,31 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-@Component({
-  selector: 'app-loginpagecomponent',
-=======
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 
+
 @Component({
   selector: 'app-login',
->>>>>>> f9636d99d8f8bfcb4a8b40c3d1b28d7ea17a6fa4
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.css'],
 })
+
 export class LoginpageComponent implements OnInit {
-<<<<<<< HEAD
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-=======
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
->>>>>>> f9636d99d8f8bfcb4a8b40c3d1b28d7ea17a6fa4
   });
 
   constructor(
@@ -36,21 +25,10 @@ export class LoginpageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
   get email() {
     return this.loginForm.get('email');
   }
 
-<<<<<<< HEAD
-  get email(){
-    return this.loginForm.get('email')
-  }
-
-  get password(){
-    return this.loginForm.get('password')
-  }
-
-=======
   get password() {
     return this.loginForm.get('password');
   }
@@ -73,5 +51,4 @@ export class LoginpageComponent implements OnInit {
         this.router.navigate(['/home']);
       });
   }
->>>>>>> f9636d99d8f8bfcb4a8b40c3d1b28d7ea17a6fa4
 }

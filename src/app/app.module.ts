@@ -1,20 +1,20 @@
+//Core imports
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+//Routing imports
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-/** Components we have created for purposes listed on the right side in comments */
-import { NavbarComponent } from './core/navbar/navbar.component';
+//Firebase imports
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore,getFirestore, } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
-//Coponents for SignupComponent
+//Additional 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,16 +26,20 @@ import { MatMenuModule} from '@angular/material/menu';
   declarations: [
     AppComponent,
     NavbarComponent,
-    routingComponents
+    routingComponents,
+    MyInboxComponent,
+    ProfileComponent,
+    SignupComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,  
+    FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebase),
     MatToolbarModule,
     MatIconModule,
@@ -46,7 +50,7 @@ import { MatMenuModule} from '@angular/material/menu';
     MatMenuModule,
   ],
 
-  providers: [],
+  providers: [UsersService],
 
   bootstrap: [AppComponent]
 })
