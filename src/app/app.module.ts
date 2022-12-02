@@ -15,8 +15,11 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
 
+//Additional 
+
+
 //Components for SignupComponent
-=======
+
 //Additional 
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,6 +36,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
 import { ProfileComponent } from './private/pages/profile/profile.component';
 
+import { UsersService } from './core/services/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './public/Pages/signup/signup.component';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { DateDisplayPipe } from './pipes/date-display.pipe';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -43,6 +53,9 @@ import { ProfileComponent } from './private/pages/profile/profile.component';
     MyInboxComponent,
     ProfileComponent,
     SignupComponent,
+    DateDisplayPipe,
+  
+
   ],
 
   imports: [
@@ -61,6 +74,16 @@ import { ProfileComponent } from './private/pages/profile/profile.component';
     MatInputModule,
     ReactiveFormsModule,
     MatMenuModule,
+
+    MatAutocompleteModule,
+    MatOptionModule,
+    BrowserAnimationsModule,
+    MatListModule, 
+    MatDividerModule,
+  ],
+
+  providers: [DatePipe],
+
   ],
 
   providers: [UsersService],

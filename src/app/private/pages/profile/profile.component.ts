@@ -17,6 +17,27 @@ export class ProfileComponent implements OnInit {
   user$ = this.authService.currentUser$;
 
   profileForm = new FormGroup({
+
+    uid: new FormControl('', {
+      nonNullable: true,
+    }),
+    displayName: new FormControl('', {
+      nonNullable: true,
+    }),
+    firstName: new FormControl('', {
+      nonNullable: true,
+    }),
+    lastName: new FormControl('', {
+      nonNullable: true,
+    }),
+    phone: new FormControl('', {
+      nonNullable: true,
+    }),
+    address: new FormControl('', {
+      nonNullable: true,
+    }),
+  });
+
     uid: new FormControl(''),
 
     firstName: new FormControl(''),
@@ -25,11 +46,13 @@ export class ProfileComponent implements OnInit {
   })
 
 
+
   constructor(
     private authService : AuthenticationService, 
     private imageUploadService: ImageUploadService, 
-    private toast: HotToastService
-  ) { }
+    private toast: HotToastService,
+    private usersService: UsersService,
+    ) { }
 
     displayName: new FormControl(''),
     firstName: new FormControl(''),
@@ -56,7 +79,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadImage(event: any, user: User) {
-    this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe( ///Error Was string literal for user id
+    this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe(
       this.toast.observe({
         loading: 'Uploading Proflile Image...',
         success: 'Profile Image Uploaded Successfully',
@@ -67,6 +90,25 @@ export class ProfileComponent implements OnInit {
     }
 
     saveProfile(){
+
+      const {uid, ...data} = this.profileForm.value;
+
+      if (!uid) {
+        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+      }
+
+      this.usersService.updateUser({uid, ...data})
+      .pipe(this.toast.observe({
+        loading: 'Updating data...',
+        success: 'Data has been successfully updated!',
+        error: 'There was an error in updating the data.'
+      })
+      )
+      .subscribe();
+    }
+
+}
+
       const profileData = this.profileForm.value;
 
 
@@ -79,5 +121,6 @@ export class ProfileComponent implements OnInit {
     }
 
 }
+
 
 

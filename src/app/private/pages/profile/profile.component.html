@@ -7,7 +7,11 @@
     <img
       width="120"
       height="120"
+
+      [src]="user.photoURL ?? 'assets/images/placeholderProfile.png'"
+
       [src]="user.photoURL ?? 'assets/images/image-placeholder.png'"
+
     />
     <button mat-mini-fab (click)="inputField.click()">
       <mat-icon>edit</mat-icon>
