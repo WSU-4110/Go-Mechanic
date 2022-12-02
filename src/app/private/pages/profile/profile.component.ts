@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   user$ = this.authService.currentUser$;
 
   profileForm = new FormGroup({
+
     uid: new FormControl('', {
       nonNullable: true,
     }),
@@ -37,6 +38,14 @@ export class ProfileComponent implements OnInit {
     }),
   });
 
+    uid: new FormControl(''),
+
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    address: new FormControl(''),
+  })
+
+
 
   constructor(
     private authService : AuthenticationService, 
@@ -44,6 +53,22 @@ export class ProfileComponent implements OnInit {
     private toast: HotToastService,
     private usersService: UsersService,
     ) { }
+
+    displayName: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    phone: new FormControl(''),
+    address: new FormControl(''),
+  });
+
+
+  constructor(
+    private authService : AuthenticationService, 
+    private imageUploadService: ImageUploadService, 
+    private toast: HotToastService,
+    private usersService: UsersService,
+    ) { }
+
 
   ngOnInit(): void {
     this.usersService.currentUserProfile$
@@ -65,6 +90,7 @@ export class ProfileComponent implements OnInit {
     }
 
     saveProfile(){
+
       const {uid, ...data} = this.profileForm.value;
 
       if (!uid) {
@@ -82,3 +108,19 @@ export class ProfileComponent implements OnInit {
     }
 
 }
+
+      const profileData = this.profileForm.value;
+
+
+     // this.usersService.updateUser(profileData)
+      //.pipe(this.toast.observe({
+      //  loading: 'Updating personal information...',
+       // success: 'Personal information updated successfully',
+        //error: 'There was an error uploading'
+      //}))
+    }
+
+}
+
+
+

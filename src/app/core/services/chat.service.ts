@@ -13,13 +13,19 @@ import {
   where,
 } from '@angular/fire/firestore';
 import { concatMap, from, map, Observable, take, tap } from 'rxjs';
+
 import { Chat, Message } from 'src/app/models/chat';
+
+
 import { ProfileUser } from 'src/app/models/user-profile';
 import { UsersService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 
 export class ChatService {
 
@@ -46,6 +52,7 @@ export class ChatService {
       ),
       map((ref) => ref.id)
     );
+
 }
 
     get myChats$(): Observable<Chat[]> {
@@ -111,5 +118,9 @@ export class ChatService {
 
 
 
+
+
+  }
+  
 
 }

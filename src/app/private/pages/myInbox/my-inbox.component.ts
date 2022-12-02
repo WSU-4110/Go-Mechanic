@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'; 
 import { FormControl } from '@angular/forms';
-import { combineLatest, map, of, startWith, switchMap, tap } from 'rxjs';
+
+import { combineLatest, map, startWith } from 'rxjs';
+
 import { UsersService } from 'src/app/core/services/user.service';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { ChatService } from 'src/app/core/services/chat.service';
@@ -16,7 +18,9 @@ import { ChatService } from 'src/app/core/services/chat.service';
 
 export class MyInboxComponent implements OnInit {
 
+
   @ViewChild('endOfChat') endOfChat!: ElementRef;
+
 
   user$ = this.userService.currentUserProfile$;
 
@@ -42,7 +46,11 @@ export class MyInboxComponent implements OnInit {
   );
 
 
-  
+  users$ = combineLatest([this.userService.allUsers$, this.user$, this.searchControl.valueChanges.pipe(startWith(''))]).pipe(
+    map(([users, user, searchString]) => users.filter(u => u.displayName?.toLowerCase().includes(searchString.toLowerCase()) && u.uid !== user?.uid)) //ref comment. tsconfig.json
+  );
+
+
 
   constructor(private userService: UsersService, private chatsService: ChatService) { }
 
@@ -50,6 +58,7 @@ export class MyInboxComponent implements OnInit {
   }
 
   createChat(otherUser: ProfileUser) {
+
     this.chatsService.isExistingChat(otherUser?.uid).pipe(
       switchMap(chatId => {
         if (chatId) {
@@ -82,4 +91,9 @@ export class MyInboxComponent implements OnInit {
       }
     }, 100);
   }
+
+    this.chatsService.createChat(otherUser).subscribe();
+
+  }
+
 }
