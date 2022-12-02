@@ -9,8 +9,11 @@
                 [matAutocomplete]="users"
                 />
             </mat-form-field>
+            
             <mat-autocomplete #users="matAutocomplete">
-                <mat-option>Testing</mat-option>
+                <mat-option *ngFor="let user of users$ | async" (click)="createChat(user)">
+                    {{ user.displayName}}
+                </mat-option>
             </mat-autocomplete>
         </div>
     </div>
