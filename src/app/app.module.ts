@@ -33,7 +33,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
 import { ProfileComponent } from './private/pages/profile/profile.component';
 
-
+import { UsersService } from './core/services/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './public/Pages/signup/signup.component';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,11 @@ import { ProfileComponent } from './private/pages/profile/profile.component';
     MatInputModule,
     ReactiveFormsModule,
     MatMenuModule,
+    MatAutocompleteModule,
+    MatOptionModule,
+    BrowserAnimationsModule,
+    MatListModule, 
+    MatDividerModule,
   ],
 
   providers: [UsersService],

@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadImage(event: any, user: User) {
-    this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe( ///Error Was string literal for user id
+    this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe(
       this.toast.observe({
         loading: 'Uploading Proflile Image...',
         success: 'Profile Image Uploaded Successfully',
