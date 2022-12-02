@@ -17,11 +17,11 @@
             </mat-autocomplete>
         </div>
 
-        <mat-selection-list [multiple]="false">
+        <mat-selection-list [multiple]="false" [formControl]="chatListControl">
             <mat-divider></mat-divider>
             <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
                 <img matListAvatar [src]="
-                chat.chatPic ? chat.chatPic : 'assets/images/placeholderProfile.png'"
+                chat.chatPic ? chat.chatPic : 'assets/images/placeholderProfile.png' "
                  />
                  <p mat-line class="chat-title">
                     <span class="chat-name">
@@ -37,7 +37,31 @@
                   <mat-divider></mat-divider>
             </mat-list-option>
         </mat-selection-list>
-
     </div>
-    <div class = "messages mat-elevation-z5"></div>
+
+    <div class = "messages mat-elevation-z5">
+        <div class="messages-header" *ngIf="selectedChat$ | async as selectedChat; else noMessages">
+            <img [src]="selectedChat.chatPic ? selectedChat.chatPic : 'assets/images/placeholderProfile.png' ">
+      <h2>{{ selectedChat.chatName }}</h2>
+    </div>
+    <ng-template #noMessages>
+        <div class="messages-header">
+            <h2>Messages</h2>
+        </div>
+    </ng-template>
+    <mat-divider></mat-divider>
+    <div class = "chat-area">
+        <div *ngFor = "let message of messages$ | async">
+            {{ message.text}}
+        </div>
+    </div>
+    <div class="input-area">
+        <mat-form-field appearance="outline">
+            <input [formControl]="messageControl" matInput placeholder="Type mesaage here" (keydown.enter) = "sendMessage()"/>
+            <button mat-icon-button matSuffix (click)="sendMessage()"> 
+                <mat-icon>send</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+</div>
 </div>
