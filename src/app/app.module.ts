@@ -41,8 +41,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+
 import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
+
 
 
 @NgModule({
@@ -80,9 +82,12 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule,
     MatListModule, 
     MatDividerModule,
+
   ],
 
   providers: [DatePipe],
+
+
 
   ],
 

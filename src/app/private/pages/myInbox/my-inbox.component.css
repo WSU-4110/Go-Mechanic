@@ -36,6 +36,7 @@
     color: rgba(0, 0, 0, 0.7);
 }
 
+
 .messages-header{  
     display: flex;
     margin-bottom: 8px;
@@ -109,5 +110,6 @@
     right: 8px;
     font-size: 0.7rem;
     color: rgba(0, 0, 0, 0.6);
+
 
 }
