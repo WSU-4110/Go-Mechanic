@@ -15,9 +15,10 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
 
+
 //Components for SignupComponent
-=======
-//Additional 
+
+
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -47,6 +48,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MyInboxComponent,
     ProfileComponent,
     SignupComponent,
+
   ],
 
   imports: [

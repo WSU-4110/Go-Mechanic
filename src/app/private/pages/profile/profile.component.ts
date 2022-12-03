@@ -19,17 +19,23 @@ export class ProfileComponent implements OnInit {
   profileForm = new FormGroup({
     uid: new FormControl(''),
 
+    displayName: new FormControl(''),
+
+
+
     firstName: new FormControl(''),
     lastName: new FormControl(''),
+    phone: new FormControl(''),
     address: new FormControl(''),
-  })
+  });
 
 
   constructor(
     private authService : AuthenticationService, 
     private imageUploadService: ImageUploadService, 
-    private toast: HotToastService
-  ) { }
+    private toast: HotToastService,
+    private usersService: UsersService,
+    ) { }
 
     displayName: new FormControl(''),
     firstName: new FormControl(''),
@@ -79,5 +85,4 @@ export class ProfileComponent implements OnInit {
     }
 
 }
-
 
