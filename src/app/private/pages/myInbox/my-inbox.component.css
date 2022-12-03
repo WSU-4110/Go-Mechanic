@@ -35,8 +35,6 @@
     font-size: 0.7rem;
     color: rgba(0, 0, 0, 0.7);
 }
-
-
 .messages-header{  
     display: flex;
     margin-bottom: 8px;
@@ -55,6 +53,7 @@
 
 .chat-area{
     height: calc(100vh - 270px);
+
     display: flex;
     flex-direction: column;
 
@@ -112,4 +111,14 @@
     color: rgba(0, 0, 0, 0.6);
 
 
+    background: wheat;
+}
+
+.input-area > mat-form-field{
+    width: 100%
+}
+
+.input-area{
+    padding-top: 16px;
+    padding-bottom: 8px;
 }
