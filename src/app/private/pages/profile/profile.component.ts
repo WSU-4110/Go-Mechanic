@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   user$ = this.authService.currentUser$;
 
   profileForm = new FormGroup({
+
     uid: new FormControl('', {
       nonNullable: true,
     }),
@@ -35,6 +36,33 @@ export class ProfileComponent implements OnInit {
     address: new FormControl('', {
       nonNullable: true,
     }),
+
+    uid: new FormControl(''),
+
+    displayName: new FormControl(''),
+
+
+
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    phone: new FormControl(''),
+    address: new FormControl(''),
+  });
+
+
+  constructor(
+    private authService : AuthenticationService, 
+    private imageUploadService: ImageUploadService, 
+    private toast: HotToastService,
+    private usersService: UsersService,
+    ) { }
+
+    displayName: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    phone: new FormControl(''),
+    address: new FormControl(''),
+
   });
 
 
@@ -81,4 +109,8 @@ export class ProfileComponent implements OnInit {
       .subscribe();
     }
 
+
 }
+
+}
+
