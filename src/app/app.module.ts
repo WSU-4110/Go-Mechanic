@@ -39,6 +39,7 @@ import { AgmCoreModule } from "@agm/core";
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     MatListModule,
     MatDividerModule,
     MatSidenavModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']
