@@ -35,6 +35,9 @@ export class AuthenticationService {
           this.toast.info(
             'Please verify your email address...'
           );
+          this.toast.info(
+            'If you have not received it within 10-15 minuntes please check your spam folder...'
+          );
         });
     }
 
@@ -43,9 +46,11 @@ export class AuthenticationService {
     .signInWithEmailAndPassword(email, password)
     .then((result) => {
       if (result.user.emailVerified !== true) {
-        this.SendVerificationMail();
         this.toast.info(
           'Please verify your email address...'
+        );
+        this.toast.info(
+          'If you have not received it within 10-15 minuntes please check your spam folder...'
         );
         this.forceLogout();
       } 
