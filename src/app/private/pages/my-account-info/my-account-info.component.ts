@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { ProfileUser } from 'src/app/models/user-profile';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
@@ -7,13 +10,15 @@ import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { ImageUploadService } from 'src/app/core/services/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
 
-
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-my-account-info',
+  templateUrl: './my-account-info.component.html',
+  styleUrls: ['./my-account-info.component.css']
 })
-export class ProfileComponent implements OnInit {
+
+export class MyAccountInfoComponent implements OnInit {
+
+
   user$ = this.authService.currentUser$;
 
   profileForm = new FormGroup({
@@ -81,4 +86,19 @@ export class ProfileComponent implements OnInit {
       .subscribe();
     }
 
+
+  // Function I created in order to allow me to change tabs within the side-nav bar instead of using page components. This took forever! - Anthony
+  openSideNav(event: any, tabName: string) {
+    var i, x, sideNavLinks;
+    x = document.getElementsByClassName("menu-content") as HTMLCollectionOf<HTMLElement>;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    sideNavLinks = document.getElementsByClassName("menu-item");
+    for (i = 0; i < x.length; i++) {
+      sideNavLinks[i].className = sideNavLinks[i].className.replace(" is-active", "");
+    }
+      document.getElementById(tabName)!.style.display = "block";
+      event.currentTarget.className += " is-active";
+  }
 }

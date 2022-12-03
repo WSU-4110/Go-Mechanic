@@ -74,13 +74,13 @@
             <div class="dropdown-menu" id="dropdown-menu3" role="menu"></div>
             <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
               <ng-container class="navbar-dropdown">
-                <a class="navbar-item" routerLink="/my-account">
+                <a class="navbar-item" routerLink="/my-account-info">
                   My Account
                 </a>
                 <a class="navbar-item" routerLink="/my-inbox">
                   Inbox
                 </a>
-                <a class="navbar-item" routerLink="/my-settings">
+                <a class="navbar-item" routerLink="/profile">
                   Settings
                 </a>
                 <button class="button is-danger is-light" (click) = "authService.logout()">logout</button>    

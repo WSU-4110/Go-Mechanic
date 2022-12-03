@@ -34,8 +34,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
-import {CoreModule} from "./core/core.module";
-import {SharedModule} from "./shared/shared.module";
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AgmCoreModule } from "@agm/core";
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,11 +49,13 @@ import {SharedModule} from "./shared/shared.module";
     ProfileComponent,
     SignupComponent,
     DateDisplayPipe,
-
+    MyAccountInfoComponent,
+    FooterComponent
   ],
 
   imports: [
     BrowserModule,
+    GooglePlaceModule,
     AppRoutingModule,
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -69,8 +75,11 @@ import {SharedModule} from "./shared/shared.module";
     BrowserAnimationsModule,
     MatListModule,
     MatDividerModule,
-    CoreModule,
-    SharedModule,
+    MatSidenavModule,
+    AgmCoreModule.forRoot({
+      apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
+      libraries: ['places']
+    }),
   ],
 
   providers: [DatePipe],
