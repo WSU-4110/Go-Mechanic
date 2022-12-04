@@ -2,14 +2,14 @@ import { Injectable, NgZone } from '@angular/core';
 import {
   Auth,
   authState,
+  createUserWithEmailAndPassword,
   updateProfile,
   UserInfo,
 } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
 import { concatMap, Observable, from, of } from 'rxjs';
-
+import { HotToastService } from '@ngneat/hot-toast';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,28 +18,26 @@ export class AuthenticationService {
 
   currentUser$ = authState(this.auth);
 
-  constructor(
-    private auth: Auth,
-    public router: Router,
+  constructor(private auth: Auth,
     public afAuth: AngularFireAuth,
+    public router: Router,
     public ngZone: NgZone,
-    private toast: HotToastService
-    ) {}
+    private toast: HotToastService) {}
 
-    SendVerificationMail() {
-      return this.afAuth.currentUser
-        .then((user) => {
-          return user.sendEmailVerification();
-        })
-        .then(() => {
-          this.toast.info(
-            'Please verify your email address...'
-          );
-          this.toast.info(
-            'If you have not received it within 10-15 minuntes please check your spam folder...'
-          );
-        });
-    }
+  SendVerificationMail() {
+    return this.afAuth.currentUser
+      .then((user) => {
+        return user.sendEmailVerification();
+      })
+      .then(() => {
+        this.toast.info(
+          'Please verify your email address...'
+        );
+        this.toast.info(
+          'If you have not received it within 10-15 minutes please check your spam folder...'
+        );
+      });
+  }
 
   login(email: string, password: string){
     return this.afAuth
@@ -50,7 +48,7 @@ export class AuthenticationService {
           'Please verify your email address...'
         );
         this.toast.info(
-          'If you have not received it within 10-15 minuntes please check your spam folder...'
+          'If you have not received it within 10-15 minutes please check your spam folder...'
         );
         this.forceLogout();
       } 
@@ -64,19 +62,6 @@ export class AuthenticationService {
     .catch(() => {
       this.toast.error('Incorrect email or password...');
     });
- }
-
- signUp(email: string, password: string){
-  return this.afAuth
-    .createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      this.toast.success('Sign up successful...');
-      this.SendVerificationMail();
-      this.forceLogout();
-    })
-    .catch(() => {
-      this.toast.error('Email has already been registered...');
-    });
   }
 
   logout(){   
@@ -85,6 +70,10 @@ export class AuthenticationService {
       this.router.navigate(['/home']);
       this.forceLogout();
     }); 
+  }
+
+  signUp(email: string, password: string){
+    return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
 
   forceLogout(){   

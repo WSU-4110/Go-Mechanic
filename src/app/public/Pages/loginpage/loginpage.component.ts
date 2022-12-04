@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 
 
@@ -19,7 +18,6 @@ export class LoginpageComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private toast: HotToastService,
     private router: Router,
     private fb: NonNullableFormBuilder
   ) {}
@@ -48,3 +46,4 @@ export class LoginpageComponent implements OnInit {
     this.router.navigate(['/signup']);
   }
 }
+
