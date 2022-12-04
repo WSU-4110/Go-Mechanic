@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { FooterComponent } from './footer/footer.component';
+
+
+
+=======
+>>>>>>> a133c99b183fe86844970595728c97046b1ca1f4
 @NgModule({
   declarations: [
    
