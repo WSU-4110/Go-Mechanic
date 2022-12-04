@@ -40,7 +40,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
-
+import { HotToastModule } from '@ngneat/hot-toast'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +82,7 @@ import { MatSelectModule } from '@angular/material/select';
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']
     }),
+    HotToastModule.forRoot(),
   ],
 
   providers: [DatePipe],
