@@ -54,15 +54,58 @@
 
 .chat-area{
     height: calc(100vh - 270px);
-    background: wheat;
+    display: flex;
+    flex-direction: column;
+
+    overflow: auto;
+    
+}
+
+.chat-area > :first-child{
+    margin-top: auto;
+}
+
+.input-area{
+    padding-top: 16px;
+    padding-bottom: 8px;
 }
 
 .input-area > mat-form-field{
     width: 100%
 }
 
+.chat-bubble-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
 
-.input-area{
-    padding-top: 16px;
-    padding-bottom: 8px;
+.chat-bubble-container.sender{
+    justify-content: flex-end;
+}
+
+.chat-bubble-container.sender > .chat-bubble{
+    background: #c5cae9;
+}
+
+.chat-bubble{
+    background: white;
+    padding-top: 8px;
+    padding-bottom: 18px;
+    padding-left: 8px;
+    padding-right: 100px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    width: fit-content;
+
+    position: relative;
+}
+
+.chat-bubble > .chat-date{
+    position: absolute;
+    bottom: 2px;
+    right: 8px;
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.6);
+
 }
