@@ -31,7 +31,7 @@ export class PostsService {
           return of(null);
         }
 
-        const ref = doc(this.firestore, 'CommunityProfile', user?.uid); 
+        const ref = doc(this.firestore, 'users' && 'CommunityProfile', user?.uid); //This will automatically return the users data from collection 'users' will not be able to update username or uid. 
         return docData(ref) as Observable<ProfileUser>;
       })
     );

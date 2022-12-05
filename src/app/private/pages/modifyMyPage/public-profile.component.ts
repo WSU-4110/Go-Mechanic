@@ -81,12 +81,10 @@ export class PublicProfileComponent implements OnInit {
       uid, ...data,
       role: ''
     }).pipe(this.toast.observe({
-      success: 'Profile has been successfully created!',
+      success: 'Your profile was updated',
       error: 'There was an error in updating the data.'
     })).subscribe();
   }
 
     
 }
-
-

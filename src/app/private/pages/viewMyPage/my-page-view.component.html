@@ -1,0 +1,45 @@
+<div class *ngIf="user$ | async as user">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="our-team">
+                    <div class="picture">
+                        <img width="120" height="120" [src]="user.photoURL ?? 'assets/images/placeholderProfile.png'" />
+                    </div>
+                    <div class="team-content">
+                        <h1 class="name">
+                            <span class="user-name">
+                                {{ user.firstName}}
+                            </span>
+                        </h1>
+                        <span >About {{user.displayName}} </span>
+                        <h3 class="name">
+                            <span class="user-desc">
+                                {{ user.description}}
+                            </span>
+                        </h3>
+                        <h3 class="name">
+                            <span class="user-city">
+                                {{ user.city}}
+                            </span>
+                        </h3>                        
+                        <h5 class="name"> Go Mechanic  
+                            <span class="user-role">
+                                {{ user.role}}
+                            </span> near 
+                            <span class="user-role">
+                                {{ user.zip}}
+                            </span>
+                        </h5>
+                    </div>
+                    <ul class="social">
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>

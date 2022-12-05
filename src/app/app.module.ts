@@ -26,7 +26,7 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
-import { ProfileComponent } from './private/pages/profile/profile.component';
+import { ProfileComponent } from './private/pages/myProfile/profile.component';
 import { UsersService } from './core/services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './public/Pages/signup/signup.component';
@@ -37,11 +37,12 @@ import { DatePipe } from '@angular/common';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from "@agm/core";
 import {MatSidenavModule} from '@angular/material/sidenav'; 
-import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
+import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
 import { HotToastModule } from '@ngneat/hot-toast';
-import { PublicProfileComponent } from './private/pages/public-profile/public-profile.component'; 
+import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
+import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { PublicProfileComponent } from './private/pages/public-profile/public-pr
     DateDisplayPipe,
     MyAccountInfoComponent,
     FooterComponent,
-    PublicProfileComponent
+    PublicProfileComponent,
+    MyPageViewComponent
   ],
 
   imports: [

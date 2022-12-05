@@ -10,12 +10,12 @@ import { MaintenancepageComponent } from './public/Pages/maintenancepage/mainten
 import { ReportissuepageComponent } from './public/Pages/report-issue-page/reportissuepage.component';
 import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/searchrepairspage.component';
 import { SignupComponent } from './public/Pages/signup/signup.component';
-import { MySettingsComponent } from './private/pages/mySettings/my-settings.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { ProfileComponent } from './private/pages/profile/profile.component';
-import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
-import { PublicProfileComponent } from './private/pages/public-profile/public-profile.component';
+import { ProfileComponent } from './private/pages/myProfile/profile.component';
+import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
+import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
+import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -82,22 +82,22 @@ const routes: Routes = [
   },
 
   {
-    path: 'my-settings',
-    component: MySettingsComponent,
-    ...canActivate(redirectToLogin)
-  },
-
-  {
     path: 'my-inbox',
     component: MyInboxComponent,
     ...canActivate(redirectToLogin)
   },
 
   {
-    path: 'publicProfile',
+    path: 'editMyPage',
     component: PublicProfileComponent,
     ...canActivate(redirectToLogin)
-  }
+  },
+
+{
+  path : 'viewMyPage',
+  component: MyPageViewComponent,
+  ...canActivate(redirectToLogin)
+}
 
   // {
   //   path: 'profile',
