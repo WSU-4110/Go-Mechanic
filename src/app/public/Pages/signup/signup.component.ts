@@ -64,7 +64,10 @@ export class SignupComponent implements OnInit {
     }
 
     this.authService.signUp(email, password).pipe(
-      switchMap(({ user: {uid} }) => this.userService.addUser({ uid, email, displayName: name})),
+      switchMap(({ user: {uid} }) => this.userService.addUser({
+        uid, email, displayName: name,
+        role: ''
+      })),
         this.toast.observe({
           success: 'Sign up successful!',
           loading: 'loading...',

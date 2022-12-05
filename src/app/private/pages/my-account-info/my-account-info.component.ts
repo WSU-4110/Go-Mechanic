@@ -88,7 +88,10 @@ export class MyAccountInfoComponent implements OnInit {
         return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
       }
 
-      this.usersService.updateUser({uid, ...data})
+      this.usersService.updateUser({
+        uid, ...data,
+        role: ''
+      })
       .pipe(this.toast.observe({
         loading: 'Updating data...',
         success: 'Data has been successfully updated!',

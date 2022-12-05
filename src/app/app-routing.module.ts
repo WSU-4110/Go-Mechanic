@@ -15,6 +15,7 @@ import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './private/pages/profile/profile.component';
 import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
+import { PublicProfileComponent } from './private/pages/public-profile/public-profile.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -91,6 +92,12 @@ const routes: Routes = [
     component: MyInboxComponent,
     ...canActivate(redirectToLogin)
   },
+
+  {
+    path: 'publicProfile',
+    component: PublicProfileComponent,
+    ...canActivate(redirectToLogin)
+  }
 
   // {
   //   path: 'profile',

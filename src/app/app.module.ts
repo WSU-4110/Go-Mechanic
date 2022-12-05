@@ -40,7 +40,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
-import { HotToastModule } from '@ngneat/hot-toast'; 
+import { HotToastModule } from '@ngneat/hot-toast';
+import { PublicProfileComponent } from './private/pages/public-profile/public-profile.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     SignupComponent,
     DateDisplayPipe,
     MyAccountInfoComponent,
-    FooterComponent
+    FooterComponent,
+    PublicProfileComponent
   ],
 
   imports: [

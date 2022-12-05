@@ -1,0 +1,54 @@
+<div
+  class="form-container mat-elevation-z5 text-center"
+  *ngIf="user$ | async as user"
+>
+  <h1>User Profile</h1>
+  <div class="profile-image">
+    <img
+      width="120"
+      height="120"
+      [src]="user.photoURL ?? 'assets/images/placeholderProfile.png'"
+    />
+    <button mat-mini-fab (click)="inputField.click()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <input #inputField hidden type="file" (change)="uploadImage($event, user)" />
+  <form class="margin-top" [formGroup]="CommunityProfileForm">
+    <div class="row">
+      <mat-form-field>
+        
+        <input
+          type="text"
+          matInput
+          formControlName="displayName"
+          placeholder="Community Profile Name"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          formControlName="description"
+          placeholder="Description (tell us about yourself bud)"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <input
+          type="zipcode"
+          matInput
+          formControlName="zip"
+          placeholder="Zip code"
+        />
+      </mat-form-field>
+    </div>
+
+    <!--Im testing this to be create profile button, will be implementing a visibility guard in future, I would like to see a redirect option to e-->
+    <button mat-stroked-button color="primary" (click)="savePublicProfile()" class="margin-top"> Update Profile 
+
+    </button>
+  </form>
+</div>

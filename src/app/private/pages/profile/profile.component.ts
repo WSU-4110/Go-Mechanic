@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
         success: 'Profile Image Uploaded Successfully',
         error: 'There was an error uploading',
       }),
-      concatMap((photoURL) => this.authService.updateProfileData(({ photoURL })))
+      concatMap((photoURL) => this.authService.updateProfileData(({ uid: user.uid, photoURL }))) //Bug Fix, user photo was not being updated by uid.
       ).subscribe();
     }
 
@@ -71,7 +71,10 @@ export class ProfileComponent implements OnInit {
         return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
       }
 
-      this.usersService.updateUser({uid, ...data})
+      this.usersService.updateUser({
+        uid, ...data,
+        role: ''
+      })
       .pipe(this.toast.observe({
         loading: 'Updating data...',
         success: 'Data has been successfully updated!',
