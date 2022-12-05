@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
-import { Firestore } from '@angular/fire/firestore';
-
 import {
   collection,
   collectionData,
@@ -63,18 +60,3 @@ export class UsersService {
 
     
   }
-
-    addUser(user: ProfileUser): Observable<any> {
-      const ref = doc(this.firestore, 'users', user?.uid);
-      return from(setDoc(ref, user));
-    }
-  
-    updateUser(user: ProfileUser): Observable<any> {
-      const ref = doc(this.firestore, 'users', user?.uid);
-      return from(updateDoc(ref, { ...user }));
-    }
-
-    
-  }
-}
-

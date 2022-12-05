@@ -17,19 +17,11 @@
             </mat-autocomplete>
         </div>
 
-
-        <mat-selection-list [multiple]="false">
-            <mat-divider></mat-divider>
-            <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
-                <img matListAvatar [src]="
-                chat.chatPic ? chat.chatPic : 'assets/images/placeholderProfile.png'"
-
         <mat-selection-list [multiple]="false" [formControl]="chatListControl">
             <mat-divider></mat-divider>
             <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
                 <img matListAvatar [src]="
                 chat.chatPic ? chat.chatPic : 'assets/images/placeholderProfile.png' "
-
                  />
                  <p mat-line class="chat-title">
                     <span class="chat-name">
@@ -44,7 +36,6 @@
                   <mat-divider></mat-divider>
             </mat-list-option>
         </mat-selection-list>
-
     </div>
 
     <div class = "messages mat-elevation-z5">
