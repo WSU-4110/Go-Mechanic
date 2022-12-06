@@ -18,7 +18,6 @@ import { docData, Firestore } from '@angular/fire/firestore';
   styleUrls: ['./public-profile.component.css']
 })
 export class PublicProfileComponent implements OnInit {
-
   user$ = this.postsService.currentUserProfile$;
 
   CommunityProfileForm = new FormGroup({
@@ -26,6 +25,9 @@ export class PublicProfileComponent implements OnInit {
       nonNullable: true,
     }),
     displayName: new FormControl('', {
+      nonNullable: true,
+    }),
+    firstName: new FormControl('', {
       nonNullable: true,
     }),
     description: new FormControl('', {
@@ -47,6 +49,7 @@ export class PublicProfileComponent implements OnInit {
     private authService : AuthenticationService, 
     private imageUploadService: ImageUploadService, 
     private toast: HotToastService,
+    private usersService: UsersService,
     private postsService: PostsService,
     
     ) { }
@@ -77,9 +80,9 @@ export class PublicProfileComponent implements OnInit {
       return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
     }
 
-   this.postsService.createPublicProfile({
+    this.postsService.createPublicProfile({
       uid, ...data,
-      role: ''
+      role: 'user'
     }).pipe(this.toast.observe({
       success: 'Your profile was updated',
       error: 'There was an error in updating the data.'

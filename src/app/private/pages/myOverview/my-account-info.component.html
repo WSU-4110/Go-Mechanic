@@ -81,11 +81,7 @@
 
                                 <div class="row">
 
-                                    <mat-form-field>
 
-                                        <input type="text" matInput formControlName="displayName" placeholder="Display Name" />
-
-                                    </mat-form-field>
 
                                     <mat-form-field>
 
@@ -99,16 +95,6 @@
                                     <input type="text" matInput formControlName="address" placeholder="Address" />
                                 </mat-form-field>
 
-                                <mat-form-field>
-                                    <!-- https://material.angular.io/components/select/overview -->
-                                    <!-- Ignore the link, need it for later when I finally introduce this as a working part of the backend - Anthony -->
-                                    <mat-label>Account Type</mat-label>
-                                    <mat-select>
-                                      <mat-option *ngFor="let account of accounts" [value]="account.value">
-                                        {{account.viewValue}}
-                                      </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
 
                                 <button type="submit" class="margin-top" mat-raised-button color="primary">
                                             Save
