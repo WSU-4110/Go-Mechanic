@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/core/auth/auth.service';
   styleUrls: ['./my-page-view.component.css']
 })
 export class MyPageViewComponent implements OnInit {
-  user$ = this.postsService.currentUserPage$; 
+  user$ = this.postsService.currentUserPage$;//testing... trying to update both collections in one button...
   userAuth$ = this.authService.currentUser$;
 
   constructor(private postsService: PostsService, private usersService: UsersService,private authService : AuthenticationService,) { }

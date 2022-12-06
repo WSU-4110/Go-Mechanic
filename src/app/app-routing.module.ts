@@ -16,6 +16,7 @@ import { ProfileComponent } from './private/pages/myProfile/profile.component';
 import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
 import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
 import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
+import { ModifyMechPageComponent } from './private/pages/modifyMyMechPage/modify-mech-page.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -99,11 +100,18 @@ const routes: Routes = [
   ...canActivate(redirectToLogin)
 },
 
-   {
-     path: 'profile',
-     component: ProfileComponent,
-     ...canActivate(redirectToLogin)
-   },
+{
+  path: 'profile',
+  component: ProfileComponent,
+  ...canActivate(redirectToLogin)
+},
+
+//This path is used to create a community profile with a 'mechanic' role. updates 'users'
+{
+  path: 'editMechanicPage',
+  component: ModifyMechPageComponent,
+  ...canActivate(redirectToLogin)
+},
 
 ];
 
