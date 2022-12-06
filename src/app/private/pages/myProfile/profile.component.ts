@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
 import { concatMap, switchMap } from 'rxjs';
@@ -35,6 +35,9 @@ export class ProfileComponent implements OnInit {
     address: new FormControl('', {
       nonNullable: true,
     }),
+    zip: new FormControl('', {
+      nonNullable: true,
+    }),
   });
 
 
@@ -56,7 +59,7 @@ export class ProfileComponent implements OnInit {
   uploadImage(event: any, user: User) {
     this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe(
       this.toast.observe({
-        loading: 'Uploading Proflile Image...',
+
         success: 'Profile Image Uploaded Successfully',
         error: 'There was an error uploading',
       }),
@@ -73,7 +76,7 @@ export class ProfileComponent implements OnInit {
 
       this.usersService.updateUser({
         uid, ...data,
-        role: ''
+        role: 'user'
       })
       .pipe(this.toast.observe({
         loading: 'Updating data...',

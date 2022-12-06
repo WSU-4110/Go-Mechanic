@@ -49,7 +49,10 @@ export class MyAccountInfoComponent implements OnInit {
     phone: new FormControl('', {
       nonNullable: true,
     }),
-    address: new FormControl('', {
+    photoURL: new FormControl('', {
+      nonNullable: true,
+    }),
+    zip: new FormControl('', {
       nonNullable: true,
     }),
   });
@@ -90,7 +93,7 @@ export class MyAccountInfoComponent implements OnInit {
 
       this.usersService.updateUser({
         uid, ...data,
-        role: ''
+        role: 'user'
       })
       .pipe(this.toast.observe({
         loading: 'Updating data...',

@@ -31,10 +31,7 @@ export class AuthenticationService {
       })
       .then(() => {
         this.toast.info(
-          'Please verify your email address...'
-        );
-        this.toast.info(
-          'If you have not received it within 10-15 minutes please check your spam folder...'
+          'Email verification, check your spam!'
         );
       });
   }

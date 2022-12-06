@@ -19,6 +19,7 @@ import { docData, Firestore } from '@angular/fire/firestore';
 })
 export class PublicProfileComponent implements OnInit {
   user$ = this.postsService.currentUserProfile$;
+  userAuth$ = this.authService.currentUser$;
 
   CommunityProfileForm = new FormGroup({
     uid: new FormControl('', {

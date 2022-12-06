@@ -97,13 +97,13 @@ const routes: Routes = [
   path : 'viewMyPage',
   component: MyPageViewComponent,
   ...canActivate(redirectToLogin)
-}
+},
 
-  // {
-  //   path: 'profile',
-  //   component: ProfileComponent,
-  //   ...canActivate(redirectToLogin)
-  // }
+   {
+     path: 'profile',
+     component: ProfileComponent,
+     ...canActivate(redirectToLogin)
+   },
 
 ];
 

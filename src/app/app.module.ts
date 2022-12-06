@@ -55,7 +55,7 @@ import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.com
     MyAccountInfoComponent,
     FooterComponent,
     PublicProfileComponent,
-    MyPageViewComponent
+    MyPageViewComponent,
   ],
 
   imports: [
