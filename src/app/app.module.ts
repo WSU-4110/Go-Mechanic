@@ -14,7 +14,7 @@ import { provideFirestore,getFirestore, } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
-//Additional 
+//Additional
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,7 +26,7 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
-import { ProfileComponent } from './private/pages/profile/profile.component';
+import { ProfileComponent } from './private/pages/myProfile/profile.component';
 import { UsersService } from './core/services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './public/Pages/signup/signup.component';
@@ -34,8 +34,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
-import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from "@agm/core";
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { MatSelectModule } from '@angular/material/select';
+import { HotToastModule } from '@ngneat/hot-toast';
+import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
+import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +52,10 @@ import { AgmCoreModule } from "@agm/core";
     ProfileComponent,
     SignupComponent,
     DateDisplayPipe,
-    
+    MyAccountInfoComponent,
+    FooterComponent,
+    PublicProfileComponent,
+    MyPageViewComponent
   ],
 
   imports: [
@@ -68,12 +78,15 @@ import { AgmCoreModule } from "@agm/core";
     MatAutocompleteModule,
     MatOptionModule,
     BrowserAnimationsModule,
-    MatListModule, 
+    MatListModule,
     MatDividerModule,
+    MatSidenavModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']
     }),
+    HotToastModule.forRoot(),
   ],
 
   providers: [DatePipe],

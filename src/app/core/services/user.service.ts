@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import {
   collection,
   collectionData,
@@ -13,6 +14,7 @@ import {
 import { from, Observable, of, switchMap } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { AuthenticationService } from '../auth/auth.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +44,9 @@ export class UsersService {
     private firestore: Firestore,
     private authService: AuthenticationService) {}
 
+
+
+
     addUser(user: ProfileUser): Observable<any> {
       const ref = doc(this.firestore, 'users', user?.uid);
       return from(setDoc(ref, user));
@@ -52,6 +57,8 @@ export class UsersService {
       return from(updateDoc(ref, { ...user }));
     }
 
+
     
   }
+    
 

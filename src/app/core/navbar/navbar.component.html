@@ -23,16 +23,16 @@
           </a>
           <div class="navbar-dropdown">
             <a class="navbar-item" routerLink="/maintenancepage">
-              Maintenance
+              Oil Change
             </a>
-            <a class="navbar-item" routerLink="/enginelightpage">
+            <!-- <a class="navbar-item" routerLink="/enginelightpage">
               Engine Light
             </a>
             <a class="navbar-item" routerLink="/brakejobpage">
               Brake Job
-            </a>
+            </a> -->
             <a class="navbar-item" routerLink="/searchrepairspage">
-              Search Repairs
+              Repairs
             </a>
           </div>
         </div>
@@ -74,14 +74,11 @@
             <div class="dropdown-menu" id="dropdown-menu3" role="menu"></div>
             <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
               <ng-container class="navbar-dropdown">
-                <a class="navbar-item" routerLink="/my-account">
-                  My Account
+                <a class="navbar-item" routerLink="/my-account-info">
+                  <mat-icon>account_circle</mat-icon>
                 </a>
                 <a class="navbar-item" routerLink="/my-inbox">
-                  Inbox
-                </a>
-                <a class="navbar-item" routerLink="/my-settings">
-                  Settings
+                  <mat-icon>inbox</mat-icon>
                 </a>
                 <button class="button is-danger is-light" (click) = "authService.logout()">logout</button>    
                

@@ -9,14 +9,14 @@ import { SharedModule } from '../shared/shared.module';
 import { EnginelightpageComponent } from './Pages/enginelightpage/enginelightpage.component';
 import { BrakejobpageComponent } from './Pages/brakejobpage/brakejobpage.component';
 import { SearchrepairspageComponent } from './Pages/searchrepairspage/searchrepairspage.component';
-import { MaintenancepageComponent} from './Pages/maintenancepage/maintenancepage.component';
+//import { MaintenancepageComponent} from './Pages/maintenancepage/maintenancepage.component';
 @NgModule({
   declarations: [
     PublicComponent,
     EnginelightpageComponent,
     BrakejobpageComponent,
     SearchrepairspageComponent,
-    MaintenancepageComponent,
+    //MaintenancepageComponent,
   ],
 
   imports: [

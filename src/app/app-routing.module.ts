@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyAccountComponent } from './private/pages/myAccount/my-account.component';
 import { AboutpageComponent } from './public/Pages/aboutpage/aboutpage.component';
 import { BrakejobpageComponent } from './public/Pages/brakejobpage/brakejobpage.component';
 import { ContactpageComponent } from './public/Pages/contactpage/contactpage.component';
@@ -11,12 +10,12 @@ import { MaintenancepageComponent } from './public/Pages/maintenancepage/mainten
 import { ReportissuepageComponent } from './public/Pages/report-issue-page/reportissuepage.component';
 import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/searchrepairspage.component';
 import { SignupComponent } from './public/Pages/signup/signup.component';
-import { MySettingsComponent } from './private/pages/mySettings/my-settings.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
-
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { ProfileComponent } from './private/pages/profile/profile.component';
-
+import { ProfileComponent } from './private/pages/myProfile/profile.component';
+import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
+import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
+import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -77,14 +76,8 @@ const routes: Routes = [
 
   //Private Routing
   {
-    path: 'my-account',
-    component: MyAccountComponent,
-    ...canActivate(redirectToLogin)
-  },
-
-  {
-    path: 'my-settings',
-    component: MySettingsComponent,
+    path: 'my-account-info',
+    component: MyAccountInfoComponent,
     ...canActivate(redirectToLogin)
   },
 
@@ -95,10 +88,22 @@ const routes: Routes = [
   },
 
   {
-    path: 'profile',
-    component: ProfileComponent,
+    path: 'editMyPage',
+    component: PublicProfileComponent,
     ...canActivate(redirectToLogin)
-  }
+  },
+
+{
+  path : 'viewMyPage',
+  component: MyPageViewComponent,
+  ...canActivate(redirectToLogin)
+}
+
+  // {
+  //   path: 'profile',
+  //   component: ProfileComponent,
+  //   ...canActivate(redirectToLogin)
+  // }
 
 ];
 
