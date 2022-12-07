@@ -40,6 +40,8 @@ import { AgmCoreModule } from "@agm/core";
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
+import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import {SharedModule} from "./shared/shared.module";
     SignupComponent,
     DateDisplayPipe,
 
+    MyAccountInfoComponent
   ],
 
   imports: [
