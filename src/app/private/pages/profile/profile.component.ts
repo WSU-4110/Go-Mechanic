@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
 import { concatMap, switchMap } from 'rxjs';
@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
   user$ = this.authService.currentUser$;
 
   profileForm = new FormGroup({
-
     uid: new FormControl('', {
       nonNullable: true,
     }),
@@ -34,6 +33,9 @@ export class ProfileComponent implements OnInit {
       nonNullable: true,
     }),
     address: new FormControl('', {
+      nonNullable: true,
+    }),
+    zip: new FormControl('', {
       nonNullable: true,
     }),
   });
@@ -57,11 +59,11 @@ export class ProfileComponent implements OnInit {
   uploadImage(event: any, user: User) {
     this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe(
       this.toast.observe({
-        loading: 'Uploading Proflile Image...',
+
         success: 'Profile Image Uploaded Successfully',
         error: 'There was an error uploading',
       }),
-      concatMap((photoURL) => this.authService.updateProfileData(({ photoURL })))
+      concatMap((photoURL) => this.authService.updateProfileData(({ uid: user.uid, photoURL }))) //Bug Fix, user photo was not being updated by uid.
       ).subscribe();
     }
 
@@ -72,7 +74,9 @@ export class ProfileComponent implements OnInit {
         return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
       }
 
-      this.usersService.updateUser({uid, ...data})
+      this.usersService.updateUser({
+        uid, ...data,
+      })
       .pipe(this.toast.observe({
         loading: 'Updating data...',
         success: 'Data has been successfully updated!',
@@ -82,6 +86,4 @@ export class ProfileComponent implements OnInit {
       .subscribe();
     }
 
-
 }
-
