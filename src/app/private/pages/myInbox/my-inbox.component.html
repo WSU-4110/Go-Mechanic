@@ -1,15 +1,14 @@
-<div class = "container">
-    <div class = "chat-list mat-elevation-z5">
-        <div class = "search-input">
-            <mat-form-field>
-                <input
-                matInput
-                placeholder="Search for users..."
-                [formControl]="searchControl"
-                [matAutocomplete]="users"
-                />
-            </mat-form-field>
-            
+            <div class = "container">
+                <div class = "chat-list mat-elevation-z5">
+                    <div class = "search-input">
+                        <mat-form-field>
+                            <input
+                            matInput
+                            placeholder="Search for users..."
+                            [formControl]="searchControl"
+                            [matAutocomplete]="users"
+                            />
+                        </mat-form-field>
             <mat-autocomplete #users="matAutocomplete">
                 <mat-option *ngFor="let user of users$ | async" (click)="createChat(user)">
                     {{ user.displayName}}
@@ -28,7 +27,7 @@
                         {{ chat.chatName}}
                     </span>
                     <span class="chat-date">
-                        {{ chat.lastMessageDate | dateDisplay}}
+                        {{ chat.lastMessageDate }}
                     </span>
  
                   </p>
@@ -60,7 +59,7 @@
               <div class="chat-bubble">
                 {{ message.text }}
                 <span class="chat-date">{{
-                  message.sentDate | dateDisplay
+                  message.sentDate 
                 }}</span>
               </div>
             </div>
