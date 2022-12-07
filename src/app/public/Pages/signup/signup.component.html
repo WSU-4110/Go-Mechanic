@@ -41,6 +41,11 @@
     <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
         Passwords should match
     </mat-error>
+    <span>
+      By signing up you are agreeing to our
+     <a target="_blank" href="/terms" >Terms of Service</a> and
+     <a target="_blank" href="/privacypolicy">Privacy Policy</a>
+    </span>
     <div class="center margin-top">
       <button type="submit" mat-raised-button color="primary">Sign Up!</button>
     </div>

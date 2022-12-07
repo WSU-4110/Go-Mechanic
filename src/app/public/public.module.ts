@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { EnginelightpageComponent } from './Pages/enginelightpage/enginelightpage.component';
 import { BrakejobpageComponent } from './Pages/brakejobpage/brakejobpage.component';
 import { SearchrepairspageComponent } from './Pages/searchrepairspage/searchrepairspage.component';
+import { TermsComponent } from './Pages/terms/terms.component';
+import { PrivacypolicyComponent } from './Pages/privacypolicy/privacypolicy.component';
 //import { MaintenancepageComponent} from './Pages/maintenancepage/maintenancepage.component';
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { SearchrepairspageComponent } from './Pages/searchrepairspage/searchrepa
     EnginelightpageComponent,
     BrakejobpageComponent,
     SearchrepairspageComponent,
+    TermsComponent,
+    PrivacypolicyComponent,
     //MaintenancepageComponent,
   ],
 

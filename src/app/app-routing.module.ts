@@ -17,6 +17,8 @@ import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-in
 import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
 import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
 import { ModifyMechPageComponent } from './private/pages/modifyMyMechPage/modify-mech-page.component';
+import { TermsComponent } from './public/Pages/terms/terms.component';
+import { PrivacypolicyComponent } from './public/Pages/privacypolicy/privacypolicy.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -73,6 +75,15 @@ const routes: Routes = [
   {
     path: 'maintenancepage',
     component: MaintenancepageComponent
+  },
+
+  {
+    path:'terms',
+    component: TermsComponent
+  },
+  {
+    path:'privacypolicy',
+    component: PrivacypolicyComponent
   },
 
   //Private Routing
