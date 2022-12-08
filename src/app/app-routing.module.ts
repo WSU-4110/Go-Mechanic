@@ -12,11 +12,9 @@ import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/sea
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { ProfileComponent } from './private/pages/myProfile/profile.component';
+
 import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
-import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
-import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
-import { ModifyMechPageComponent } from './private/pages/modifyMyMechPage/modify-mech-page.component';
+import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
 import { TermsComponent } from './public/Pages/terms/terms.component';
 import { PrivacypolicyComponent } from './public/Pages/privacypolicy/privacypolicy.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -99,27 +97,9 @@ const routes: Routes = [
     ...canActivate(redirectToLogin)
   },
 
-  {
-    path: 'editMyPage',
-    component: PublicProfileComponent,
-    ...canActivate(redirectToLogin)
-  },
-
-{
-  path : 'viewMyPage',
-  component: MyPageViewComponent,
-  ...canActivate(redirectToLogin)
-},
-
-{
-  path: 'profile',
-  component: ProfileComponent,
-  ...canActivate(redirectToLogin)
-},
-
 //This path is used to create a community profile with a 'mechanic' role. updates 'users'
 {
-  path: 'editMechanicPage',
+  path: 'applyRole',
   component: ModifyMechPageComponent,
   ...canActivate(redirectToLogin)
 },
