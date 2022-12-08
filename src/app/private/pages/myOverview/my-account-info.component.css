@@ -1,48 +1,13 @@
 /* mat-sidenav spans the entire background left side of the menu on the My Account page - Anthony */
 
-mat-sidenav {
-    margin: 16px;
-    width: 210px;
-    border-right: none;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-}
-
-mat-sidenav-container{
-    height: calc(100vh - 65px);
-    
-}
-
-.menu-content{
-    display: inline;
-} 
-
+/* Section left out after sidnav organization modified, save for future use -Jim
 .menu-button{
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     font-size: 1rem;
-    
-}
 
-.profile-image {
-    position: relative;
-    width: 120px;
-    margin: auto;
-}
-.profile-image > img {
-    border-radius: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-.profile-image > button {
-    position: absolute;
-    bottom: 10px;
-    right: 0;
 }
 
 mat-icon{
@@ -59,30 +24,90 @@ mat-divider{
     margin-top: 16px;
     margin-bottom: 16px;
     background-color: white;
-}
+} */
 
+/*
+**DO NOT ADD .menu, will break the organization of the page -Jim**
 .menu {
     position: sticky;
     display: inline-block;
     vertical-align: top;
     max-height: 100vh;
     overflow-y: auto;
-    width: 200px;
     top: 0;
     bottom: 0;
     padding: 30px;
-}
-  
-  /* .content {
+}*/
+
+/*
+.content {
     display: inline-block;
   } */
 
+
+  .is-widescreen{
+    position: sticky;
+    display: inline-block;
+    vertical-align: top;
+    overflow-y: hidden !important;
+    top: 0;
+    bottom: 0;
+    padding: 30px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+mat-drawer{
+    max-height: 45vh;
+    margin-top: 10px;
+}
+
+mat-drawer-content{
+    min-height: 45vh;
+    margin-top: -20px;
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    border-radius: 5px;
+    background:rgba(0, 0, 0, 0.034);
+}
+
+.menu{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.137);
+}
+
 .menu-content {
     display: none;
+    margin: 5px;
     }
 
     .is-active {
         display: block;
 }
+  
+.menu-content{
+    display: flex;
+} 
 
+.profile-image {
+    position: relative;
+    width: 120px;
+    margin: auto;
+}
 
+.profile-image > img {
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile-image > button {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+}
+
+mat-form-field{
+    margin-right: 50px;
+    margin-left: 50px;
+}

@@ -1,209 +1,225 @@
-<html>
-
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
-    </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+  </script>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
 </head>
 
-<body>
-    <div class="is-widescreen">
-        
-            <aside id="sidenav" class="menu">
-                <p class="menu-label">
-                    General
-                </p>
-                <ul class="menu-list">
-                    <li><a class="menu-item is-active" (click)="openSideNav($event, 'Dashboard')">Dashboard</a></li>
-                    <li><a class="menu-item" (click)="openSideNav($event, 'Account_Management')">Account Management</a></li>
-                    <li><a class="menu-item" (click)="openSideNav($event, 'Work_Done_History')">Work Done History</a></li>
-                    <li><a class="menu-item" (click)="openSideNav($event, 'My_Cars')">My Cars</a></li>
-                </ul>
-                <p class="menu-label">
-                    Transactions
-                </p>
-                <ul class="menu-list">
-                    <li><a>Payments</a></li>
-                </ul>
-            </aside>
-        
+<mat-drawer-container class="is-widescreen">
+  <!--Top of side-navbar menu -Jim-->
+  <mat-drawer mode="side" class= "menu" opened>
+    <p class="menu-label">
+      General
+    </p>
 
+    <ul class="menu-list">
+      <li><a class="menu-item is-active" (click)="openSideNav($event, 'Dashboard')">Dashboard</a></li>
+      <li><a class="menu-item" (click)="openSideNav($event, 'Account_Management')">Account Management</a></li>
+      <li><a class="menu-item" (click)="openSideNav($event, 'Work_Done_History')">Work Done History</a></li>
+      <li><a class="menu-item" (click)="openSideNav($event, 'My_Cars')">My Cars</a></li>
+    </ul>
 
-            <!--sidenav content holders - Anthony -->
-            <div id="menu-content" class="content">
+    <p class="menu-label">
+      Transactions
+    </p>
 
-                <!-- Equivalent to a separate page so treat each of these as such. - Anthony -->
-                <div id="Dashboard" class="menu-content">
+    <ul class="menu-list">
+      <li><a class="menu-item" (click)="openSideNav($event, 'Payments')">Payments</a></li>
+    </ul>
+  </mat-drawer>
+  <!--End of side-navbar menu -Jim-->
 
-                    <body>
-                        Dashboard.
-                    </body>
+  <!--sidenav content holders -Anthony-->
+  <mat-drawer-content style="margin-left: 220px;">
+    <!-- Equivalent to a separate page so treat each of these as such. - Anthony -->
 
-                </div>
+    <!--Top of Dashboard Section -->
+    <div id="Dashboard" class="menu-content">
+      Dashboard.
+    </div>
+    <!--End of Dashboard Section-->
 
-                <div class="column">
-                    <div id="Account_Management" class="menu-content" style="display:none">
-                        <!-- Top of Account Management Section -->
-                        <div class="form-container mat-elevation-z5 text-center" *ngIf="user$ | async as user" >
-                        <!-- Old Account Management Section based off path 'profile' -->
-                        <h1>Secured User Profile</h1>
-                        <div class="profile-image">
-                          <img
-                            width="120"
-                            height="120"
-                            [src]="user.photoURL ?? 'assets/images/placeholderProfile.png'"
-                          />
-                          <button mat-mini-fab (click)="inputField.click()">
-                            <mat-icon>edit</mat-icon>
-                          </button>
-                        </div>
-                        <input #inputField hidden type="file" (change)="uploadImage($event, user)" />
-                        <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
-                          <div class="row">
-                            <mat-form-field>
-                              <input
-                                type="text"
-                                matInput
-                                formControlName="firstName"
-                                placeholder="First Name"
-                              />
-                            </mat-form-field>
-                            <mat-form-field>
-                              <input
-                                type="text"
-                                matInput
-                                formControlName="lastName"
-                                placeholder="Last Name"
-                              />
-                            </mat-form-field>
-                          </div>
-                      
-                          <div class="row">
-                            <mat-form-field>
-                              <input
-                                type="text"
-                                matInput
-                                formControlName="displayName"
-                                placeholder="Display Name"
-                              />
-                            </mat-form-field>
-                            <mat-form-field>
-                              <input
-                                type="number"
-                                matInput
-                                formControlName="phone"
-                                placeholder="Contact Number"
-                              />
-                            </mat-form-field>
-                          </div>
-                          <mat-form-field>
-                            <input
-                              type="text"
-                              matInput
-                              formControlName="address"
-                              placeholder="Address"
-                            />
-                          </mat-form-field>
-                      
-                          <mat-form-field>
-                            <input type
-                              type="text"
-                              matInput
-                              formControlName="zip"
-                              placeholder="zip code"
-                            />
-                          </mat-form-field>
-                            
-                              <button type="submit" class="margin-top" mat-raised-button color="primary">
-                              Save
-                              </button>
-
-                                <div *ngIf="userProf$ | async as userAuth" >
-                                  <button type="submit" (ngSubmit)="saveCommunityProfile(userAuth)" class="margin-top" mat-raised-button color="primary">
-                                  Update Community Profile
-                                  </button>
-                                </div>
-
-                        </form>
-                      </div>
-                      
-                        <!-- Account Type Selection -->
-                        
-                    </div>
-                </div>
-                <!-- End of Old Account Management Section -->
-
-                <!-- Spacing from Old Menu and New Additional Menu Items - Anthony -->
-
-                <br>
-                <br>
-                <br>
-
-                <!-- Figure out how to incorporate this or recreate a whole new menu like the old one above. -->
-            </div>
-            <!-- Bottom of Account Management Section -->
-
-            <div id="Work_Done_History" class="menu-content" style="display:none">
-
-                <!-- Place-holder table for now - Anthony -->
-                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th><abbr title="Car">Car</abbr></th>
-                            <th><abbr title="Work_Done">Work Done</abbr></th>
-                            <th><abbr title="Date">Date</abbr></th>
-                            <th><abbr title="Contractor">Contractor</abbr></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-
-            <div id="My_Cars" class="menu-content" style="display:none">
-
-                <!-- Brainstorming ideas for this table. - Anthony -->
-                <!-- Will need a car template in order to ensure all information 
-                            required is given like we did for profile - Anthony -->
-                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th><abbr title="Year">Year</abbr></th>
-                            <th><abbr title="Make">Make</abbr></th>
-                            <th><abbr title="Model">Model</abbr></th>
-                            <th><abbr title="Color">Color</abbr></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-
-            <!--end of sidenav content holders - Anthony -->
-
-            <!-- highlights selected tab that is open - Anthony -->
-            <script>
-                $('.menu-list').each(function(index) {
-                    var $menuParent = $(this);
-                    var $menu = $menuParent.find('a');
-                    var $contents = $menuParent.next('.menu-content').find('.menu-content');
-
-                    $tabs.click(function() {
-                        var curIndex = $(this).index();
-                        // toggle tabs
-                        $menu.removeClass('is-active');
-                        $menu.eq(curIndex).addClass('is-active');
-                        // toggle contents
-                        $contents.removeClass('is-active');
-                        $contents.eq(curIndex).addClass('is-active');
-                    });
-                });
-            </script>
+    <!--Top of Account Management Section -->
+    <div id="Account_Management" class="menu-content" style="display:none">
+      <div class="text-center" *ngIf="user$ | async as user" >
+      <!-- Old Account Management Section based off path 'profile' -->
+        <h1>Secured User Profile</h1>
+        <div class="profile-image">
+          <img
+            width="120"
+            height="120"
+            [src]="user.photoURL ?? 'assets/images/placeholderProfile.png'"
+          />
+          <button mat-mini-fab color="primary" (click)="inputField.click()">
+            <mat-icon>edit</mat-icon>
+          </button>
         </div>
-    <!-- </div> this is the div for sidenav-whole this is temp until I come up 
-        with a better way to display the navbar and content side-by-side. - Anthony -->
-</body>
+        <input #inputField hidden type="file" (change)="uploadImage($event, user)" />
 
-</html>
+        <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+          <div class="row">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                formControlName="firstName"
+                placeholder="First Name"
+              />
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                formControlName="lastName"
+                placeholder="Last Name"
+              />
+            </mat-form-field>
+          </div>
+      
+          <div class="row"> <!--Start new row-->
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                formControlName="displayName"
+                placeholder="Display Name"
+              />
+            </mat-form-field>
+
+            <mat-form-field>
+              <input
+                type="number"
+                matInput
+                formControlName="phone"
+                placeholder="Contact Number"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="row"> <!--Start new row-->
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                formControlName="address"
+                placeholder="Address"
+                />
+            </mat-form-field>
+        
+            <mat-form-field>
+              <input type
+                type="text"
+                matInput
+                formControlName="zip"
+                placeholder="zip code"
+              />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button type="submit" style ="margin-top: 2px" mat-raised-button color="primary">
+              Save
+            </button>
+          </div>
+
+          <div *ngIf="userProf$ | async as userAuth" >
+            <button type="submit" (ngSubmit)="saveCommunityProfile(userAuth)" mat-raised-button color="primary" style="margin-top: 5px">
+              Update Community Profile
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- Account Type Selection -->
+    </div>
+    <!--End of Account Management Section-->
+
+    <!--Start of Work Done Section-->
+    <div id="Work_Done_History" class="menu-content" style="display:none">
+      <!-- Place-holder table for now - Anthony -->
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Car">Car</abbr></th>
+            <th><abbr title="Work_Done">Work Done</abbr></th>
+            <th><abbr title="Date">Date</abbr></th>
+            <th><abbr title="Contractor">Contractor</abbr></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <!--End of Work Done Section-->
+
+    <!--Start of My_Cars Section-->
+    <div id="My_Cars" class="menu-content" style="display:none">
+      <!-- Brainstorming ideas for this table. - Anthony -->
+      <!-- Will need a car template in order to ensure all information 
+                required is given like we did for profile - Anthony -->
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Year">Year</abbr></th>
+            <th><abbr title="Make">Make</abbr></th>
+            <th><abbr title="Model">Model</abbr></th>
+            <th><abbr title="Color">Color</abbr></th>
+          </tr>
+
+          <!--Placeholder
+          <tr>
+            <th><abbr></abbr></th>
+            <th><abbr></abbr></th>
+            <th><abbr></abbr></th>
+            <th><abbr></abbr></th>
+          </tr> -->
+        </thead>
+      </table>
+
+      <!--Need to implement dialog screen to input data-->
+      <div class="addCar">
+        <button mat-raised-button (click)="addCar()"> 
+          <mat-icon>add</mat-icon>
+          Add a car 
+        </button>
+      </div>
+    </div>
+    <!--End of My_Cars Section-->
+
+    <!--Start of Payment Section-->
+    <div id="Payments" class="menu-content" style="display:none">
+      Payment Section <!--Placeholder for Payment Section -Jim-->
+    </div>
+    <!--End of Payment Section-->
+  </mat-drawer-content>
+  <!--End of side-nav content holders-->
+
+  <!-- highlights selected tab that is open - Anthony -->
+  <script>
+    $('.menu-list').each(function(index) {
+      var $menuParent = $(this);
+      var $menu = $menuParent.find('a');
+      var $contents = $menuParent.next('.menu-content').find('.menu-content');
+
+      $tabs.click(function() {
+        var curIndex = $(this).index();
+        // toggle tabs
+        $menu.removeClass('is-active');
+        $menu.eq(curIndex).addClass('is-active');
+        // toggle contents
+        $contents.removeClass('is-active');
+        $contents.eq(curIndex).addClass('is-active');
+      });
+    });
+  </script>
+</mat-drawer-container>
+
+
+            
+<!-- </div> this is the div for sidenav-whole this is temp until I come up 
+  with a better way to display the navbar and content side-by-side. - Anthony -->
+<!--Fixed display issues - Jim-->
+  

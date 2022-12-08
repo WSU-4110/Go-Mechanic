@@ -158,41 +158,40 @@ export class MyAccountInfoComponent implements OnInit {
   }
 
 //Saves to 'CommunityProfile' collection firestore
-    saveCommunityProfile(user: User) {
-      
+  saveCommunityProfile(user: User) {
     const {uid, ...data} = this.CommunityProfileForm.value;
-    if(this.CommunityProfileForm.value.role === 'mechanic'){
-      if (!uid) {
-        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
-      }
-      this.postsService.createPublicProfile({
-        uid, ...data,
-        role: 'mechanic'
-      })
-      .pipe(this.toast.observe({
-        loading: 'Updating data...',
-        success: 'Your mechanic profile has updated.',
-        error: 'There was an error in updating the data.'
-      })
-      )
-      .subscribe();
-    }
-    else{
-      if (!uid) {
+  if(this.CommunityProfileForm.value.role === 'mechanic'){
+    if (!uid) {
       return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
-      }
+    }
     this.postsService.createPublicProfile({
       uid, ...data,
-      role: 'user'
+      role: 'mechanic'
     })
     .pipe(this.toast.observe({
       loading: 'Updating data...',
-      success: 'Your profile has been updated!',
+      success: 'Your mechanic profile has updated.',
       error: 'There was an error in updating the data.'
     })
     )
     .subscribe();
   }
+  else{
+    if (!uid) {
+    return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+    }
+  this.postsService.createPublicProfile({
+    uid, ...data,
+    role: 'user'
+  })
+  .pipe(this.toast.observe({
+    loading: 'Updating data...',
+    success: 'Your profile has been updated!',
+    error: 'There was an error in updating the data.'
+  })
+  )
+  .subscribe();
+}
 }
 
 //Code for the new dropdown menu to select account type - Anthony
@@ -201,7 +200,7 @@ export class MyAccountInfoComponent implements OnInit {
     var i, x, sideNavLinks;
     x = document.getElementsByClassName("menu-content") as HTMLCollectionOf<HTMLElement>;
     for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+      x[i].style.display = "none";
     }
     sideNavLinks = document.getElementsByClassName("menu-item");
     for (i = 0; i < x.length; i++) {
@@ -211,4 +210,7 @@ export class MyAccountInfoComponent implements OnInit {
       event.currentTarget.className += " is-active";
   }
 
+  addCar(){
+    //Placeholder for now
+  }
 }
