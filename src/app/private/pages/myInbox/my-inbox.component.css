@@ -23,7 +23,9 @@
 }
 
 .search-input{
-    margin: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
 }
 
 .chat-title{
@@ -146,3 +148,17 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #526fcf71;
   }
+
+  .button{
+    margin-top: 10px;
+    left: 300px;
+    width: 175px;
+}
+
+.stick{
+    background-color: #c0c0c0;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+}

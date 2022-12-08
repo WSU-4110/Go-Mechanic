@@ -1,7 +1,15 @@
+<br><br><br>
+<div class="buttons">
+    <button class="button" style="color:red"><b>Repair Status:</b></button>
+    <button class="button is-info"> No repair scheduled..</button> 
+    <button class="button is-success">Complete..</button>
+    <button class="button is-warning">Repair in progress..</button>
+</div>
+
 <div class = "container">
     <div class = "chat-list mat-elevation-z5">
         <div class = "search-input">
-            <mat-form-field>
+            <mat-form-field appearance="outline">
                 <input
                 matInput
                 placeholder="Search for users..."
@@ -60,6 +68,7 @@
               [ngClass]="{ sender: message.senderId === currentUser.uid }"
               *ngFor="let message of messages"
             >
+            <div #endOfChat></div>
               <div class="chat-bubble">
                 {{ message.text }}
                 <span class="chat-date">{{
@@ -67,7 +76,6 @@
                 }}</span>
               </div>
             </div>
-            <div #endOfChat></div>
           </ng-container>
         </ng-container>
     </div>

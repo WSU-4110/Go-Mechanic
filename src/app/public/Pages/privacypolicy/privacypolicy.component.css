@@ -4,6 +4,7 @@
     border-radius: 4px;
     transition: all 0.2s ease-in-out;
     overflow: hidden;
+    padding-top: 20px;
 }
 
 .policy-box--spaced{
