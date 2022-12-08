@@ -17,25 +17,27 @@
             </mat-autocomplete>
         </div>
 
-        <mat-selection-list [multiple]="false" [formControl]="chatListControl">
-            <mat-divider></mat-divider>
-            <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
-                <img matListAvatar [src]="
-                chat.chatPic ? chat.chatPic : 'assets/images/placeholderProfile.png' "
-                 />
-                 <p mat-line class="chat-title">
-                    <span class="chat-name">
-                        {{ chat.chatName}}
-                    </span>
-                    <span class="chat-date">
-                        {{ chat.lastMessageDate | dateDisplay}}
-                    </span>
- 
-                  </p>
-                  <p mat-line>{{ chat.lastMessage }}</p>
-                  <mat-divider></mat-divider>
-            </mat-list-option>
-        </mat-selection-list>
+        <div class="scoller">
+            <mat-selection-list [multiple]="false" [formControl]="chatListControl">
+                <mat-divider></mat-divider>
+                <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
+                    <img matListAvatar [src]="
+                    chat.chatPic ? chat.chatPic : 'assets/images/placeholderProfile.png' "
+                    />
+                    <p mat-line class="chat-title">
+                        <span class="chat-name">
+                            {{ chat.chatName}}
+                        </span>
+                        <span class="chat-date">
+                            {{ chat.lastMessageDate | dateDisplay}}
+                        </span>
+    
+                    </p>
+                    <p mat-line>{{ chat.lastMessage }}</p>
+                    <mat-divider></mat-divider>
+                </mat-list-option>
+            </mat-selection-list>|
+        </div>
     </div>
 
     <div class = "messages mat-elevation-z5">
@@ -49,6 +51,7 @@
         </div>
     </ng-template>
     <mat-divider></mat-divider>
+
     <div class="chat-area">
         <ng-container *ngIf="user$ | async as currentUser">
           <ng-container *ngIf="messages$ | async as messages">
@@ -67,8 +70,7 @@
             <div #endOfChat></div>
           </ng-container>
         </ng-container>
-    
-        
+    </div>
     <div class="input-area">
         <mat-form-field appearance="outline">
             <input [formControl]="messageControl" matInput placeholder="Type mesaage here" (keydown.enter) = "sendMessage()"/>
@@ -77,5 +79,4 @@
             </button>
         </mat-form-field>
     </div>
-</div>
 </div>
