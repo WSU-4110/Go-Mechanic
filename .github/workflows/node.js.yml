@@ -27,7 +27,7 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --force
       
     - name: test
       run: npm run test:ci
