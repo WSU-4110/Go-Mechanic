@@ -5,11 +5,14 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
-import { concatMap, switchMap } from 'rxjs';
+import { concatMap, map, switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { ImageUploadService } from 'src/app/core/services/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
 import { PostsService } from 'src/app/core/services/posts.service';
+import {MatDialog} from '@angular/material/dialog';
+import { AddCarDialogComponent } from '../add-car-dialog/add-car-dialog.component';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
   //Code for the new dropdown menu to select account type - Anthony
   interface Account {
@@ -93,13 +96,15 @@ export class MyAccountInfoComponent implements OnInit {
     }),
   });
 
-
+ 
   constructor(
     private authService : AuthenticationService, 
     private imageUploadService: ImageUploadService, 
     private toast: HotToastService,
     private usersService: UsersService,
     private postsService: PostsService,
+    public dialog: MatDialog,
+    private firestone: Firestore
     ) { }
 
   ngOnInit(): void {
@@ -170,6 +175,6 @@ export class MyAccountInfoComponent implements OnInit {
 
 
   addCar(){
-    //Placeholder for now
+    this.dialog.open(AddCarDialogComponent);
   }
 }

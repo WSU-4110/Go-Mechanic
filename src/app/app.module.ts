@@ -15,6 +15,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
 //Additional
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -41,6 +42,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
+import { AddCarDialogComponent } from './private/pages/add-car-dialog/add-car-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +55,7 @@ import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-p
     MyAccountInfoComponent,
     FooterComponent,
     ModifyMechPageComponent,
+    AddCarDialogComponent,
   ],
 
   imports: [
@@ -65,6 +69,7 @@ import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-p
     provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebase),
     MatToolbarModule,
+    MatDialogModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,

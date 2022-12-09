@@ -41,7 +41,7 @@
     <!-- Equivalent to a separate page so treat each of these as such. - Anthony -->
 
     <!--Top of Dashboard Section -->
-    <div id="Dashboard" class="menu-content">
+    <div id="Dashboard" class="menu-content" style="display:block">
       <div class *ngIf="userProf$ | async as user"> <!-- this communicates to db via 'Community profiles' -->
         <div class *ngIf="user$ | async as userAuth"> <!--this communicates to db via 'users' - [jsb]-->
             <div class="container">
