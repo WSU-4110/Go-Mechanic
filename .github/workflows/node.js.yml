@@ -6,7 +6,7 @@ name: Continuous Integration - Testing for HTML elements
 on:
   push:
     branches:
-      -"continuous-integration"
+      - continuous-integration
 
 jobs:
   build:
