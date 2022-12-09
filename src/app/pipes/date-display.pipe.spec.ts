@@ -6,3 +6,8 @@ import { DateDisplayPipe } from './date-display.pipe';
 //    expect(pipe).toBeTruthy();
 //  });
 // });
+ // it('create an instance', () => {
+  //  const pipe = new DateDisplayPipe();
+  //  expect(pipe).toBeTruthy();
+ // });
+//});
