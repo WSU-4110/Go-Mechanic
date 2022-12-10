@@ -91,7 +91,8 @@ mat-drawer-content{
 
 .profile-image {
     position: relative;
-    width: 120px;
+    width: 100px;
+    height: 100px;
     margin: auto;
 }
 
@@ -118,7 +119,7 @@ mat-form-field{
     padding: 50px 0 50px;
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: #f7f5ec;
+    background-color: #e2dbc8;
     text-align: center;
     overflow: hidden;
     position: relative;

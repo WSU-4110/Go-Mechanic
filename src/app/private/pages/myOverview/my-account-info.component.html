@@ -41,34 +41,34 @@
     <!-- Equivalent to a separate page so treat each of these as such. - Anthony -->
 
     <!--Top of Dashboard Section -->
-    <div id="Dashboard" class="menu-content">
+    <div id="Dashboard" class="menu-content" style="display:block">
       <div class *ngIf="userProf$ | async as user"> <!-- this communicates to db via 'Community profiles' -->
         <div class *ngIf="user$ | async as userAuth"> <!--this communicates to db via 'users' - [jsb]-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="our-team">
-                            <div class="picture"> <img width="120" height="120" [src]="userAuth.photoURL ?? 'assets/images/placeholderProfile.png'" />
-                            </div>
-                                <div class="team-content">
-                                    <h1 class="name"> <span class="user-name"> {{ user.displayName}} </span>
-                                    </h1>     
-                                        <h3 class="name">
-                                            <span>About '{{user.firstName}}', {{user.description}} 
-                                            </span>
-                                        </h3>
-                                            <h5 class="name"> A Go-Mechanic 
-                                                <span class="user-info"> {{ user.role}}, near </span> 
-                                                <span class="user-info"> {{ user.zip }} </span>
-                                            </h5>
-                                </div>
-                        </div>
-                    </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="our-team">
+                  <div class="picture"> <img width="120" height="120"
+                      [src]="userAuth.photoURL ?? 'assets/images/placeholderProfile.png'" />
+                  </div>
+                  <div class="team-content">
+                    <h1 class="name"> <span class="user-name"> {{ user.displayName}} </span>
+                    </h1>
+                    <h3 class="name">
+                      <span>About '{{user.firstName}}', {{user.description}}
+                      </span>
+                    </h3>
+                    <h5 class="name"> A Go-Mechanic
+                      <span class="user-info"> {{ user.role}}, near </span>
+                      <span class="user-info"> {{ user.zip }} </span>
+                    </h5>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    
+      </div>
       </div>
     <!--End of Dashboard Section-->
 
@@ -149,14 +149,16 @@
               />
             </mat-form-field>
 
+            <div class = "row"> <!--Start new row-->
             <mat-form-field>
               <input type
                 type="text"
                 matInput
                 formControlName="description"
-                placeholder="description"
+                placeholder="Description"
               />
             </mat-form-field>
+            </div>
 
 
           </div>
