@@ -25,9 +25,10 @@ jobs:
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        path: ./node_modules
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        #the cache-dependency-path is not required but using it for testing purposes - Anthony
+        cache-dependency-path: continuous-integration/package-lock.json
         
     - name: Install dependencies
       run: npm ci --force
