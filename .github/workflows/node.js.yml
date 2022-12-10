@@ -33,8 +33,8 @@ jobs:
       
     - name: Test
       run: npm run test:ci
-      working-directory: ./node_modules
+      env:
+        CI: true
       
     - name: build
       run: npm run build:ci
-      working-directory: ./node_modules
