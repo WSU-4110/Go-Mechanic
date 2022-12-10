@@ -7,9 +7,7 @@ import { EnginelightpageComponent } from './public/Pages/enginelightpage/enginel
 import { HomepageComponent } from './public/Pages/homepage/homepage.component';
 import { LoginpageComponent } from './public/Pages/loginpage/loginpage.component';
 import { MaintenancepageComponent } from './public/Pages/maintenancepage/maintenancepage.component';
-import { ReportissuepageComponent } from './public/Pages/report-issue-page/reportissuepage.component';
 import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/searchrepairspage.component';
-import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
@@ -42,17 +40,6 @@ const routes: Routes = [
   {
     path:'about',
     component: AboutpageComponent
-  },
-
-  {
-    path:'report-issue',
-    component: ReportissuepageComponent
-  },
-
-  {
-    path: 'signup',
-    component: SignupComponent,
-    ...canActivate(redirectToHome)
   },
 
   {
@@ -114,4 +101,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 /** Below statement allows us to add a variable to not have to import components into the app.module.ts file - Anthony */
-export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, SignupComponent, ReportissuepageComponent,MaintenancepageComponent ]
+export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, MaintenancepageComponent ]

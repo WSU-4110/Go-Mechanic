@@ -10,6 +10,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { concatMap, Observable, from, of } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
+import { LoginpageComponent } from 'src/app/public/Pages/loginpage/loginpage.component';
+import { MatDialog } from '@angular/material/dialog';
 @Injectable({
   providedIn: 'root',
 })
@@ -22,7 +24,9 @@ export class AuthenticationService {
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
-    private toast: HotToastService) {}
+    private toast: HotToastService,
+    public dialog: MatDialog
+    ) {}
 
   SendVerificationMail() {
     return this.afAuth.currentUser
@@ -52,6 +56,7 @@ export class AuthenticationService {
       else {
         this.ngZone.run(() => {
           this.router.navigate(['/home']);
+          this.closePopUps();
         });
         this.toast.success('Login successful...');
       }
@@ -86,5 +91,9 @@ export class AuthenticationService {
          return updateProfile(user, profileData);
        })
      );
+  }
+
+  closePopUps(){
+    this.dialog.closeAll();
   }
 }
