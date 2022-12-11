@@ -8,16 +8,14 @@ import { ImageUploadService } from 'src/app/core/services/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
 
 import { PostsService } from 'src/app/core/services/posts.service';
-import { ProfileUser } from 'src/app/models/user-profile';
-import { doc, setDoc } from 'firebase/firestore';
-import { docData, Firestore } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-public-profile',
-  templateUrl: './public-profile.component.html',
-  styleUrls: ['./public-profile.component.css']
+  selector: 'app-modify-mech-page',
+  templateUrl: './modify-mech-page.component.html',
+  styleUrls: ['./modify-mech-page.component.css']
 })
-export class PublicProfileComponent implements OnInit {
+export class ModifyMechPageComponent implements OnInit {
+
   user$ = this.postsService.currentUserProfile$;
   userAuth$ = this.authService.currentUser$;
 
@@ -35,9 +33,6 @@ export class PublicProfileComponent implements OnInit {
       nonNullable: true,
     }),
     experience: new FormControl('', {
-      nonNullable: true,
-    }),
-    role: new FormControl('', {
       nonNullable: true,
     }),
     zip: new FormControl('', {
@@ -79,34 +74,18 @@ export class PublicProfileComponent implements OnInit {
 
   savePublicProfile() {
     const {uid, ...data} = this.CommunityProfileForm.value;
-    //checking if 'user' collection is mechanic role, else its a user profile. -[jsb]
-    if(this.CommunityProfileForm.value.role === 'mechanic'){
-      if (!uid) {
-        return;
-      }
-      this.postsService.createPublicProfile({
-        uid, ...data,
-        role: 'mechanic'
-      }).pipe(this.toast.observe({
-        loading: 'Updating data...',
-        success: 'Your mechanic profile has updated.',
-        error: 'There was an error in updating the data.'
-      })).subscribe();
+
+    if (!uid) {
+      return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
     }
-    else{
-      if (!uid){
-        return; 
-      }
+    //This will add the mechanic role and create their public mechanic profile
     this.postsService.createPublicProfile({
       uid, ...data,
-      role: 'user'
-    })
-    .pipe(this.toast.observe({
-      loading: 'Updating data...',
-      success: 'Your profile has been updated!',
+      role: 'mechanic'
+    }).pipe(this.toast.observe({
+      success: 'Your mechanic profile was updated',
       error: 'There was an error in updating the data.'
     })).subscribe();
-    }
   }
-  
+
 }
