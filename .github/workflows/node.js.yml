@@ -51,4 +51,4 @@ jobs:
       run: npm run test:ci
       
     - name: Running Joseph's Unit Tests
-      run: npm run ng test --watch=false --browsers=ChromeHeadless --include='**/myInbox/*.spec.ts'
+      run: npm run test:sam
