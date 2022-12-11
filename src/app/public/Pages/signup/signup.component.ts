@@ -31,9 +31,13 @@ export class SignupComponent implements OnInit {
   },
   { validators: passwordsMatchValidator() }) 
 
+
   constructor(
     private authService: AuthenticationService
     ) { }
+
+  constructor(private authService: AuthenticationService, private toast: HotToastService, private router: Router,private  userService: UsersService) { }
+
 
   ngOnInit(): void {}
 

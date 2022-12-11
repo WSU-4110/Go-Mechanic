@@ -9,7 +9,8 @@ import { HotToastService } from '@ngneat/hot-toast';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  user$ = this.userService.currentUserProfile$;
+  // user$ = this.userService.currentUserProfile$;
+
 
   constructor(
     public authService: AuthenticationService,
@@ -18,10 +19,24 @@ export class NavbarComponent implements OnInit {
     private toast: HotToastService
     ) { }
 
+  // constructor(
+  //   public authService: AuthenticationService,
+  //   public userService: UsersService,
+  //   private router: Router
+  //   ) { }
+
+
   ngOnInit(): void {
   }
 
   logout() {
     this.authService.logout();
   }
+
+  // logout() {
+  //   this.authService.logout().subscribe(() => {
+  //     this.router.navigate(['/home']);
+  //   });
+  // }
+
 }

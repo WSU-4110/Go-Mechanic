@@ -38,6 +38,9 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from "@agm/core";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { HotToastModule } from '@ngneat/hot-toast'; 
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
     ProfileComponent,
     SignupComponent,
     DateDisplayPipe,
-    
+    MyAccountInfoComponent
   ],
 
   imports: [
