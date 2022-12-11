@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
     private authService: AuthenticationService
     ) { } */
 
-  constructor(private authService: AuthenticationService, private toast: HotToastService, private router: Router,private  userService: UsersService) { }
+  constructor(private authService: AuthenticationService) { }
 
 
   ngOnInit(): void {}

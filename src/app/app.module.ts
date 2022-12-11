@@ -47,7 +47,7 @@ import { MyAccountInfoComponent } from './private/pages/my-account-info/my-accou
     routingComponents,
     MyInboxComponent,
     ProfileComponent,
-    SignupComponent,
+    //SignupComponent,
     DateDisplayPipe,
     MyAccountInfoComponent
   ],
