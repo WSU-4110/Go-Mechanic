@@ -55,3 +55,6 @@ jobs:
       
     - name: Running Jim's Unit Tests
       run: npm run test:jim
+     
+    - name: Running Alexandru's Unit Tests
+      run: npm run test:vlad
