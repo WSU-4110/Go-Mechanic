@@ -48,5 +48,6 @@ jobs:
       run: npm run build:ci
       
     - name: Running Unit Tests
-      run: npm run test:ci
+      run: ng test --watch=false --browsers=ChromeHeadless --include='**/navbar/*.spec.ts'
+#      run: npm run test:ci
     
