@@ -14,7 +14,6 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts",
-    "**/*.ts",
-    "src/**/navbar.component.spec.ts"
+    "**/*.ts"
   ]
 }
