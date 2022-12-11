@@ -18,7 +18,7 @@ module.exports = function (config) {
         // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
         // for example, you can disable the random execution with `random: false`
         // or set a specific seed with `seed: 4321`
-
+        
         "spec_dir": "site/dist/tests",
         //"spec_files": ["**/*[sS]pec.js", "**/*.spec.ts"],
         "spec_files": ["**/*/navbar.component.spec.ts"],
@@ -45,13 +45,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadlessNoSandbox'],
-    customLaunchers: {
-     ChromeHeadlessNoSandbox: {
-       base: 'ChromeHeadless',
-       flags: ['--no-sandbox']
-    }
-    //singleRun: false
-    //restartOnFileChange: true
-    }
+    browsers: ['Chrome'],
+    singleRun: false,
+    restartOnFileChange: true
   });
+};
