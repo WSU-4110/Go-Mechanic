@@ -14,6 +14,8 @@ import { provideFirestore,getFirestore, } from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
+//Additional
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,7 +28,6 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
-import { ProfileComponent } from './private/pages/myProfile/profile.component';
 import { UsersService } from './core/services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './public/Pages/signup/signup.component';
@@ -42,23 +43,21 @@ import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-in
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
 import { HotToastModule } from '@ngneat/hot-toast';
-import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
-import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
-import { ModifyMechPageComponent } from './private/pages/modifyMyMechPage/modify-mech-page.component';
+import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
+import { AddCarDialogComponent } from './private/pages/add-car-dialog/add-car-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     routingComponents,
     MyInboxComponent,
-    ProfileComponent,
     SignupComponent,
     DateDisplayPipe,
     MyAccountInfoComponent,
     FooterComponent,
-    PublicProfileComponent,
-    MyPageViewComponent,
     ModifyMechPageComponent,
+    AddCarDialogComponent,
   ],
 
   imports: [
@@ -72,6 +71,7 @@ import { ModifyMechPageComponent } from './private/pages/modifyMyMechPage/modify
     provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebase),
     MatToolbarModule,
+    MatDialogModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,

@@ -5,6 +5,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: block;
     max-width:300px;
     margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     background: #eceff1;
     padding: 48px;
@@ -27,4 +29,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .text-center{
     text-align: center;
+}
+
+.exitbutton{
+    margin-left: 100%;
 }

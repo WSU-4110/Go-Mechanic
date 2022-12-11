@@ -44,9 +44,6 @@ export class UsersService {
     private firestore: Firestore,
     private authService: AuthenticationService) {}
 
-
-
-
     addUser(user: ProfileUser): Observable<any> {
       const ref = doc(this.firestore, 'users', user?.uid);
       return from(setDoc(ref, user,));
@@ -57,8 +54,10 @@ export class UsersService {
       return from(updateDoc(ref, { ...user }));
     }
 
-
-    
+    addUserCar(user: ProfileUser): Observable<any> {
+      const ref = doc(this.firestore, 'users', user?.uid);
+      return from(updateDoc(ref, { ...user }));
+    }
   }
     
 

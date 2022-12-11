@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { UsersService } from '../services/user.service';
+import {MatDialog} from '@angular/material/dialog';
+import { SignupComponent } from 'src/app/public/Pages/signup/signup.component';
+import { LoginpageComponent } from 'src/app/public/Pages/loginpage/loginpage.component';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,7 +16,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     public authService: AuthenticationService,
     public userService: UsersService,
-  
+    public dialog: MatDialog,
     ) { }
 
   ngOnInit(): void {
@@ -21,4 +25,13 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  openSignUp(){
+    this.dialog.open(SignupComponent);
+  }
+
+  openLogin(){
+    this.dialog.open(LoginpageComponent);
+  }
+  
 }

@@ -7,16 +7,12 @@ import { EnginelightpageComponent } from './public/Pages/enginelightpage/enginel
 import { HomepageComponent } from './public/Pages/homepage/homepage.component';
 import { LoginpageComponent } from './public/Pages/loginpage/loginpage.component';
 import { MaintenancepageComponent } from './public/Pages/maintenancepage/maintenancepage.component';
-import { ReportissuepageComponent } from './public/Pages/report-issue-page/reportissuepage.component';
 import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/searchrepairspage.component';
-import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { ProfileComponent } from './private/pages/myProfile/profile.component';
+
 import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
-import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
-import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
-import { ModifyMechPageComponent } from './private/pages/modifyMyMechPage/modify-mech-page.component';
+import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
 import { TermsComponent } from './public/Pages/terms/terms.component';
 import { PrivacypolicyComponent } from './public/Pages/privacypolicy/privacypolicy.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -44,17 +40,6 @@ const routes: Routes = [
   {
     path:'about',
     component: AboutpageComponent
-  },
-
-  {
-    path:'report-issue',
-    component: ReportissuepageComponent
-  },
-
-  {
-    path: 'signup',
-    component: SignupComponent,
-    ...canActivate(redirectToHome)
   },
 
   {
@@ -99,27 +84,9 @@ const routes: Routes = [
     ...canActivate(redirectToLogin)
   },
 
-  {
-    path: 'editMyPage',
-    component: PublicProfileComponent,
-    ...canActivate(redirectToLogin)
-  },
-
-{
-  path : 'viewMyPage',
-  component: MyPageViewComponent,
-  ...canActivate(redirectToLogin)
-},
-
-{
-  path: 'profile',
-  component: ProfileComponent,
-  ...canActivate(redirectToLogin)
-},
-
 //This path is used to create a community profile with a 'mechanic' role. updates 'users'
 {
-  path: 'editMechanicPage',
+  path: 'applyRole',
   component: ModifyMechPageComponent,
   ...canActivate(redirectToLogin)
 },
@@ -134,4 +101,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 /** Below statement allows us to add a variable to not have to import components into the app.module.ts file - Anthony */
-export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, SignupComponent, ReportissuepageComponent,MaintenancepageComponent ]
+export const routingComponents = [ HomepageComponent, ContactpageComponent, LoginpageComponent, AboutpageComponent, MaintenancepageComponent ]

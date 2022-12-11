@@ -5,11 +5,14 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
-import { concatMap, switchMap } from 'rxjs';
+import { concatMap, map, switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { ImageUploadService } from 'src/app/core/services/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
 import { PostsService } from 'src/app/core/services/posts.service';
+import {MatDialog} from '@angular/material/dialog';
+import { AddCarDialogComponent } from '../add-car-dialog/add-car-dialog.component';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
   //Code for the new dropdown menu to select account type - Anthony
   interface Account {
@@ -57,6 +60,9 @@ export class MyAccountInfoComponent implements OnInit {
     address: new FormControl('', {
       nonNullable: true,
     }),
+    description: new FormControl('', {
+      nonNullable: true,
+    }),
     zip: new FormControl('', {
       nonNullable: true,
     }),
@@ -90,13 +96,15 @@ export class MyAccountInfoComponent implements OnInit {
     }),
   });
 
-
+ 
   constructor(
     private authService : AuthenticationService, 
     private imageUploadService: ImageUploadService, 
     private toast: HotToastService,
     private usersService: UsersService,
     private postsService: PostsService,
+    public dialog: MatDialog,
+    private firestone: Firestore
     ) { }
 
   ngOnInit(): void {
@@ -118,38 +126,29 @@ export class MyAccountInfoComponent implements OnInit {
       ).subscribe();
     }
 
-    //Saves to 'users' collection firestore
-    saveProfile(){  
+  //Saves to 'users' collection firestore and verifies role...needs refractoring
+  saveProfile(){  
       const {uid, ...data} = this.profileForm.value;
       
       //This checks if a user already has a 'mechanic role', if not it will continue with saveCommunityProfile method.
       if(this.profileForm.value.role === 'mechanic'){
-        if (!uid) {
-          return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
-        }
-        this.usersService.updateUser({
-          uid, ...data,
-          role: 'mechanic'
-        })
+        if (!uid) { return;}
+        this.usersService.updateUser({uid, ...data, role: 'mechanic' })
         .pipe(this.toast.observe({
-          loading: 'Updating data...',
-          success: 'Your secured mechanic account been updated',
+          success: 'Mechanic profiles have been updated',
           error: 'There was an error in updating the data.'
         })
         )
         .subscribe();
       }
       else{
-        if (!uid) {
-        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
-        }
+        if (!uid) { return; }
       this.usersService.updateUser({
         uid, ...data,
         role: 'user'
       })
       .pipe(this.toast.observe({
-        loading: 'Updating data...',
-        success: 'Data has been successfully updated!',
+        success: 'Profiles have been successfully updated',
         error: 'There was an error in updating the data.'
       })
       )
@@ -157,43 +156,6 @@ export class MyAccountInfoComponent implements OnInit {
     }
   }
 
-//Saves to 'CommunityProfile' collection firestore
-    saveCommunityProfile(user: User) {
-      
-    const {uid, ...data} = this.CommunityProfileForm.value;
-    if(this.CommunityProfileForm.value.role === 'mechanic'){
-      if (!uid) {
-        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
-      }
-      this.postsService.createPublicProfile({
-        uid, ...data,
-        role: 'mechanic'
-      })
-      .pipe(this.toast.observe({
-        loading: 'Updating data...',
-        success: 'Your mechanic profile has updated.',
-        error: 'There was an error in updating the data.'
-      })
-      )
-      .subscribe();
-    }
-    else{
-      if (!uid) {
-      return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
-      }
-    this.postsService.createPublicProfile({
-      uid, ...data,
-      role: 'user'
-    })
-    .pipe(this.toast.observe({
-      loading: 'Updating data...',
-      success: 'Your profile has been updated!',
-      error: 'There was an error in updating the data.'
-    })
-    )
-    .subscribe();
-  }
-}
 
 //Code for the new dropdown menu to select account type - Anthony
   // Function I created in order to allow me to change tabs within the side-nav bar instead of using page components. This took forever! - Anthony
@@ -201,7 +163,7 @@ export class MyAccountInfoComponent implements OnInit {
     var i, x, sideNavLinks;
     x = document.getElementsByClassName("menu-content") as HTMLCollectionOf<HTMLElement>;
     for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+      x[i].style.display = "none";
     }
     sideNavLinks = document.getElementsByClassName("menu-item");
     for (i = 0; i < x.length; i++) {
@@ -211,4 +173,8 @@ export class MyAccountInfoComponent implements OnInit {
       event.currentTarget.className += " is-active";
   }
 
+
+  addCar(){
+    this.dialog.open(AddCarDialogComponent);
+  }
 }

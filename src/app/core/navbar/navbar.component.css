@@ -1,1 +1,12 @@
 /* Kinda pointless as we're using bulma framework for our style sheets. Keep until further notice. */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:100;
+}
+
+::ng-deep.mat-dialog-container {
+    background-color: transparent;
+    box-shadow: none;
+}
