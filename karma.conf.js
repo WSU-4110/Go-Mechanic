@@ -13,7 +13,7 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     files: [
-      'navbar/navbar.component.spec.ts'
+      
     ],
     client: {
       jasmine: {
