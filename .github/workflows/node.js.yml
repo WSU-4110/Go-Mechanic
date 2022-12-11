@@ -35,6 +35,9 @@ jobs:
     - name: Install dependencies
       run: npm install --force
   #    working-directory: /home/runner/work/Go-Mechanic/node_modules
+  
+    - name: Checking if bulma installed
+      run: npm i bulma check in node_modules
       
     - name: Cache node_modules
       uses: actions/cache@v3
