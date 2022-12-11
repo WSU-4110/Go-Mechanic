@@ -43,12 +43,10 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-      
-#    - name: Test
-#      run: npm run test:ci
-      
+
     - name: build
       run: npm run build:ci
       
-    - name: Running Anthony's Unit Tests
-      run: karma start Go-Mechanic/karma.conf.js --glob=src/app/core/navbar/navbar.component.spec.ts
+    - name: Running Unit Tests
+      run: npm run test:ci
+    
