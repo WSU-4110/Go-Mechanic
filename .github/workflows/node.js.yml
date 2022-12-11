@@ -52,3 +52,6 @@ jobs:
       
     - name: Running Joseph's Unit Tests
       run: npm run test:sam
+      
+    - name: Running Jim's Unit Tests
+      run: npm run test:jim
