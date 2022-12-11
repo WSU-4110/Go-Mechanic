@@ -19,12 +19,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
-    PrivateComponent,
-    MySettingsComponent,
   ],
   imports: [
     CommonModule,
-    PrivateRoutingModule,
     SharedModule,
     MatButtonModule,
     MatToolbarModule,
