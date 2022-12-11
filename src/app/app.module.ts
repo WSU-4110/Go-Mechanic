@@ -41,7 +41,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
-
+import { FooterComponent } from './shared/footer/footer.component';
+import { MatSelectModule } from '@angular/material/select';
+import { HotToastModule } from '@ngneat/hot-toast'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,8 +53,8 @@ import { MyAccountInfoComponent } from './private/pages/my-account-info/my-accou
     ProfileComponent,
     SignupComponent,
     DateDisplayPipe,
-
-    MyAccountInfoComponent
+    MyAccountInfoComponent,
+    FooterComponent
   ],
 
   imports: [
@@ -78,12 +80,12 @@ import { MyAccountInfoComponent } from './private/pages/my-account-info/my-accou
     MatListModule,
     MatDividerModule,
     MatSidenavModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']
     }),
-    CoreModule,
-    SharedModule,
+    HotToastModule.forRoot(),
   ],
 
   providers: [DatePipe],
