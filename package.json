@@ -6,7 +6,13 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --include='**/navbar/*.spec.ts'",
+    "test:sam": "ng test --watch=false --browsers=ChromeHeadless --include='**/myInbox/*.spec.ts'",
+    "test:jim": "ng test --watch=false --browsers=ChromeHeadless --include='**/loginpage/*.spec.ts'",
+    "test:vlad": "ng test --watch=false --browsers=ChromeHeadless --include=' '",
+    "test:kam": "ng test --watch=false --browsers=ChromeHeadless --include=' '",
+    "build:ci": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +42,7 @@
     "@angular-devkit/build-angular": "^14.2.4",
     "@angular/cli": "~14.2.4",
     "@angular/compiler-cli": "^14.2.0",
+    "@testing-library/angular": "^12.1.2",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",

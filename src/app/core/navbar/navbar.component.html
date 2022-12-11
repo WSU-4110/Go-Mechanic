@@ -1,9 +1,10 @@
+<!-- Had to remove all authentication related objects in order to properly test the UI - Anthony -->
 <script src="https://kit.fontawesome.com/1885d8c53e.js" crossorigin="anonymous"></script>
 
 <!--Basic Nav Bar Characteristics -->
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" routerLink="/home">  
+      <a class="navbar-item">  
         <img src="https://txt.1001fonts.net/img/txt/dHRmLjcyLjAwMDAwMC5SMjhnVFdWamFHRnVhV00sLjE,/raleway.extrabold.webp" width="112" height="28"> <!-- insert our logo here with those dimensions for the image under shared models -->
       </a>
     </div>
@@ -12,7 +13,7 @@
     <!-- Navbar content -->
     <div id="navmenu" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" routerLink="/home">
+        <a class="navbar-item">
           Home
         </a>
 
@@ -22,16 +23,16 @@
             Services
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" routerLink="/maintenancepage">
+            <a class="navbar-item">
               Maintenance
             </a>
-            <a class="navbar-item" routerLink="/enginelightpage">
+            <a class="navbar-item">
               Engine Light
             </a>
-            <a class="navbar-item" routerLink="/brakejobpage">
+            <a class="navbar-item">
               Brake Job
             </a>
-            <a class="navbar-item" routerLink="/searchrepairspage">
+            <a class="navbar-item">
               Search Repairs
             </a>
           </div>
@@ -42,14 +43,14 @@
             More
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" routerLink="/about">
+            <a class="navbar-item">
               About
             </a>
-            <a class="navbar-item" routerLink="/contact-us">
+            <a class="navbar-item">
               Contact
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item" routerLink="/report-issue">
+            <a class="navbar-item">
               Report an issue
             </a>
           </div>
@@ -62,55 +63,62 @@
           <div class="navbar-item">
             <!-- Experimenting with Formatting to make login buttons align to the right side of the page - Anthony -->
             <!-- Had to reformat Jim's code in order to get it to look proper on the page (hopefully.) - Anthony -->
-            <ng-container *ngIf="authService.currentUser$ | async as user; else signup">
+            <ng-container>
               <!-- Sign up buttom gets removed if user is logged in -->
             </ng-container>
             <ng-template #signup>
-              <a class="button is-dark" routerLink="/signup">
+              <a class="button is-dark">
                 Sign up
               </a>
             </ng-template>
 
             <div class="dropdown-menu" id="dropdown-menu3" role="menu"></div>
-            <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
+            <ng-container>
               <ng-container class="navbar-dropdown">
+              
                 <a class="navbar-item" routerLink="/my-account">
-                  My Account
+                  <mat-icon>account_circle</mat-icon>
                 </a>
                 <a class="navbar-item" routerLink="/my-inbox">
-                  Inbox
+                  <mat-icon>inbox</mat-icon>
                 </a>
                 <a class="navbar-item" routerLink="/profile">
-                  Settings
+                  <mat-icon>settings</mat-icon>
+
+                <a class="navbar-item">
+                  My Account
                 </a>
-                <button class="button is-danger is-light" (click) = "authService.logout()">logout</button>    
-               
-              </ng-container>
-            </ng-container>
+                <a class="navbar-item">
+                  Inbox
+                </a>
+                <a class="navbar-item">
+                  Settings
+
+                </a>
+                <button class="button is-danger is-light">logout</button>    
+              
             
           
             
 
             <ng-template #loginButton>
-              <a class="button is-light is" routerLink="login"> Login </a>
+              <a class="button is-light is"> Login </a>
             </ng-template>
-          </div>
-
+ 
 
           <!--There should be a drop down menu for logout option, wont display in line 73-->
           
           <mat-menu #userMenu="matMenu">
-            <button mat-button routerLink="login">
+            <button mat-button>
               <mat-icon>account_circle</mat-icon>
               Profile
             </button>
-            <button mat-menu-item (click)="logout()">
+            <button mat-menu-item>
               <mat-icon>logout</mat-icon>
               Logout
             </button>
           </mat-menu>
 
     <!--End Signup/Login Buttons-->
-    </div>
-    </div>
-  </nav>  
+
+  

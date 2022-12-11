@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyAccountComponent } from './private/pages/myAccount/my-account.component';
 import { AboutpageComponent } from './public/Pages/aboutpage/aboutpage.component';
 import { BrakejobpageComponent } from './public/Pages/brakejobpage/brakejobpage.component';
 import { ContactpageComponent } from './public/Pages/contactpage/contactpage.component';
@@ -13,9 +12,9 @@ import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/sea
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MySettingsComponent } from './private/pages/mySettings/my-settings.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
-
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './private/pages/profile/profile.component';
+import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
@@ -77,8 +76,8 @@ const routes: Routes = [
 
   //Private Routing
   {
-    path: 'my-account',
-    component: MyAccountComponent,
+    path: 'my-account-info',
+    component: MyAccountInfoComponent,
     ...canActivate(redirectToLogin)
   },
 

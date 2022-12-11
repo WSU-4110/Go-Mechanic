@@ -37,8 +37,14 @@ import { DatePipe } from '@angular/common';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { AgmCoreModule } from "@agm/core";
 import {MatSidenavModule} from '@angular/material/sidenav';
+
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
+
+import { HotToastModule } from '@ngneat/hot-toast'; 
+import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,9 +52,9 @@ import {SharedModule} from "./shared/shared.module";
     routingComponents,
     MyInboxComponent,
     ProfileComponent,
-    SignupComponent,
+    //SignupComponent,
     DateDisplayPipe,
-
+    MyAccountInfoComponent
   ],
 
   imports: [
@@ -78,9 +84,9 @@ import {SharedModule} from "./shared/shared.module";
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']
     }),
-    
     CoreModule,
     SharedModule,
+    HotToastModule.forRoot(),
   ],
 
   providers: [DatePipe],
