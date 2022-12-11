@@ -44,8 +44,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
       
-    - name: Test
-      run: npm run test:ci
+#    - name: Test
+#      run: npm run test:ci
       
     - name: build
       run: npm run build:ci
