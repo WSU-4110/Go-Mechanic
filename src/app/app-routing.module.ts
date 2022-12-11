@@ -12,7 +12,6 @@ import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/sea
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MySettingsComponent } from './private/pages/mySettings/my-settings.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
-
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './private/pages/profile/profile.component';
 import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';

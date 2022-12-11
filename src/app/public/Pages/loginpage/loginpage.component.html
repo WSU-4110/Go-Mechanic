@@ -1,27 +1,17 @@
 <div class="form-container mat-elevation-z5">
-  <h1>Login</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="submit()">
-    <mat-form-field>
-      <input matInput placeholder="Email address" formControlName="email" />
-      <mat-error *ngIf="email?.errors?.['required']">
-        Email address is required!
-      </mat-error>
-      <mat-error *ngIf="email?.errors?.['email']">
-        Please enter a valid email address
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="password" placeholder="Password" formControlName="password" />
-      <mat-error *ngIf="password?.errors?.['required']">
-        Password is required
-      </mat-error>
-    </mat-form-field>
-    <div class="center margin-top">
-        <button type="submit" mat-raised-button color="primary">
-          Login
-      </button>
-    </div>
+  <h1>form container</h1>
+  
+  <input matInput placeholder="Email address" formControlName="email" />
+  <h1>email</h1>
 
-      <span class="center margin-top">New to Go Mechanic? <a class = "sign-up-link" routerLink="signup"> Register</a></span>
-  </form>
+  <input matInput type="password" placeholder="Password" formControlName="password" />
+  <h1>password</h1>
+
+  <div class="center margin-top">
+    <button type="submit" mat-raised-button color="primary">
+      Login
+    </button>
+  </div>
+
+  <span class="center margin-top">New to Go Mechanic? <a class = "sign-up-link">Register</a></span>
 </div>

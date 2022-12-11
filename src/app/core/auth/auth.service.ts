@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import {
   Auth,
   authState,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   updateProfile,
   UserInfo,
 } from '@angular/fire/auth';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { concatMap, Observable, from, of } from 'rxjs';
 
 @Injectable({
@@ -18,18 +18,72 @@ export class AuthenticationService {
 
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth) {}
+  constructor(
+    private auth: Auth,
+    public router: Router,
+    public afAuth: AngularFireAuth,
+    public ngZone: NgZone,
+    private toast: HotToastService
+    ) {}
+
+    SendVerificationMail() {
+      return this.afAuth.currentUser
+        .then((user) => {
+          return user.sendEmailVerification();
+        })
+        .then(() => {
+          this.toast.info(
+            'Please verify your email address...'
+          );
+        });
+    }
 
   login(email: string, password: string){
-    return from(signInWithEmailAndPassword(this.auth, email, password));
+    return this.afAuth
+    .signInWithEmailAndPassword(email, password)
+    .then((result) => {
+      if (result.user.emailVerified !== true) {
+        this.SendVerificationMail();
+        this.toast.info(
+          'Please verify your email address...'
+        );
+        this.forceLogout();
+      } 
+      else {
+        this.ngZone.run(() => {
+          this.router.navigate(['/home']);
+        });
+        this.toast.success('Login successful...');
+      }
+    })
+    .catch(() => {
+      this.toast.error('Incorrect email or password...');
+    });
+ }
+
+ signUp(email: string, password: string){
+  return this.afAuth
+    .createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      this.toast.success('Sign up successful...');
+      this.SendVerificationMail();
+      this.forceLogout();
+    })
+    .catch(() => {
+      this.toast.error('Email has already been registered...');
+    });
   }
 
   logout(){   
-    return from(this.auth.signOut()); 
+    return this.auth.signOut().then(() => {
+      this.toast.success('Logout successful...');
+      this.router.navigate(['/home']);
+      this.forceLogout();
+    }); 
   }
 
-  signUp(email: string, password: string){
-    return from(createUserWithEmailAndPassword(this.auth, email, password))
+  forceLogout(){   
+    return from(this.auth.signOut()); 
   }
 
   updateProfileData(profileData: Partial<UserInfo>): Observable<any> {
@@ -42,5 +96,4 @@ export class AuthenticationService {
        })
      );
   }
-
 }
