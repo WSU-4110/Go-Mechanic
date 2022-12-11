@@ -5,7 +5,16 @@
 }
 
 agm-map{
-    height: 300px;
-    width: 500px;
+    height: 250px;
+    width: 450px;
     
+}
+
+/* .oil-change-info h1{
+ text-align: center;
+} */
+
+.oil-change-info img{
+    width: 100%;
+    max-width: 500px;
 }

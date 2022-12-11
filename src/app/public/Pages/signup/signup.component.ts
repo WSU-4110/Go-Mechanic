@@ -41,7 +41,6 @@ export class SignupComponent implements OnInit {
 
   get name() {
     return this.signUpForm.get('name');
-   
   }
   
   get email(){
@@ -64,11 +63,12 @@ export class SignupComponent implements OnInit {
     }
 
     this.authService.signUp(email, password).pipe(
-      switchMap(({ user: {uid} }) => this.userService.addUser({ uid, email, displayName: name})),
+      switchMap(({ user: {uid} }) => this.userService.addUser({
+        uid, email, displayName: name,
+        role: 'user'
+      })),
         this.toast.observe({
-          success: 'Sign up successful!',
-          loading: 'loading...',
-          error: ({ message }) => `${message}`,
+          error: ({ message }) => `${message}`, // [jsb] - I've deleted the notification on successful login, (furthering jims bug)
         }),
     )
     .subscribe(() => {

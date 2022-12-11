@@ -2,13 +2,13 @@
   <h1>Go Mechanic sign-up</h1>
   <form [formGroup]="signUpForm" (ngSubmit)="submit()">
     <mat-form-field>
-      <input matInput placeholder="Name" formControlName="name" />
+      <input matInput placeholder="Username" formControlName="name" />
       <mat-error *ngIf="name?.errors?.['required']">
         Name is required
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Email address" formControlName="email" />
+      <input matInput placeholder="Email" formControlName="email" />
       <mat-error *ngIf="email?.errors?.['required']">
         Email address is required
       </mat-error>
