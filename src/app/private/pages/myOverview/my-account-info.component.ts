@@ -9,6 +9,7 @@ import { concatMap, switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { ImageUploadService } from 'src/app/core/services/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
+import { PostsService } from 'src/app/core/services/posts.service';
 
   //Code for the new dropdown menu to select account type - Anthony
   interface Account {
@@ -32,6 +33,7 @@ export class MyAccountInfoComponent implements OnInit {
   ];
 
   user$ = this.authService.currentUser$;
+  userProf$ = this.postsService.currentUserProfile$;
 
   profileForm = new FormGroup({
     uid: new FormControl('', {
@@ -49,10 +51,41 @@ export class MyAccountInfoComponent implements OnInit {
     phone: new FormControl('', {
       nonNullable: true,
     }),
-    photoURL: new FormControl('', {
+    role: new FormControl('', {
+      nonNullable: true,
+    }),
+    address: new FormControl('', {
       nonNullable: true,
     }),
     zip: new FormControl('', {
+      nonNullable: true,
+    }),
+  });
+
+  //Testing duo update in firebase
+  CommunityProfileForm = new FormGroup({
+    uid: new FormControl('', {
+      nonNullable: true,
+    }),
+    displayName: new FormControl('', {
+      nonNullable: true,
+    }),
+    firstName: new FormControl('', {
+      nonNullable: true,
+    }),
+    description: new FormControl('', {
+      nonNullable: true,
+    }),
+    experience: new FormControl('', {
+      nonNullable: true,
+    }),
+    role: new FormControl('', {
+      nonNullable: true,
+    }),
+    zip: new FormControl('', {
+      nonNullable: true,
+    }),
+    city: new FormControl('', {
       nonNullable: true,
     }),
   });
@@ -63,6 +96,7 @@ export class MyAccountInfoComponent implements OnInit {
     private imageUploadService: ImageUploadService, 
     private toast: HotToastService,
     private usersService: UsersService,
+    private postsService: PostsService,
     ) { }
 
   ngOnInit(): void {
@@ -84,13 +118,31 @@ export class MyAccountInfoComponent implements OnInit {
       ).subscribe();
     }
 
+    //Saves to 'users' collection firestore
     saveProfile(){  
       const {uid, ...data} = this.profileForm.value;
-
-      if (!uid) {
-        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+      
+      //This checks if a user already has a 'mechanic role', if not it will continue with saveCommunityProfile method.
+      if(this.profileForm.value.role === 'mechanic'){
+        if (!uid) {
+          return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+        }
+        this.usersService.updateUser({
+          uid, ...data,
+          role: 'mechanic'
+        })
+        .pipe(this.toast.observe({
+          loading: 'Updating data...',
+          success: 'Your secured mechanic account been updated',
+          error: 'There was an error in updating the data.'
+        })
+        )
+        .subscribe();
       }
-
+      else{
+        if (!uid) {
+        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+        }
       this.usersService.updateUser({
         uid, ...data,
         role: 'user'
@@ -103,10 +155,47 @@ export class MyAccountInfoComponent implements OnInit {
       )
       .subscribe();
     }
+  }
 
-    //Code for the new dropdown menu to select account type - Anthony
+//Saves to 'CommunityProfile' collection firestore
+    saveCommunityProfile(user: User) {
+      
+    const {uid, ...data} = this.CommunityProfileForm.value;
+    if(this.CommunityProfileForm.value.role === 'mechanic'){
+      if (!uid) {
+        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+      }
+      this.postsService.createPublicProfile({
+        uid, ...data,
+        role: 'mechanic'
+      })
+      .pipe(this.toast.observe({
+        loading: 'Updating data...',
+        success: 'Your mechanic profile has updated.',
+        error: 'There was an error in updating the data.'
+      })
+      )
+      .subscribe();
+    }
+    else{
+      if (!uid) {
+      return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+      }
+    this.postsService.createPublicProfile({
+      uid, ...data,
+      role: 'user'
+    })
+    .pipe(this.toast.observe({
+      loading: 'Updating data...',
+      success: 'Your profile has been updated!',
+      error: 'There was an error in updating the data.'
+    })
+    )
+    .subscribe();
+  }
+}
 
-
+//Code for the new dropdown menu to select account type - Anthony
   // Function I created in order to allow me to change tabs within the side-nav bar instead of using page components. This took forever! - Anthony
   openSideNav(event: any, tabName: string) {
     var i, x, sideNavLinks;

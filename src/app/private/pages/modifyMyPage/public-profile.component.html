@@ -1,6 +1,6 @@
 <div class="form-container mat-elevation-z5 text-center" *ngIf="user$ | async as user">
   <div class *ngIf="userAuth$ | async as userAuth">
-  <h1>User Profile</h1>
+  <h1>Your Public Profile</h1>
   <div class="profile-image"> <img width="120" height="120" [src]="userAuth.photoURL ?? 'assets/images/placeholderProfile.png'" />
     <button mat-mini-fab (click)="inputField.click()">
       <mat-icon>edit</mat-icon>

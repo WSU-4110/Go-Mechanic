@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  addDoc,
   collection,
   collectionData,
   doc,
@@ -7,7 +8,7 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
-import { from, Observable, switchMap, of } from 'rxjs';
+import { from, Observable, switchMap, of, concatMap, take } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { UsersService } from './user.service';
 import { AuthenticationService } from '../auth/auth.service';
@@ -20,12 +21,11 @@ export class PostsService {
   constructor(private firestore: Firestore, private userService: UsersService, private authService: AuthenticationService ) { }
 
 
-//This method  will write 'users' data collection to the 'CommunityProfile' collections, more fields will be added and user role is assigned.
+//This method  will write 'users' data collection to the 'CommunityProfile' collections, more fields will be added and 'user' role is assigned.
   createPublicProfile(user: ProfileUser): Observable<any> {
       const ref = doc(this.firestore, 'CommunityProfile', user?.uid);
     return from(setDoc(ref, user));
   }
-
 
 //This method references the data from 'users' collection in firebase.
   get currentUserProfile$(): Observable<any> {
@@ -40,7 +40,7 @@ export class PostsService {
     );
   } 
 
-//This method references the data from 'CommunityProfile' collection in firebase.
+//Im testing, trying to get the data updated in two collections on firebase.
   get currentUserPage$(): Observable<any> {
     return this.authService.currentUser$.pipe(
       switchMap((user) => {
@@ -52,4 +52,5 @@ export class PostsService {
       })
     );
   }
+
 }
