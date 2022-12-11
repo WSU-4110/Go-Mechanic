@@ -34,17 +34,17 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
-import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-import { AgmCoreModule } from "@agm/core";
-import {MatSidenavModule} from '@angular/material/sidenav';
+<<<<<<< HEAD
+
+
 
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
-
-import { HotToastModule } from '@ngneat/hot-toast'; 
-import { MyAccountInfoComponent } from './private/pages/my-account-info/my-account-info.component';
-
-
+=======
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AgmCoreModule } from "@agm/core";
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+>>>>>>> origin/developmental_joseph
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,9 +52,13 @@ import { MyAccountInfoComponent } from './private/pages/my-account-info/my-accou
     routingComponents,
     MyInboxComponent,
     ProfileComponent,
-    //SignupComponent,
+    SignupComponent,
     DateDisplayPipe,
-    MyAccountInfoComponent
+<<<<<<< HEAD
+
+=======
+    
+>>>>>>> origin/developmental_joseph
   ],
 
   imports: [
@@ -79,14 +83,22 @@ import { MyAccountInfoComponent } from './private/pages/my-account-info/my-accou
     BrowserAnimationsModule,
     MatListModule,
     MatDividerModule,
+<<<<<<< HEAD
+
+
+
+
+
+    
+    CoreModule,
+    SharedModule,
+=======
     MatSidenavModule,
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyDnBnebUqKv3TsROEAd6JwhsvFQvWvCasU',
       libraries: ['places']
     }),
-    CoreModule,
-    SharedModule,
-    HotToastModule.forRoot(),
+>>>>>>> origin/developmental_joseph
   ],
 
   providers: [DatePipe],
