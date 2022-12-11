@@ -21,7 +21,7 @@ module.exports = function (config) {
 
         "spec_dir": "site/dist/tests",
         //"spec_files": ["**/*[sS]pec.js", "**/*.spec.ts"],
-        "spec_files": ["**/*/navbar.component.spec.ts],
+        "spec_files": ["**/*/navbar.component.spec.ts"],
         "helpers": ["helpers/**/*.js"],
         "random": true,
         "seed": null,
