@@ -19,4 +19,5 @@ describe('MyAccountInfoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

@@ -16,7 +16,7 @@ mat-sidenav-container{
     
 }
 
-.content{
+/* .content{
     height: (100vh - 98px);
     margin: 16px;
     margin-left: 32px;
@@ -28,7 +28,9 @@ mat-sidenav-container{
     color: lightgrey;
 
     border-radius: 10px;
-}
+
+    overflow: auto;
+} */
 
 .menu-button{
     width: 100%;
@@ -54,3 +56,28 @@ mat-divider{
     margin-bottom: 16px;
     background-color: white;
 }
+
+.menu {
+    position: sticky;
+    display: inline-block;
+    vertical-align: top;
+    max-height: 100vh;
+    overflow-y: auto;
+    width: 200px;
+    top: 0;
+    bottom: 0;
+    padding: 30px;
+}
+  
+  /* .content {
+    display: inline-block;
+  } */
+
+.menu-content {
+    display: none;
+    }
+
+    .is-active {
+        display: block;
+}
+
