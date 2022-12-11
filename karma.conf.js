@@ -20,7 +20,8 @@ module.exports = function (config) {
         // or set a specific seed with `seed: 4321`
 
         "spec_dir": "site/dist/tests",
-        "spec_files": ["**/*[sS]pec.js", "**/*.spec.ts"],
+        //"spec_files": ["**/*[sS]pec.js", "**/*.spec.ts"],
+        "spec_files": ["src/app/core/navbar/navbar.component.spec.ts],
         "helpers": ["helpers/**/*.js"],
         "random": true,
         "seed": null,
