@@ -49,3 +49,6 @@ jobs:
       
     - name: build
       run: npm run build:ci
+      
+    - name: Running Anthony's Unit Tests
+      run: karma start Go-Mechanic/karma.conf.js --glob=src/app/core/navbar/navbar.component.spec.ts
