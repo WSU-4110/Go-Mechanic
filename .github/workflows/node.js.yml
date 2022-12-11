@@ -34,7 +34,7 @@ jobs:
         
     - name: Install dependencies
       run: npm ci --force
-      working-directory: /home/runner/work/Go-Mechanic/node_modules
+  #    working-directory: /home/runner/work/Go-Mechanic/node_modules
       
     - name: Cache node_modules
       uses: actions/cache@v3
