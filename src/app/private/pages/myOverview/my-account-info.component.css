@@ -16,21 +16,9 @@ mat-sidenav-container{
     
 }
 
-/* .content{
-    height: (100vh - 98px);
-    margin: 16px;
-    margin-left: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 2em;
-    color: lightgrey;
-
-    border-radius: 10px;
-
-    overflow: auto;
-} */
+.menu-content{
+    display: inline;
+} 
 
 .menu-button{
     width: 100%;
@@ -39,6 +27,22 @@ mat-sidenav-container{
     justify-content: flex-start;
     font-size: 1rem;
     
+}
+
+.profile-image {
+    position: relative;
+    width: 120px;
+    margin: auto;
+}
+.profile-image > img {
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.profile-image > button {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
 }
 
 mat-icon{

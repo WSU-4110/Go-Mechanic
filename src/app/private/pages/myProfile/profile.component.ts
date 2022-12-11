@@ -76,6 +76,7 @@ export class ProfileComponent implements OnInit {
 
       this.usersService.updateUser({
         uid, ...data,
+        role: 'user'
       })
       .pipe(this.toast.observe({
         loading: 'Updating data...',

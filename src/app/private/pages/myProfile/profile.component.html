@@ -2,7 +2,7 @@
   class="form-container mat-elevation-z5 text-center"
   *ngIf="user$ | async as user"
 >
-  <h1>User Profile</h1>
+  <h1>Secured User Profile</h1>
   <div class="profile-image">
     <img
       width="120"
@@ -62,6 +62,15 @@
         matInput
         formControlName="address"
         placeholder="Address"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type
+        type="text"
+        matInput
+        formControlName="zip"
+        placeholder="zip code"
       />
     </mat-form-field>
 
