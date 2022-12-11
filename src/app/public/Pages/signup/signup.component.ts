@@ -32,9 +32,9 @@ export class SignupComponent implements OnInit {
   { validators: passwordsMatchValidator() }) 
 
 
-  constructor(
+/*  constructor(
     private authService: AuthenticationService
-    ) { }
+    ) { } */
 
   constructor(private authService: AuthenticationService, private toast: HotToastService, private router: Router,private  userService: UsersService) { }
 
