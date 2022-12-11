@@ -49,5 +49,6 @@ jobs:
       
     - name: Running Anthony's Unit Tests
       run: npm run test:ci
-#      run: npm run test:ci
-    
+      
+    - name: Running Joseph's Unit Tests
+      run: npm run ng test --watch=false --browsers=ChromeHeadless --include='**/myInbox/*.spec.ts'
