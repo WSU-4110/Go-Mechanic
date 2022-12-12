@@ -1,0 +1,20 @@
+.map-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+agm-map{
+    height: 250px;
+    width: 450px;
+    
+}
+
+/* .oil-change-info h1{
+ text-align: center;
+} */
+
+.oil-change-info img{
+    width: 100%;
+    max-width: 500px;
+}
