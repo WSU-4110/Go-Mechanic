@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/core/auth/auth.service';
 import { SignupComponent } from '../signup/signup.component';
+import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 
 
 @Component({

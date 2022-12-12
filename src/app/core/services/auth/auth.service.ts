@@ -1,11 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import {
-  Auth,
-  authState,
-  createUserWithEmailAndPassword,
-  updateProfile,
-  UserInfo,
-} from '@angular/fire/auth';
+import { Auth, authState, createUserWithEmailAndPassword, updateProfile, UserInfo, } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { concatMap, Observable, from, of } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -17,16 +11,20 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class AuthenticationService {
-
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth,
+  constructor(
+    private auth: Auth,
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
+<<<<<<< HEAD:src/app/core/auth/auth.service.ts
     private toast: HotToastService,
     public dialog: MatDialog
     ) {}
+=======
+    private toast: HotToastService){}
+>>>>>>> origin/developmental:src/app/core/services/auth/auth.service.ts
 
   SendVerificationMail() {
     return this.afAuth.currentUser
@@ -44,12 +42,12 @@ export class AuthenticationService {
     return this.afAuth
     .signInWithEmailAndPassword(email, password)
     .then((result) => {
-      if (result.user.emailVerified !== true) {
+      if (result.user.emailVerified !== true) { //These null errors are common and a headache. doesnt seem to change functionality.... {joe}
         this.toast.info(
-          'Please verify your email address...'
+          'Access denied'
         );
         this.toast.info(
-          'If you have not received it within 10-15 minutes please check your spam folder...'
+          'Verify your email, check you spam!'
         );
         this.forceLogout();
       } 
@@ -84,13 +82,12 @@ export class AuthenticationService {
 
   updateProfileData(profileData: Partial<UserInfo>): Observable<any> {
     const user = this.auth.currentUser;
-     return of(user).pipe(
-       concatMap((user) => {
-         if (!user) throw new Error('Not authenticated');
-
-         return updateProfile(user, profileData);
-       })
-     );
+    return of(user).pipe(
+      concatMap((user) => {
+        if (!user) throw new Error('Not authenticated');
+        return updateProfile(user, profileData);
+      })
+    );
   }
 
   closePopUps(){

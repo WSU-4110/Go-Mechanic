@@ -1,13 +1,9 @@
 <br><br>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
-  </script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
 </head>
 
@@ -26,11 +22,8 @@
     </ul>
 
     <p class="menu-label">
-      Transactions
     </p>
-
     <ul class="menu-list">
-      <li><a class="menu-item" (click)="openSideNav($event, 'Payments')">Payments</a></li> <br>
       <h5><a class="menu-item" routerLink="/applyRole">Become a mechanic</a></h5>
     </ul>
   </mat-drawer>
@@ -40,6 +33,7 @@
   <mat-drawer-content style="margin-left: 220px;">
     <!-- Equivalent to a separate page so treat each of these as such. - Anthony -->
 
+<<<<<<< HEAD
     <!--Top of Dashboard Section -->
     <div id="Dashboard" class="menu-content" style="display:block">
       <div class *ngIf="userProf$ | async as user"> <!-- this communicates to db via 'Community profiles' -->
@@ -64,18 +58,43 @@
                                 </div>
                         </div>
                     </div>
+=======
+    <!--Top of Dashboard Section [Joseph] -->
+    <div id="Dashboard" class="menu-content" style="display:block">
+      <div class *ngIf="userProfile$ | async as user"> <!-- this communicates to db via 'users service' -->
+        <div class *ngIf="currentUser$ | async as userAuth"> <!--this communicates to db via 'auth service' - [jsb]-->
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="our-team">
+                  <div class="picture"> <img width="120" height="120"
+                      [src]="userAuth.photoURL ?? 'assets/images/placeholderProfile.png'" />
+                  </div>
+                  <div class="team-content">
+                    <h1 class="name"> <span class="user-name"> {{ user.displayName}} </span>
+                    </h1>
+                    <h3 class="name">
+                      <span>About '{{user.firstName}}', {{user.description}}
+                      </span>
+                    </h3>
+                    <h5 class="name"> A Go-Mechanic
+                      <span class="user-info"> {{ user.role}}, near </span>
+                      <span class="user-info"> {{ user.zip }} </span>
+                    </h5>
+                  </div>
+>>>>>>> origin/developmental
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    
+      </div>
       </div>
     <!--End of Dashboard Section-->
 
-    <!--Top of Account Management Section -->
+    <!--Top of Account Management Section [Joseph] -->
     <div id="Account_Management" class="menu-content" style="display:none">
-      <div class="text-center" *ngIf="user$ | async as user" >
-      <!-- Old Account Management Section based off path 'profile' -->
+      <div class="text-center" *ngIf="currentUser$ | async as user" >
         <h1>Secured User Profile</h1>
         <div class="profile-image">
           <img
@@ -149,14 +168,16 @@
               />
             </mat-form-field>
 
+            <div class = "row"> <!--Start new row-->
             <mat-form-field>
               <input type
                 type="text"
                 matInput
                 formControlName="description"
-                placeholder="description"
+                placeholder="Description"
               />
             </mat-form-field>
+            </div>
 
 
           </div>
@@ -168,7 +189,6 @@
           </div>
         </form>
       </div>
-      <!-- Account Type Selection -->
     </div>
     <!--End of Account Management Section-->
 
@@ -222,11 +242,7 @@
     </div>
     <!--End of My_Cars Section-->
 
-    <!--Start of Payment Section-->
-    <div id="Payments" class="menu-content" style="display:none">
-      Payment Section <!--Placeholder for Payment Section -Jim-->
-    </div>
-    <!--End of Payment Section-->
+    
 
 
 

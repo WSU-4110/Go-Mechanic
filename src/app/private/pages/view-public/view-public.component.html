@@ -1,0 +1,51 @@
+<br><br><br>
+<div class = 'container'>
+  <div class = "container">
+    <div class = "chat-list mat-elevation-z5">
+        <div class = "search-input">
+            <mat-form-field appearance="outline">
+                <input
+                matInput
+                placeholder="Search for users..."
+                [formControl]="searchControl"
+                [matAutocomplete]="users"
+                />
+            </mat-form-field>
+            <mat-autocomplete #users="matAutocomplete">
+                <mat-option *ngFor="let users of users$ | async" (click)="createChat(users)" routerLink="/my-inbox">
+                    {{ users.displayName}} - {{ users.role}}
+                </mat-option>
+            </mat-autocomplete>          
+        </div>
+</div>
+
+<br><br>
+<div id="Dashboard" class="menu-content" style="display:block">
+  <div *ngFor="let user of users$ | async"> 
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="our-team">
+              <div class="picture"> <img width="120" height="120"
+                  [src]="user.photoURL ?? 'assets/images/placeholderProfile.png'" />
+              </div>
+              <div class="team-content">
+                <h1 class="name"> <span class="user-name"> {{ user.displayName}} </span>
+                </h1>
+                <h3 class="name">
+                  <span>About '{{user.firstName}}', {{user.description}}
+                  </span>
+                </h3>
+                <h5 class="name"> A Go-Mechanic
+                  <span class="user-info"> {{ user.role}}, near </span>
+                  <span class="user-info"> {{ user.zip }} </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+

@@ -15,6 +15,7 @@ import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-in
 import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
 import { TermsComponent } from './public/Pages/terms/terms.component';
 import { PrivacypolicyComponent } from './public/Pages/privacypolicy/privacypolicy.component';
+import { ViewPublicComponent } from './private/pages/view-public/view-public.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -81,6 +82,12 @@ const routes: Routes = [
   {
     path: 'my-inbox',
     component: MyInboxComponent,
+    ...canActivate(redirectToLogin)
+  },
+
+  {
+    path: 'testing',
+    component: ViewPublicComponent,
     ...canActivate(redirectToLogin)
   },
 

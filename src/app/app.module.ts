@@ -43,7 +43,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
 import { AddCarDialogComponent } from './private/pages/add-car-dialog/add-car-dialog.component';
-
+import { ViewPublicComponent } from './private/pages/view-public/view-public.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +56,7 @@ import { AddCarDialogComponent } from './private/pages/add-car-dialog/add-car-di
     FooterComponent,
     ModifyMechPageComponent,
     AddCarDialogComponent,
+    ViewPublicComponent,
   ],
 
   imports: [
