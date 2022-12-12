@@ -1,0 +1,32 @@
+<header>
+  <br><br><br>
+</header>
+<div class="content has-text-centered">
+  <h1>Search results</h1>
+  <p>Hire a mobile mechanic for an oil change, tire rotations and more!</p>
+  <br><br>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of Users">
+      <th scope="row">{{ user.uid }}</th>
+      <td>{{ user.displayName }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.city }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br><br><br>
+
+</div>

@@ -16,6 +16,7 @@ import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { ProfileComponent } from './private/pages/profile/profile.component';
+import {RepairsComponent} from "./repairs/repairs.component";
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
@@ -68,6 +69,11 @@ const routes: Routes = [
   {
     path: 'searchrepairspage',
     component: SearchrepairspageComponent
+  },
+
+  // repairs
+  { path: 'repairs',
+    component: RepairsComponent
   },
 
   {

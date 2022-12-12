@@ -40,6 +40,7 @@ import { AgmCoreModule } from "@agm/core";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
+import { RepairsComponent } from './repairs/repairs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import {SharedModule} from "./shared/shared.module";
     ProfileComponent,
     SignupComponent,
     DateDisplayPipe,
+    RepairsComponent,
 
   ],
 
