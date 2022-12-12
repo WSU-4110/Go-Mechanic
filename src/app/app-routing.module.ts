@@ -12,10 +12,12 @@ import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/sea
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { ProfileComponent } from './private/pages/myProfile/profile.component';
+
 import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
-import { PublicProfileComponent } from './private/pages/modifyMyPage/public-profile.component';
-import { MyPageViewComponent } from './private/pages/viewMyPage/my-page-view.component';
+import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
+import { TermsComponent } from './public/Pages/terms/terms.component';
+import { PrivacypolicyComponent } from './public/Pages/privacypolicy/privacypolicy.component';
+import { ViewPublicComponent } from './private/pages/view-public/view-public.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -74,6 +76,15 @@ const routes: Routes = [
     component: MaintenancepageComponent
   },
 
+  {
+    path:'terms',
+    component: TermsComponent
+  },
+  {
+    path:'privacypolicy',
+    component: PrivacypolicyComponent
+  },
+
   //Private Routing
   {
     path: 'my-account-info',
@@ -88,22 +99,17 @@ const routes: Routes = [
   },
 
   {
-    path: 'editMyPage',
-    component: PublicProfileComponent,
+    path: 'testing',
+    component: ViewPublicComponent,
     ...canActivate(redirectToLogin)
   },
 
+//This path is used to create a community profile with a 'mechanic' role. updates 'users'
 {
-  path : 'viewMyPage',
-  component: MyPageViewComponent,
+  path: 'applyRole',
+  component: ModifyMechPageComponent,
   ...canActivate(redirectToLogin)
-}
-
-  // {
-  //   path: 'profile',
-  //   component: ProfileComponent,
-  //   ...canActivate(redirectToLogin)
-  // }
+},
 
 ];
 

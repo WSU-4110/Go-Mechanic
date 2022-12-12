@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/core/auth/auth.service';
+import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 
 
 @Component({

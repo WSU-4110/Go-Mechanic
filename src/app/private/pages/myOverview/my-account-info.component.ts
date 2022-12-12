@@ -1,20 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { ProfileUser } from 'src/app/models/user-profile';
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
-import { concatMap, switchMap } from 'rxjs';
-import { AuthenticationService } from 'src/app/core/auth/auth.service';
-import { ImageUploadService } from 'src/app/core/services/image-upload.service';
+import { concatMap } from 'rxjs';
+import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
+import { ImageUploadService } from 'src/app/core/services/ImageUpload/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
 
-  //Code for the new dropdown menu to select account type - Anthony
-  interface Account {
-    value: string;
-    viewValue: string;
-  }
 
 @Component({
   selector: 'app-my-account-info',
@@ -24,15 +16,10 @@ import { UsersService } from 'src/app/core/services/user.service';
 
 
 export class MyAccountInfoComponent implements OnInit {
+  currentUser$ = this.authService.currentUser$;
+  userProfile$ = this.usersService.currentUserProfile$;
 
-  //Code related to the new account select dropdown - Anthony
-  accounts: Account[] = [
-    {value: 'customer-0', viewValue: 'Customer'},
-    {value: 'contractor-1', viewValue: 'Contractor'}
-  ];
-
-  user$ = this.authService.currentUser$;
-
+  //Standard Profile form for user profile, based off models/user-profile - [Joseph]
   profileForm = new FormGroup({
     uid: new FormControl('', {
       nonNullable: true,
@@ -49,11 +36,19 @@ export class MyAccountInfoComponent implements OnInit {
     phone: new FormControl('', {
       nonNullable: true,
     }),
+    role: new FormControl('', {
+      nonNullable: true,
+    }),
     address: new FormControl('', {
       nonNullable: true,
     }),
+    description: new FormControl('', {
+      nonNullable: true,
+    }),
+    zip: new FormControl('', {
+      nonNullable: true,
+    }),
   });
-
 
   constructor(
     private authService : AuthenticationService, 
@@ -69,7 +64,8 @@ export class MyAccountInfoComponent implements OnInit {
         this.profileForm.patchValue({ ...user });
       });
   }
-
+  
+  //From auth service... - [Joseph]
   uploadImage(event: any, user: User) {
     this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe(
       this.toast.observe({
@@ -81,35 +77,43 @@ export class MyAccountInfoComponent implements OnInit {
       ).subscribe();
     }
 
-    saveProfile(){  
+  //Saves to 'users' collection firestore and verifies role...needs refractoring in my opinion - [Joseph]
+  saveProfile(){  
       const {uid, ...data} = this.profileForm.value;
-
-      if (!uid) {
-        return; /* Error message portion if UID is undefined for whatever reason. - Anthony */
+      
+      if(this.profileForm.value.role === 'mechanic'){
+        if (!uid) { return;}
+        this.usersService.updateUser({uid, ...data, role: 'mechanic' })
+        .pipe(this.toast.observe({
+          success: 'Mechanic profiles have been updated',
+          error: 'There was an error in updating the data.'
+        })
+        )
+        .subscribe();
       }
-
+      else{
+        if (!uid) { return; }
       this.usersService.updateUser({
         uid, ...data,
-        role: ''
+        role: 'user'
       })
       .pipe(this.toast.observe({
-        loading: 'Updating data...',
-        success: 'Data has been successfully updated!',
+        success: 'Profiles have been successfully updated',
         error: 'There was an error in updating the data.'
       })
       )
       .subscribe();
     }
+  }
 
-    //Code for the new dropdown menu to select account type - Anthony
 
-
+//Code for the new dropdown menu to select account type - Anthony
   // Function I created in order to allow me to change tabs within the side-nav bar instead of using page components. This took forever! - Anthony
   openSideNav(event: any, tabName: string) {
     var i, x, sideNavLinks;
     x = document.getElementsByClassName("menu-content") as HTMLCollectionOf<HTMLElement>;
     for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+      x[i].style.display = "none";
     }
     sideNavLinks = document.getElementsByClassName("menu-item");
     for (i = 0; i < x.length; i++) {
@@ -119,4 +123,8 @@ export class MyAccountInfoComponent implements OnInit {
       event.currentTarget.className += " is-active";
   }
 
+
+  addCar(){
+    //Placeholder for now
+  }
 }
