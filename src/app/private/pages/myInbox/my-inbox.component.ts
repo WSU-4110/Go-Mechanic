@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { combineLatest, map, of, startWith, switchMap, tap } from 'rxjs';
 import { UsersService } from 'src/app/core/services/user.service';
 import { ProfileUser } from 'src/app/models/user-profile';
-import { ChatService } from 'src/app/core/services/chat.service';
+import { ChatService } from 'src/app/core/services/Chat/chat.service';
 
 @Component({
   selector: 'app-my-inbox',
@@ -23,6 +23,7 @@ export class MyInboxComponent implements OnInit {
   searchControl = new FormControl('');
   chatListControl = new FormControl('');
   messageControl = new FormControl('');
+  
 
 
   users$ = combineLatest([this.userService.allUsers$, this.user$, this.searchControl.valueChanges.pipe(startWith(''))]).pipe(
@@ -50,7 +51,7 @@ export class MyInboxComponent implements OnInit {
   }
 
   createChat(otherUser: ProfileUser) {
-    this.chatsService.isExistingChat(otherUser?.uid).pipe(
+    this.chatsService.isExistingChat(otherUser.uid).pipe(
       switchMap(chatId => {
         if (chatId) {
           return of(chatId);

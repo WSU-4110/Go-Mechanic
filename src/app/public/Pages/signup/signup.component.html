@@ -1,14 +1,15 @@
+<br><br><br>
 <div class="form-container mat-elevation-z5">
   <h1>Go Mechanic sign-up</h1>
   <form [formGroup]="signUpForm" (ngSubmit)="submit()">
     <mat-form-field>
-      <input matInput placeholder="Name" formControlName="name" />
+      <input matInput placeholder="Username" formControlName="name" />
       <mat-error *ngIf="name?.errors?.['required']">
         Name is required
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Email address" formControlName="email" />
+      <input matInput placeholder="Email" formControlName="email" />
       <mat-error *ngIf="email?.errors?.['required']">
         Email address is required
       </mat-error>
@@ -41,6 +42,11 @@
     <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
         Passwords should match
     </mat-error>
+    <span>
+      By signing up you are agreeing to our
+     <a target="_blank" href="/terms" >Terms of Service</a> and
+     <a target="_blank" href="/privacypolicy">Privacy Policy</a>
+    </span>
     <div class="center margin-top">
       <button type="submit" mat-raised-button color="primary">Sign Up!</button>
     </div>

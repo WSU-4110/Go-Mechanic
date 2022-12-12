@@ -1,0 +1,118 @@
+.menu{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.137);
+}
+
+.menu-content {
+    display: none;
+    margin: 5px;
+    }
+
+    .is-active {
+        display: block;
+}
+  
+.menu-content{
+    display: flex;
+} 
+
+.profile-image {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.profile-image > img {
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile-image > button {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+}
+
+.our-team {
+    padding: 50px 0 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #d9d8d4;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .our-team .picture {
+    display: inline-block;
+    height: 130px;
+    width: 130px;
+    margin-bottom: 50px;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .our-team .picture::before {
+    content: "";
+    width: 100%;
+    height: 0;
+    border-radius: 50%;
+    background-color: #6c6e709d;
+    position: absolute;
+    bottom: 135%;
+    right: 0;
+    left: 0;
+    opacity: 0.9;
+    transform: scale(3);
+    transition: all 0.3s linear 0s;
+  }
+  
+  .our-team:hover .picture::before {
+    height: 100%;
+  }
+  
+  .our-team .picture img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    transform: scale(1);
+    transition: all 0.9s ease 0s;
+  }
+  
+  .our-team:hover .picture img {
+    box-shadow: 0 0 0 14px #f7f5ec;
+    transform: scale(0.7);
+  }
+  
+  .our-team .title {
+    display: block;
+    font-size: 15px;
+    color: #4e5052;
+    text-transform: capitalize;
+  }
+  
+  .search-input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+
+.mat-form-field--inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mat-form-field--inline .mat-form-field {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.mat-form-field--inline .mat-form-field:nth-child(1) {
+  margin-right: 10px;
+}

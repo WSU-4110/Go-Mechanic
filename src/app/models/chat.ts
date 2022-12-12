@@ -8,7 +8,7 @@ export interface Chat {
   userIds: string[];
   users: ProfileUser[];
 
-  //
+  //bug: not displaying chat pic - [jsb]
   chatPic?: string;
   chatName?: string;
 }

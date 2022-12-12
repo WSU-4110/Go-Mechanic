@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyAccountComponent } from './private/pages/myAccount/my-account.component';
 import { AboutpageComponent } from './public/Pages/aboutpage/aboutpage.component';
 import { BrakejobpageComponent } from './public/Pages/brakejobpage/brakejobpage.component';
 import { ContactpageComponent } from './public/Pages/contactpage/contactpage.component';
@@ -11,13 +10,15 @@ import { MaintenancepageComponent } from './public/Pages/maintenancepage/mainten
 import { ReportissuepageComponent } from './public/Pages/report-issue-page/reportissuepage.component';
 import { SearchrepairspageComponent } from './public/Pages/searchrepairspage/searchrepairspage.component';
 import { SignupComponent } from './public/Pages/signup/signup.component';
-import { MySettingsComponent } from './private/pages/mySettings/my-settings.component';
 import { MyInboxComponent } from './private/pages/myInbox/my-inbox.component';
-
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { ProfileComponent } from './private/pages/profile/profile.component';
 import {RepairsComponent} from "./repairs/repairs.component";
 
+import { MyAccountInfoComponent } from './private/pages/myOverview/my-account-info.component';
+import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
+import { TermsComponent } from './public/Pages/terms/terms.component';
+import { PrivacypolicyComponent } from './public/Pages/privacypolicy/privacypolicy.component';
+import { ViewPublicComponent } from './private/pages/view-public/view-public.component';
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['home'])
 
@@ -81,16 +82,19 @@ const routes: Routes = [
     component: MaintenancepageComponent
   },
 
-  //Private Routing
   {
-    path: 'my-account',
-    component: MyAccountComponent,
-    ...canActivate(redirectToLogin)
+    path:'terms',
+    component: TermsComponent
+  },
+  {
+    path:'privacypolicy',
+    component: PrivacypolicyComponent
   },
 
+  //Private Routing
   {
-    path: 'my-settings',
-    component: MySettingsComponent,
+    path: 'my-account-info',
+    component: MyAccountInfoComponent,
     ...canActivate(redirectToLogin)
   },
 
@@ -101,10 +105,17 @@ const routes: Routes = [
   },
 
   {
-    path: 'profile',
-    component: ProfileComponent,
+    path: 'testing',
+    component: ViewPublicComponent,
     ...canActivate(redirectToLogin)
-  }
+  },
+
+//This path is used to create a community profile with a 'mechanic' role. updates 'users'
+{
+  path: 'applyRole',
+  component: ModifyMechPageComponent,
+  ...canActivate(redirectToLogin)
+},
 
 ];
 
