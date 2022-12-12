@@ -1,21 +1,22 @@
 
 <br><br><br><br>
 <div class="form-container mat-elevation-z5 text-center" *ngIf="user$ | async as user">
-    <h2>Apply to become a contractor</h2>
+    <h2>Apply the contractor role to become a</h2>
     <img src="https://txt.1001fonts.net/img/txt/dHRmLjcyLjAwMDAwMC5SMjhnVFdWamFHRnVhV00sLjE,/raleway.extrabold.webp" width="150" height="50"> 
     <br><br>
     <h4>start repairing cars now!</h4>
     <form class="margin-top" [formGroup]="applyRoleForm">
       <mat-form-field>
         <input type="text" matInput formControlName="description"
-          placeholder="Description (tell us about yourself bud)" />
+          placeholder="Description (tell users your favorite brands...)" />
       </mat-form-field>
       <div class="row">
         <mat-form-field>
           <input type="zipcode" matInput formControlName="zip" placeholder="Zip code" />
         </mat-form-field>
       </div>
-      <!--Im testing this to be create profile button, will be implementing a visibility guard in future, refactoring comes at a complexity cost.-->
-      <button mat-stroked-button color="primary" (click)="applyRole()" class="margin-top"> send</button>
+      <!--The user should be waiting for admin verification in future, refactoring comes at a complexity and time cost. [joseph]-->
+      <button mat-stroked-button color="primary" (click)="applyRole()" class="margin-top"> Apply </button>
+      <button class="button is-ghost" routerLink="/my-account-info">Return to dashboard</button>
     </form>
   </div>

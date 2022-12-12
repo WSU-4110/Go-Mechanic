@@ -41,6 +41,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-page.component';
+import { ViewPublicComponent } from './private/pages/view-public/view-public.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { ModifyMechPageComponent } from './private/pages/applyPage/modify-mech-p
     MyAccountInfoComponent,
     FooterComponent,
     ModifyMechPageComponent,
+    ViewPublicComponent,
   ],
 
   imports: [

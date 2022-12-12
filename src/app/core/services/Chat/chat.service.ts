@@ -1,21 +1,9 @@
 import { Injectable } from '@angular/core';
-import {
-  addDoc,
-  collection,
-  collectionData,
-  doc,
-  Firestore,
-  getDoc,
-  orderBy,
-  query,
-  Timestamp,
-  updateDoc,
-  where,
-} from '@angular/fire/firestore';
-import { concatMap, from, map, Observable, take, tap } from 'rxjs';
+import { addDoc, collection, collectionData, doc, Firestore, orderBy, query, Timestamp, updateDoc, where, } from '@angular/fire/firestore';
+import { concatMap, map, Observable, take, } from 'rxjs';
 import { Chat, Message } from 'src/app/models/chat';
 import { ProfileUser } from 'src/app/models/user-profile';
-import { UsersService } from './user.service';
+import { UsersService } from '../user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +34,7 @@ export class ChatService {
       ),
       map((ref) => ref.id)
     );
-}
+  }
 
     get myChats$(): Observable<Chat[]> {
       const ref = collection(this.firestore, 'chats');
@@ -58,7 +46,7 @@ export class ChatService {
       ) as Observable<Chat[]>
     })
   )
-}
+  }
 
     addChatMessage(chatId: string, message: string) : Observable<any> {
   const ref = collection(this.firestore, 'chats', chatId, 'messages');
@@ -82,9 +70,9 @@ export class ChatService {
   }
 
   addChatNameAndPic(currentUserId: string, chats: Chat[]): Chat[] {
-      chats.forEach((chat: Chat) => {
+      chats.forEach(chat => {
         const otherIndex = chat.userIds.indexOf(currentUserId) === 0 ? 1 : 0;
-        const { displayName, photoURL } = chat.users[otherIndex];
+        const {displayName, photoURL} = chat.users[otherIndex];
         chat.chatName = displayName;
         chat.chatPic = photoURL;
       })
@@ -96,7 +84,6 @@ export class ChatService {
     return this.myChats$.pipe(
       take(1),
       map(chats => {
-
         for (let i = 0; i < chats.length; i++) {
           if(chats[i].userIds.includes(otherUserId)){
             return chats[i].id;
@@ -106,10 +93,5 @@ export class ChatService {
       })
     )
   }
-
-
-
-
-
 
 }

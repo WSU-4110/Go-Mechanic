@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
-import { AuthenticationService } from 'src/app/core/auth/auth.service';
+import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 import { UsersService } from 'src/app/core/services/user.service';
-import { PostsService } from 'src/app/core/services/posts.service';
 
 @Component({
   selector: 'app-modify-mech-page',
@@ -12,19 +11,14 @@ import { PostsService } from 'src/app/core/services/posts.service';
 })
 export class ModifyMechPageComponent implements OnInit {
 
-  user$ = this.postsService.currentUserProfile$;
+  user$ = this.usersService.currentUserProfile$;
   userAuth$ = this.authService.currentUser$;
 
   applyRoleForm = new FormGroup({
     uid: new FormControl('', {
       nonNullable: true,
-    }),
-    displayName: new FormControl('', {
-      nonNullable: true,
-    }),
-    firstName: new FormControl('', {
-      nonNullable: true,
-    }),
+    }),//This field shouold never be changed....
+    
     description: new FormControl('', {
       nonNullable: true,
     }),
@@ -44,12 +38,11 @@ export class ModifyMechPageComponent implements OnInit {
     private authService : AuthenticationService, 
     private toast: HotToastService,
     private usersService: UsersService,
-    private postsService: PostsService,
-    
+  
     ) { }
 
   ngOnInit(): void {
-    this.postsService.currentUserProfile$
+    this.usersService.currentUserProfile$
       //.pipe(untilDestroyed(this)
       .subscribe((user) => {
         this.applyRoleForm.patchValue({ ...user });

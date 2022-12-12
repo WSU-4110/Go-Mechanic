@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
-import { AuthenticationService } from 'src/app/core/auth/auth.service';
+import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 import { UsersService } from 'src/app/core/services/user.service';
 import { switchMap } from 'rxjs';
 

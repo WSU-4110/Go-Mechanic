@@ -150,8 +150,9 @@
   }
 
   .button{
-    margin-top: 10px;
-    left: 300px;
+    display: inline-block;
+    padding: 8px 16px;
+
     width: 175px;
 }
 

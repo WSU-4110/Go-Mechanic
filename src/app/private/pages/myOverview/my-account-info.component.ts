@@ -1,21 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { ProfileUser } from 'src/app/models/user-profile';
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
-import { concatMap, switchMap } from 'rxjs';
-import { AuthenticationService } from 'src/app/core/auth/auth.service';
-import { ImageUploadService } from 'src/app/core/services/image-upload.service';
+import { concatMap } from 'rxjs';
+import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
+import { ImageUploadService } from 'src/app/core/services/ImageUpload/image-upload.service';
 import { UsersService } from 'src/app/core/services/user.service';
-import { PostsService } from 'src/app/core/services/posts.service';
 
-  //Code for the new dropdown menu to select account type - Anthony
-  interface Account {
-    value: string;
-    viewValue: string;
-  }
 
 @Component({
   selector: 'app-my-account-info',
@@ -25,16 +16,10 @@ import { PostsService } from 'src/app/core/services/posts.service';
 
 
 export class MyAccountInfoComponent implements OnInit {
+  currentUser$ = this.authService.currentUser$;
+  userProfile$ = this.usersService.currentUserProfile$;
 
-  //Code related to the new account select dropdown - Anthony
-  accounts: Account[] = [
-    {value: 'customer-0', viewValue: 'Customer'},
-    {value: 'contractor-1', viewValue: 'Contractor'}
-  ];
-
-  user$ = this.authService.currentUser$;
-  userProf$ = this.postsService.currentUserProfile$;
-
+  //Standard Profile form for user profile, based off models/user-profile - [Joseph]
   profileForm = new FormGroup({
     uid: new FormControl('', {
       nonNullable: true,
@@ -65,41 +50,11 @@ export class MyAccountInfoComponent implements OnInit {
     }),
   });
 
-  //Testing duo update in firebase
-  CommunityProfileForm = new FormGroup({
-    uid: new FormControl('', {
-      nonNullable: true,
-    }),
-    displayName: new FormControl('', {
-      nonNullable: true,
-    }),
-    firstName: new FormControl('', {
-      nonNullable: true,
-    }),
-    description: new FormControl('', {
-      nonNullable: true,
-    }),
-    experience: new FormControl('', {
-      nonNullable: true,
-    }),
-    role: new FormControl('', {
-      nonNullable: true,
-    }),
-    zip: new FormControl('', {
-      nonNullable: true,
-    }),
-    city: new FormControl('', {
-      nonNullable: true,
-    }),
-  });
-
-
   constructor(
     private authService : AuthenticationService, 
     private imageUploadService: ImageUploadService, 
     private toast: HotToastService,
     private usersService: UsersService,
-    private postsService: PostsService,
     ) { }
 
   ngOnInit(): void {
@@ -109,7 +64,8 @@ export class MyAccountInfoComponent implements OnInit {
         this.profileForm.patchValue({ ...user });
       });
   }
-
+  
+  //From auth service... - [Joseph]
   uploadImage(event: any, user: User) {
     this.imageUploadService.uploadImage(event.target.files[0], `images/profile/${user.uid}`).pipe(
       this.toast.observe({
@@ -121,11 +77,10 @@ export class MyAccountInfoComponent implements OnInit {
       ).subscribe();
     }
 
-  //Saves to 'users' collection firestore and verifies role...needs refractoring
+  //Saves to 'users' collection firestore and verifies role...needs refractoring in my opinion - [Joseph]
   saveProfile(){  
       const {uid, ...data} = this.profileForm.value;
       
-      //This checks if a user already has a 'mechanic role', if not it will continue with saveCommunityProfile method.
       if(this.profileForm.value.role === 'mechanic'){
         if (!uid) { return;}
         this.usersService.updateUser({uid, ...data, role: 'mechanic' })
