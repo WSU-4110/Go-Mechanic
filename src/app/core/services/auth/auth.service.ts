@@ -18,13 +18,9 @@ export class AuthenticationService {
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
-<<<<<<< HEAD:src/app/core/auth/auth.service.ts
     private toast: HotToastService,
     public dialog: MatDialog
     ) {}
-=======
-    private toast: HotToastService){}
->>>>>>> origin/developmental:src/app/core/services/auth/auth.service.ts
 
   SendVerificationMail() {
     return this.afAuth.currentUser
