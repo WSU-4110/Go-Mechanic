@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
 import {MatDialog} from '@angular/material/dialog';
-import { AddCarDialogComponent } from '../add-car-dialog/add-car-dialog.component';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { concatMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
@@ -49,6 +48,18 @@ export class MyAccountInfoComponent implements OnInit {
       nonNullable: true,
     }),
     zip: new FormControl('', {
+      nonNullable: true,
+    }),
+    vehicleYear: new FormControl('', {
+      nonNullable: true,
+    }),
+    vehicleMake: new FormControl('', {
+      nonNullable: true,
+    }),
+    vehicleModel: new FormControl('', {
+      nonNullable: true,
+    }),
+    vehicleColor: new FormControl('', {
       nonNullable: true,
     }),
   });
@@ -126,10 +137,5 @@ export class MyAccountInfoComponent implements OnInit {
     }
       document.getElementById(tabName)!.style.display = "block";
       event.currentTarget.className += " is-active";
-  }
-
-
-  addCar(){
-    this.dialog.open(AddCarDialogComponent);
   }
 }
