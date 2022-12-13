@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SignupComponent } from '../signup/signup.component';
 import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 
 
@@ -19,7 +21,8 @@ export class LoginpageComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private fb: NonNullableFormBuilder
+    private fb: NonNullableFormBuilder,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
@@ -43,7 +46,8 @@ export class LoginpageComponent implements OnInit {
   }
 
   signup(){
-    this.router.navigate(['/signup']);
+    this.dialog.closeAll();
+    this.dialog.open(SignupComponent);
   }
 }
 

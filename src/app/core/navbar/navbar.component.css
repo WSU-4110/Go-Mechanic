@@ -5,3 +5,8 @@ nav{
     width:100%;
     z-index:100;
 }
+
+::ng-deep.mat-dialog-container {
+    background-color: transparent;
+    box-shadow: none;
+}
