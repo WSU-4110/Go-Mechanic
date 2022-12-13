@@ -97,7 +97,7 @@
   .search-input{
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 15px;
+    margin-left: 580px;
 }
 
 
@@ -116,3 +116,5 @@
 .mat-form-field--inline .mat-form-field:nth-child(1) {
   margin-right: 10px;
 }
+
+

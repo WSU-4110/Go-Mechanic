@@ -13,4 +13,5 @@ export interface ProfileUser{
     zip?: string;
     description?: string;
     experience?: string;
+    reviews?: string;
 }
