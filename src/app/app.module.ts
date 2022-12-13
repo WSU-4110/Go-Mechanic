@@ -31,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './public/Pages/signup/signup.component';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { RepairsComponent } from './repairs/repairs.component';
 import { DateDisplayPipe } from './pipes/date-display.pipe';
 import { DatePipe } from '@angular/common';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
@@ -55,6 +55,7 @@ import { ViewPublicComponent } from './private/pages/view-public/view-public.com
     FooterComponent,
     ModifyMechPageComponent,
     ViewPublicComponent,
+    RepairsComponent
   ],
 
   imports: [

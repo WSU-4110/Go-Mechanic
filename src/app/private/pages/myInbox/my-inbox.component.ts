@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'; 
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { combineLatest, map, of, startWith, switchMap, tap } from 'rxjs';
 import { UsersService } from 'src/app/core/services/user.service';
@@ -23,7 +23,7 @@ export class MyInboxComponent implements OnInit {
   searchControl = new FormControl('');
   chatListControl = new FormControl('');
   messageControl = new FormControl('');
-  
+
 
 
   users$ = combineLatest([this.userService.allUsers$, this.user$, this.searchControl.valueChanges.pipe(startWith(''))]).pipe(
@@ -36,14 +36,14 @@ export class MyInboxComponent implements OnInit {
   )
 
   messages$ = this.chatListControl.valueChanges.pipe(map(value => value[0]),
-  switchMap(chatId => this.chatsService.getChatMessages$(chatId)), 
+  switchMap(chatId => this.chatsService.getChatMessages$(chatId)),
   tap(() => {
     this.scrollToBottom();
   })
   );
 
 
-  
+
 
   constructor(private userService: UsersService, private chatsService: ChatService) { }
 
