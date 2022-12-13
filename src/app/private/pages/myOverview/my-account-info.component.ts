@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { User } from 'firebase/auth';
+import {MatDialog} from '@angular/material/dialog';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { concatMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 import { ImageUploadService } from 'src/app/core/services/ImageUpload/image-upload.service';
@@ -48,6 +50,18 @@ export class MyAccountInfoComponent implements OnInit {
     zip: new FormControl('', {
       nonNullable: true,
     }),
+    vehicleYear: new FormControl('', {
+      nonNullable: true,
+    }),
+    vehicleMake: new FormControl('', {
+      nonNullable: true,
+    }),
+    vehicleModel: new FormControl('', {
+      nonNullable: true,
+    }),
+    vehicleColor: new FormControl('', {
+      nonNullable: true,
+    }),
   });
 
   constructor(
@@ -55,6 +69,8 @@ export class MyAccountInfoComponent implements OnInit {
     private imageUploadService: ImageUploadService, 
     private toast: HotToastService,
     private usersService: UsersService,
+    public dialog: MatDialog,
+    private firestone: Firestore
     ) { }
 
   ngOnInit(): void {
@@ -106,7 +122,33 @@ export class MyAccountInfoComponent implements OnInit {
     }
   }
 
-
+  saveCarProfile(){  
+    const {uid, ...data} = this.profileForm.value;
+    
+    if(this.profileForm.value.role === 'mechanic'){
+      if (!uid) { return;}
+      this.usersService.updateUser({uid, ...data, role: 'mechanic' })
+      .pipe(this.toast.observe({
+        success: 'Your vehicle has been updated..',
+        error: 'There was an error in updating the data.'
+      })
+      )
+      .subscribe();
+    }
+    else{
+      if (!uid) { return; }
+    this.usersService.updateUser({
+      uid, ...data,
+      role: 'user'
+    })
+    .pipe(this.toast.observe({
+      success: 'Your vehicle has been updated..',
+      error: 'There was an error in updating the data.'
+    })
+    )
+    .subscribe();
+  }
+}
 //Code for the new dropdown menu to select account type - Anthony
   // Function I created in order to allow me to change tabs within the side-nav bar instead of using page components. This took forever! - Anthony
   openSideNav(event: any, tabName: string) {
@@ -121,10 +163,5 @@ export class MyAccountInfoComponent implements OnInit {
     }
       document.getElementById(tabName)!.style.display = "block";
       event.currentTarget.className += " is-active";
-  }
-
-
-  addCar(){
-    //Placeholder for now
   }
 }

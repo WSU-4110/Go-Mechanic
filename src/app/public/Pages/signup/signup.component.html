@@ -1,54 +1,58 @@
-<br><br><br>
 <div class="form-container mat-elevation-z5">
-  <h1>Go Mechanic sign-up</h1>
-  <form [formGroup]="signUpForm" (ngSubmit)="submit()">
-    <mat-form-field>
-      <input matInput placeholder="Username" formControlName="name" />
-      <mat-error *ngIf="name?.errors?.['required']">
-        Name is required
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Email" formControlName="email" />
-      <mat-error *ngIf="email?.errors?.['required']">
-        Email address is required
-      </mat-error>
-      <mat-error *ngIf="email?.errors?.['email']">
-        Please enter a valid email address
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-      />
-      <mat-error *ngIf="password?.errors?.['required']">
-        Password is required
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        type="password"
-        placeholder="Confirm Password"
-        formControlName="confirmPassword"
-      />
-      <mat-error *ngIf="confirmPassword?.errors?.['required']">
-        Confirm Password is required
-      </mat-error>
-    </mat-form-field>
-    <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
-        Passwords should match
-    </mat-error>
-    <span>
-      By signing up you are agreeing to our
-     <a target="_blank" href="/terms" >Terms of Service</a> and
-     <a target="_blank" href="/privacypolicy">Privacy Policy</a>
-    </span>
-    <div class="center margin-top">
-      <button type="submit" mat-raised-button color="primary">Sign Up!</button>
-    </div>
-  </form>
+    <mat-icon style="margin-left: 13rem; margin-top: -5rem;" mat-dialog-close>close</mat-icon>
+      <h1>Go Mechanic sign-up</h1>
+        <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+          <mat-dialog-content class="mat-typography" style="background-color: #eceff100">
+
+            <!--Username-->
+            <mat-form-field>
+              <input matInput placeholder="Username" formControlName="name" />
+              <mat-error *ngIf="name?.errors?.['required']">
+                Name is required
+              </mat-error>
+            </mat-form-field>
+
+            <!--Email-->
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email" />
+              <mat-error *ngIf="email?.errors?.['required']">
+                Email address is required
+              </mat-error>
+              <mat-error *ngIf="email?.errors?.['email']">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+
+            <!--Password-->
+            <mat-form-field>
+              <input matInput type="password" placeholder="Password" formControlName="password"/>
+              <mat-error *ngIf="password?.errors?.['required']">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+
+            <!--Confirm Password-->
+            <mat-form-field>
+              <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+              <mat-error *ngIf="confirmPassword?.errors?.['required']">
+                Confirm Password is required
+              </mat-error>
+            </mat-form-field>
+            <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+                Passwords should match
+            </mat-error>
+            
+            <!--Redirect to ToS and Privacy Policy-->
+            <span>
+              By signing up you are agreeing to our
+            <a target="_blank" href="/terms" >Terms of Service</a> and
+            <a target="_blank" href="/privacypolicy">Privacy Policy</a>
+            </span>
+
+            <!--Submit-->
+            <div class="center margin-top">
+              <button type="submit" mat-button cdkFocusInitial mat-raised-button color="primary">Sign Up!</button>
+            </div>
+          </mat-dialog-content>
+        </form>
 </div>

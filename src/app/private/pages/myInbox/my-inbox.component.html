@@ -1,9 +1,4 @@
 <br><br><br>
-<div class="buttons">
-    <button class="button" style="color:rgb(200, 92, 92)"><b>Repair Status:</b></button>
-    <button class="button is-success is-light">No repairs</button>
-    <button class="button is-warning is-light">Repair in progress</button>
-</div>
 
 <div class = "container">
     <div class = "chat-list mat-elevation-z5">
@@ -49,13 +44,9 @@
         <div
         class="messages-header"
           *ngIf="selectedChat$ | async as selectedChat; else noMessages">
-        <img
-            [src]="
-            selectedChat.chatPic
-                ? selectedChat.chatPic
-                : 'assets/images/image-placeholder.png'
-            "
-        />
+          <img matListAvatar [src]="
+          selectedChat.chatPic ? selectedChat.chatPic : 'assets/images/placeholderProfile.png' "
+          />
         <h2>{{ selectedChat.chatName }}</h2>
     </div>
     <ng-template #noMessages>

@@ -12,9 +12,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AddCarDialogComponent } from './pages/add-car-dialog/add-car-dialog.component';
 
 @NgModule({
   declarations: [
+  
+    AddCarDialogComponent
   ],
   imports: [
     CommonModule,

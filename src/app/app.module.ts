@@ -15,6 +15,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
 //Additional
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -67,6 +68,7 @@ import { ViewPublicComponent } from './private/pages/view-public/view-public.com
     provideStorage(() => getStorage()),
     AngularFireModule.initializeApp(environment.firebase),
     MatToolbarModule,
+    MatDialogModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,

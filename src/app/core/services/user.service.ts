@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {collection, collectionData, doc, docData, Firestore, query, setDoc, updateDoc,} from '@angular/fire/firestore';
-import { from, Observable, of, switchMap } from 'rxjs';
+import {addDoc, collection, collectionData, doc, docData, Firestore, orderBy, query, setDoc, Timestamp, updateDoc, where,} from '@angular/fire/firestore';
+import { concatMap, from, map, Observable, of, switchMap, take } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { AuthenticationService } from './auth/auth.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class UsersService {
   constructor(
     private firestore: Firestore,
     private authService: AuthenticationService,
+
     ){}
 
     addUser(user: ProfileUser): Observable<any> {
@@ -41,6 +43,52 @@ export class UsersService {
       return from(updateDoc(ref, { ...user }));
     }
     
-  }
-    
 
+    addReview(reviewerId: string, message: string) : Observable<any> {
+      const ref = collection(this.firestore, 'users', reviewerId, 'reviews');
+      const postRef = doc(this.firestore, 'users', reviewerId);
+      const today = Timestamp.fromDate(new Date());
+      return this.currentUserProfile$.pipe(
+        take(1),
+        concatMap((user) => addDoc(ref, {
+          text: message,
+          reviewerId: user?.uid,
+          sentDate: today
+        })),
+        concatMap(() => updateDoc(postRef, { lastMessage: message, lastMessageDate: today} ))
+      )
+      }
+
+      
+
+      createReview(otherUser: ProfileUser, review: string): Observable<any> {
+        const ref = collection(this.firestore, 'users', otherUser?.uid, 'personalReviews');
+        const postRef = doc(this.firestore, 'users', otherUser?.uid);
+        return this.currentUserProfile$.pipe(
+        take(1),
+        concatMap((user) =>
+        addDoc(ref, {
+          Victim: [otherUser?.uid, otherUser?.displayName],
+          Reviewer: [
+            {
+              UserUid: user?.uid,
+              Displayname: user?.displayName,
+              ReviewText: review,
+            },
+          ],
+        })
+      ),
+      concatMap(() => updateDoc(postRef, { lastReview: review}))
+    );
+  }
+
+
+
+  getReviews$(UserUid: string): Observable<ProfileUser[]>{
+    const ref = collection(this.firestore, 'users', UserUid, 'personalReviews');
+    const queryAll = query(ref, orderBy('sentDate', 'asc'));
+    return collectionData(queryAll) as Observable<ProfileUser[]>;
+    }
+
+  }
+  

@@ -1,12 +1,11 @@
 <br><br><br>
 <div class = 'container'>
-  <div class = "container">
     <div class = "chat-list mat-elevation-z5">
         <div class = "search-input">
             <mat-form-field appearance="outline">
                 <input
                 matInput
-                placeholder="Search for users..."
+                placeholder="Search to message a user"
                 [formControl]="searchControl"
                 [matAutocomplete]="users"
                 />
@@ -33,18 +32,28 @@
                 <h1 class="name"> <span class="user-name"> {{ user.displayName}} </span>
                 </h1>
                 <h3 class="name">
-                  <span>About '{{user.firstName}}', {{user.description}}
+                  <span>About {{user.firstName}},<br> {{user.description}}
                   </span>
                 </h3>
-                <h5 class="name"> A Go-Mechanic
+                <h5 class="name"> A
                   <span class="user-info"> {{ user.role}}, near </span>
                   <span class="user-info"> {{ user.zip }} </span>
                 </h5>
+                <input [formControl]="reviewControl" matInput placeholder="Add a review" (keydown.enter) = "publishReview(user)"/>
+            <button mat-icon-button matSuffix (click)="publishReview(user)" > 
+                <mat-icon>message</mat-icon>
+            </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <h2>Reviews</h2>
+          
+      
+    </div>
+    <div>
+      
     </div>
   </div>
   </div>
