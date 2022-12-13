@@ -1,10 +1,7 @@
 # GoMechanic
 
 ## Purpose
-#### Go-Mechanic is a web application that serves the purpose of bringing a mobile mechanic to your door. 
-
-## Functionality
-#### Go-Mechanic allows users to view basic repairs and maitenance items for a vehicle, search and find a user with a mechanic role. Users are also able to message a mechanic with timestamp.
+#### Go-Mechanic is a web application which allows users to find and contact mechanics in their area to perform a repair service. 
 
 ## Installation
 Go-Mechanic was created with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
