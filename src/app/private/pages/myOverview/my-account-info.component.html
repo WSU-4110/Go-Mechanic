@@ -189,7 +189,7 @@
                 <div class="text-center" *ngIf="currentUser$ | async as user" >
                   <h1>Your Vehicle Information</h1>
           
-                  <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+                  <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveCarProfile()">
                     <div class="row">
                       <mat-form-field>
                         <input
@@ -237,8 +237,7 @@
                     </div>
                   </form>
                 </div>
-
-    </div>
+              </div>
     <!--End of My_Cars Section-->
 
   </mat-drawer-content>
@@ -264,8 +263,6 @@
   </script>
 </mat-drawer-container>
 
-
-            
 <!-- </div> this is the div for sidenav-whole this is temp until I come up 
   with a better way to display the navbar and content side-by-side. - Anthony -->
 <!--Fixed display issues - Jim-->

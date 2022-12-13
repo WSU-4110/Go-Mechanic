@@ -122,7 +122,33 @@ export class MyAccountInfoComponent implements OnInit {
     }
   }
 
-
+  saveCarProfile(){  
+    const {uid, ...data} = this.profileForm.value;
+    
+    if(this.profileForm.value.role === 'mechanic'){
+      if (!uid) { return;}
+      this.usersService.updateUser({uid, ...data, role: 'mechanic' })
+      .pipe(this.toast.observe({
+        success: 'Your vehicle has been updated..',
+        error: 'There was an error in updating the data.'
+      })
+      )
+      .subscribe();
+    }
+    else{
+      if (!uid) { return; }
+    this.usersService.updateUser({
+      uid, ...data,
+      role: 'user'
+    })
+    .pipe(this.toast.observe({
+      success: 'Your vehicle has been updated..',
+      error: 'There was an error in updating the data.'
+    })
+    )
+    .subscribe();
+  }
+}
 //Code for the new dropdown menu to select account type - Anthony
   // Function I created in order to allow me to change tabs within the side-nav bar instead of using page components. This took forever! - Anthony
   openSideNav(event: any, tabName: string) {
