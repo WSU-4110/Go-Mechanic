@@ -86,7 +86,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'testing',
+    path: 'GoMechanic-Community',
     component: ViewPublicComponent,
     ...canActivate(redirectToLogin)
   },
