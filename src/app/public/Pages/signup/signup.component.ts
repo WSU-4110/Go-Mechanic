@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 import { UsersService } from 'src/app/core/services/user.service';
-import { switchMap } from 'rxjs';
+import { switchMap, timeInterval } from 'rxjs';
+import { HotToastService } from '@ngneat/hot-toast';
+import { MatDialog } from '@angular/material/dialog';
 
 
 export function passwordsMatchValidator(): ValidatorFn {
@@ -35,7 +36,8 @@ export class SignupComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
     private toast: HotToastService, 
-    private  userService: UsersService) { }
+    private  userService: UsersService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {}
 
@@ -72,6 +74,7 @@ export class SignupComponent implements OnInit {
         }),
     )
     .subscribe(() => {
+      this.authService.closePopUps();
       this.authService.forceLogout();
       this.authService.SendVerificationMail();
     })

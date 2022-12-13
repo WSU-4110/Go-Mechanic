@@ -14,4 +14,10 @@ export interface ProfileUser{
     description?: string;
     experience?: string;
     reviews?: string;
+
+    vehicleYear?: string;
+    vehicleMake?: string;
+    vehicleModel?: string;
+    vehicleColor?: string;
 }
+

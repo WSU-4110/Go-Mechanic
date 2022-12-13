@@ -189,44 +189,59 @@
       <!-- Brainstorming ideas for this table. - Anthony -->
       <!-- Will need a car template in order to ensure all information 
                 required is given like we did for profile - Anthony -->
-      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th><abbr title="Year">Year</abbr></th>
-            <th><abbr title="Make">Make</abbr></th>
-            <th><abbr title="Model">Model</abbr></th>
-            <th><abbr title="Color">Color</abbr></th>
-          </tr>
+                <div class="text-center" *ngIf="currentUser$ | async as user" >
+                  <h1>Your Vehicle Information</h1>
+          
+                  <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveCarProfile()">
+                    <div class="row">
+                      <mat-form-field>
+                        <input
+                          type="number"
+                          matInput
+                          formControlName="vehicleYear"
+                          placeholder="Year"
+                        />
+                      </mat-form-field>
+          
+                      <mat-form-field>
+                        <input
+                          type="text"
+                          matInput
+                          formControlName="vehicleMake"
+                          placeholder="Make"
+                        />
+                      </mat-form-field>
+                    </div>
 
-          <!--Placeholder
-          <tr>
-            <th><abbr></abbr></th>
-            <th><abbr></abbr></th>
-            <th><abbr></abbr></th>
-            <th><abbr></abbr></th>
-          </tr> -->
-        </thead>
-      </table>
-
-      <!--Need to implement dialog screen to input data-->
-      <div class="addCar">
-        <button mat-raised-button (click)="addCar()"> 
-          <mat-icon>add</mat-icon>
-          Add a car 
-        </button>
-      </div>
-    </div>
+                    <div class="row">
+                      <mat-form-field>
+                        <input
+                          type="text"
+                          matInput
+                          formControlName="vehicleModel"
+                          placeholder="Model"
+                        />
+                      </mat-form-field>
+          
+                      <mat-form-field>
+                        <input
+                          type="text"
+                          matInput
+                          formControlName="vehicleColor"
+                          placeholder="Color"
+                        />
+                      </mat-form-field>
+                    </div>
+          
+                    <div>
+                      <button type="submit" style ="margin-top: 2px" mat-raised-button color="primary">
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
     <!--End of My_Cars Section-->
-
-    
-
-
-
-
-
-
-
-
 
   </mat-drawer-content>
   <!--End of side-nav content holders-->
@@ -251,8 +266,6 @@
   </script>
 </mat-drawer-container>
 
-
-            
 <!-- </div> this is the div for sidenav-whole this is temp until I come up 
   with a better way to display the navbar and content side-by-side. - Anthony -->
 <!--Fixed display issues - Jim-->
